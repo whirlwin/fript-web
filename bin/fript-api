@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+const App = require('../app');
+
+const app = new App();
+app.configure();
+app.start();
+

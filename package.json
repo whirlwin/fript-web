@@ -1,0 +1,26 @@
+{
+  "name": "fript-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./bin/fript-api",
+    "start": "node ./bin/fript-api",
+    "start:heroku": "node ./bin/fript-api",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.2.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "4.13.4",
+    "hal": "^0.1.0",
+    "winston": "2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.9.1"
+  }
+}
