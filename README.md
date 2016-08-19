@@ -1,4 +1,4 @@
-# samlemons-api
+# fript-api
 
 ## Local development
 
