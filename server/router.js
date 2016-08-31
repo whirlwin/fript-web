@@ -1,6 +1,7 @@
 const express = require('express');
 const ServiceDocController = require('./service-doc-controller');
 const ActiveUserController = require('./active-user-controller');
+const GymController = require('./gym/gym-controller');
 
 const router = express.Router();
 
@@ -9,11 +10,13 @@ class Router {
     constructor() {
         this.serviceDocController = new ServiceDocController();
         this.activeUserController = new ActiveUserController();
+        this.gymController = new GymController();
     }
 
     route(app) {
         router.get('/', this.serviceDocController.getServiceDoc);
         router.get('/active-user', this.activeUserController.getActiveUsers);
+        router.get('/gym-types', this.gymController.getGymTypes);
 
         app.use(router);
     }
