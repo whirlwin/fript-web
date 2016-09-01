@@ -1,4 +1,4 @@
-const CountryCode = require('./country-code');
+const CountryCodeConstants = require('./country-code-constants');
 const Try = require('try-js');
 
 let instance = null;
@@ -6,7 +6,7 @@ let instance = null;
 class GymService {
 
     getGymTypesByCountryCode(countryCode) {
-        if (countryCode == CountryCode.no) {
+        if (countryCode == CountryCodeConstants.no) {
             return Try.success([
                 { id: 1, name: 'SATS ELIXIA' },
                 { id: 2, name: 'Fresh Fitness' },
