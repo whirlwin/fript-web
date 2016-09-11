@@ -1,5 +1,7 @@
 const LoginRepository = require('./login-repository');
 
+let instance;
+
 class LoginService {
 
     constructor() {
@@ -7,6 +9,14 @@ class LoginService {
     }
 
     hasLogin() {
+        this.loginRepository.hasLoggedIn();
+    }
+
+    static getInstance() {
+        if (instance == null) {
+            instance = new LoginService();
+        }
+        return instance;
     }
 }
 

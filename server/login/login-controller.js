@@ -7,7 +7,7 @@ class LoginController {
     }
 
     handleLogin(req, res) {
-        this.loginService.hasLogin();
+        LoginService.getInstance().hasLogin();
         res.send(200);
     }
 }
