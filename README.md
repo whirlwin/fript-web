@@ -2,23 +2,25 @@
 
 ## Local development
 
-1. Install dependencies
+1: Install dependencies
 
 ```bash
 $ npm install
 ```
 
-2. Set the app env variables, e.g.
+2: Set the app env variables, e.g.
 
 ```bash
 export HTTP_PORT=3001
 ```
 
-````Here is an extensive list of env variables
+Here is an extensive list of env variables
 
+```
 - HTTP_PORT (*optional*)
+```
 
-3. Start the app locallly
+3: Start the app locallly
 
 ```bash
 $ npm run start:local
