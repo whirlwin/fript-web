@@ -1,23 +1,17 @@
-const DbConfig = require('./config/db-config');
-const ErrorEventConfig = require('./config/error-event-config');
-const ExpressConfig = require('./config/express-config');
-const HttpConfig = require('./config/http-config');
+const AppConfig = require('./config/app-config');
 const Router = require('./server/router');
-const WinstonConfig = require('./config/winston-config');
+const winston = require('winston');
 
 class App {
 
     constructor() {
-        this.dbConfig = new DbConfig();
-        this.errorEventConfig = new ErrorEventConfig();
-        this.expressConfig = new ExpressConfig();
-        this.httpConfig = new HttpConfig();
+        this.appConfig = new AppConfig();
         this.router = new Router();
-        this.winstonConfig = new WinstonConfig();
     }
 
     configure() {
-        this.app = this.expressConfig.configure();
+        const appConfig = this.appConfig.configure();
+        this.app = appConfig.app;
         this.winston = this.winstonConfig.configure();
         this.errorEventConfig = this.errorEventConfig.configure();
         this.dbConfig.configure();
@@ -26,7 +20,7 @@ class App {
 
     start() {
         const httpPort = this.httpConfig.getHttpPort();
-        this.app.listen(httpPort, () => this.winston.info(`App started on port ${httpPort}`));
+        this.app.listen(httpPort, () => winston.info(`App started on port ${httpPort}`));
     }
 }
 

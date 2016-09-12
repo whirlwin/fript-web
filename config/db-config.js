@@ -1,5 +1,6 @@
 const DbUtil = require('../server/db-util');
 const pg = require('pg');
+const Settings = require('../settings');
 
 class DbConfig {
 
@@ -12,7 +13,8 @@ class DbConfig {
     }
 
     getDbName() {
-        return process.env.DB_NAME || 'fript_dev';
+        const env = process.env
+        return Settings
     }
 }
 

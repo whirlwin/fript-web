@@ -1,3 +1,10 @@
 {
-    "httpPort": 4000
+    "dev": {
+        "httpPort": 4000,
+        "databaseName": "fript_dev"
+    },
+    "prod": {
+        "httpPort": 4000,
+        "databaseName": "fript_prod"
+    }
 }
