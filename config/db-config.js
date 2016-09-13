@@ -6,16 +6,20 @@ class DbConfig {
 
     configure() {
         const config = {
-            database: this.getDbName()
+            database: Settings[process.env.ENV].db.dbName,
+            user: this.Settings[process.env.ENV].db.user,
+            password: process.env.DB_PASSWORD,
+            host: Settings[process.env.ENV].db.host,
+            port: Settings[process.env.ENV].db.port
         };
         const pool = new pg.Pool(config);
         DbUtil.initializePool(pool);
     }
 
-    getDbName() {
-        const env = process.env
-        return Settings
+    getDbProperty(name) {
+        return Settings[process.env.ENV].db[name];
     }
+
 }
 
 module.exports = DbConfig;

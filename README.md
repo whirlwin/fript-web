@@ -18,7 +18,8 @@ Here is an extensive list of env variables
 
 ```
 - HTTP_PORT (*optional*)
-- ENV (*optional*)
+- ENV
+- DB_PASSWORD
 ```
 
 3: Start the app locallly

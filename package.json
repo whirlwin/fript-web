@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./bin/fript-api",
-    "start": "node ./bin/fript-api",
+    "dev": "ENV=dev nodemon ./bin/fript-api",
+    "start": "echo \"Error: start not specified\"",
     "start:heroku": "node ./bin/fript-api",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

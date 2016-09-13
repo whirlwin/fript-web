@@ -1,10 +1,14 @@
 {
     "dev": {
         "httpPort": 4000,
-        "databaseName": "fript_dev"
+        "db": {
+            "dbName": "dos2uvg6lqp4v",
+            "user": "nhzlhbnjprbtqy",
+            "port": 5432
+        }
     },
     "prod": {
         "httpPort": 4000,
-        "databaseName": "fript_prod"
+        "dbName": "fript_prod"
     }
 }

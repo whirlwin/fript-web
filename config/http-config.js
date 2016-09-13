@@ -3,7 +3,12 @@ const Settings = require('../settings');
 class HttpConfig {
 
     getHttpPort() {
-        return process.env.HTTP_PORT || Settings.httpPort;
+        if (process.env.HTTP_PORT) {
+            return process.env.HTTP_PORT;
+        } else {
+            const env = process.env.ENV;
+            return Settings[env].httpPort;
+        }
     }
 }
 

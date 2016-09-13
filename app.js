@@ -1,26 +1,29 @@
 const AppConfig = require('./config/app-config');
+const AppValidator = require('./app-validator');
 const Router = require('./server/router');
 const winston = require('winston');
 
 class App {
 
     constructor() {
+        this.appValidator = new AppValidator();
         this.appConfig = new AppConfig();
         this.router = new Router();
     }
 
     configure() {
-        const appConfig = this.appConfig.configure();
-        this.app = appConfig.app;
-        this.winston = this.winstonConfig.configure();
-        this.errorEventConfig = this.errorEventConfig.configure();
-        this.dbConfig.configure();
-        this.router.route(this.app);
+        this.appValidator.validate();
+
+        const { app, httpPort } = this.appConfig.configure();
+        this.httpPort = httpPort;
+        this.app = app;
+
+        this.router.route(app);
     }
 
     start() {
-        const httpPort = this.httpConfig.getHttpPort();
-        this.app.listen(httpPort, () => winston.info(`App started on port ${httpPort}`));
+        this.app.listen(this.httpPort, () =>
+            winston.info(`App started on port ${this.httpPort}`));
     }
 }
 
