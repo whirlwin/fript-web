@@ -3,20 +3,13 @@ const DbUtil = require('../db-util');
 class LoginRepository {
 
     constructor() {
-        this.pool = DbUtil.getPool();
+        this.db = DbUtil.getDb();
     }
 
     hasLoggedIn() {
-        this.pool.query("SELECT * FROM login", (err, hasLoggedIn) => {
-            console.log(err);
-            console.log(hasLoggedIn);
-            if (err) {
-                return Promise.reject();
-            } else {
-                return Promise.resolve(hasLoggedIn);
-            }
-        });
+        return this.db.query("SELECT * FROM login");
     }
+
 }
 
 module.exports = LoginRepository;

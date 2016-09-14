@@ -1,13 +1,13 @@
-let pool;
+let db;
 
 class DbUtil {
 
-    static initializePool(newPool) {
-        pool = newPool;
+    static initializeDb(newDb) {
+        db = newDb;
     }
 
-    static getPool() {
-        return pool;
+    static getDb() {
+        return db;
     }
 }
 

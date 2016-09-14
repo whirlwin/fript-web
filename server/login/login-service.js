@@ -9,7 +9,7 @@ class LoginService {
     }
 
     hasLogin() {
-        this.loginRepository.hasLoggedIn();
+        return this.loginRepository.hasLoggedIn();
     }
 
     static getInstance() {
