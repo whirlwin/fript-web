@@ -7,7 +7,7 @@
     "dev": "ENV=dev nodemon ./bin/fript-api",
     "local": "echo \"Error: local not configured\"",
     "start": "echo \"Error: start not specified\"",
-    "start:heroku": "node ./bin/fript-api",
+    "heroku:dev": "ENV=dev node ./bin/fript-api",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
