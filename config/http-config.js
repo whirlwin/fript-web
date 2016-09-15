@@ -1,14 +1,11 @@
+const Optional = require("optional-js");
 const Settings = require('../settings');
 
 class HttpConfig {
 
     getHttpPort() {
-        if (process.env.HTTP_PORT) {
-            return process.env.HTTP_PORT;
-        } else {
-            const env = process.env.ENV;
-            return Settings[env].httpPort;
-        }
+        return Optional.ofNullable(process.env.PORT)
+            .orElse(Settings[process.env.ENV].httpPort);
     }
 }
 
