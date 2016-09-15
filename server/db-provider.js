@@ -1,8 +1,8 @@
 let db;
 
-class DbUtil {
+class DbProvider {
 
-    static initializeDb(newDb) {
+    static init(newDb) {
         db = newDb;
     }
 
@@ -11,4 +11,4 @@ class DbUtil {
     }
 }
 
-module.exports = DbUtil;
+module.exports = DbProvider;

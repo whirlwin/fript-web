@@ -1,23 +1,18 @@
-const AppConfig = require('./config/app-config');
-const AppValidator = require('./app-validator');
-const Router = require('./server/router');
+const AppConfig = require('./../config/app-config');
+const Router = require('./router');
 const winston = require('winston');
 
 class App {
 
     constructor() {
-        this.appValidator = new AppValidator();
         this.appConfig = new AppConfig();
         this.router = new Router();
     }
 
     configure() {
-        this.appValidator.validate();
-
         const { app, httpPort } = this.appConfig.configure();
-        this.httpPort = httpPort;
         this.app = app;
-
+        this.httpPort = httpPort;
         this.router.route(app);
     }
 

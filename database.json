@@ -1,0 +1,7 @@
+{
+  "dev": {
+    "driver": "pg".
+    "user": "nhzlhbnjprbtqy",
+    "password": { "ENV": "DB_PASSWORD" }
+  }
+}

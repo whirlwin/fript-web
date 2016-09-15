@@ -8,17 +8,12 @@
 $ npm install
 ```
 
-2: Set the app env variables, e.g.
-
-```bash
-export HTTP_PORT=3001
-```
-
-Here is an extensive list of env variables
+2: Create a `.env` file with the required environment variables, e.g.
 
 ```
 - HTTP_PORT (*optional*)
 - ENV
+- DB_USER
 - DB_PASSWORD
 ```
 

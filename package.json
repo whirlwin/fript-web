@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ENV=dev nodemon ./bin/fript-api",
+    "local": "echo \"Error: local not configured\"",
     "start": "echo \"Error: start not specified\"",
     "start:heroku": "node ./bin/fript-api",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,10 +17,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "1.15.2",
+    "db-migrate": "0.10.0-beta.16",
+    "dotenv": "^2.0.0",
     "express": "4.13.4",
     "hal": "0.1.0",
     "optional-js": "1.1.2",
-    "pg-promise": "^5.3.3",
+    "pg-promise": "5.3.3",
     "try-js": "1.4.0",
     "winston": "2.2.0"
   },

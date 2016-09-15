@@ -1,9 +1,9 @@
-const DbUtil = require('../db-util');
+const DbProvider = require('../db-provider');
 
 class LoginRepository {
 
     constructor() {
-        this.db = DbUtil.getDb();
+        this.db = DbProvider.getDb();
     }
 
     hasLoggedIn() {
