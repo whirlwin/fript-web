@@ -1,6 +1,5 @@
 const DbProvider = require('../server/db-provider');
 const pgp = require('pg-promise');
-const Settings = require('../settings');
 
 class DbConfig {
 
@@ -12,11 +11,11 @@ class DbConfig {
 
     getDbConfig() {
         return {
-            database: Settings[process.env.ENV].db.dbName,
+            database: process.env.DB_NAME,
+            host: process.env.DB_HOST,
             user: process.env.DB_USER,
             password: process.env.DB_PASSWORD,
-            host: Settings[process.env.ENV].db.host,
-            port: Settings[process.env.ENV].db.port,
+            port: process.env.DB_PORT,
             ssl: true
         };
     }
