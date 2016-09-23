@@ -1,10 +1,10 @@
-const LoginService = require('./login-service');
+const AccountService = require('./account-service');
 const winston = require('winston');
 
-class LoginController {
+class AccountController {
 
-    handleLogin(req, res) {
-        LoginService.getInstance().hasLogin().then(hasLogin => {
+    getAccount(req, res) {
+        AccountService.getInstance().hasAccount().then(hasLogin => {
             res.send('foo: ' + hasLogin);
         }).catch(err => {
             winston.error('Failed to check if has login', err);
@@ -13,4 +13,4 @@ class LoginController {
     }
 }
 
-module.exports = LoginController;
+module.exports = AccountController;

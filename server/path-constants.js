@@ -1,6 +1,6 @@
 module.exports = {
-    root: '/',
-    activeUsers: '/active-user',
-    gymTypes: '/gym-types',
-    login: '/login'
+    root: { href: '/' },
+    getActiveUsers: { href: '/active-user' },
+    getGymTypes: { href: '/gym-types' },
+    getAccount: { href: '/account' }
 };
