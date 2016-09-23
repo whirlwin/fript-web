@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 class SecurityConfig {
 
     configure() {
-        dotenv.config();
+        dotenv.config({ silent: true });
     }
 }
 
