@@ -6,7 +6,8 @@
   "scripts": {
     "db-migrate": "ENV=dev db-migrate --migrations-dir=./db/migrations",
     "dev": "ENV=dev nodemon ./bin/fript-api",
-    "heroku": "ENV=dev node ./bin/fript-api",
+    "heroku:run": "ENV=dev node ./bin/fript-api",
+    "heroku:logs": "heroku logs --app fript-api",
     "psql": "heroku pg:psql DEV_DB_URL --app fript-api"
   },
   "engines": {
