@@ -12,7 +12,7 @@ class AccountController {
             .orElseGet(() => Promise.reject(`Query param facebookToken not present at ${req.path}`))
             .then(profile => res.json(profile))
             .catch(err => {
-                winston.error(`Failed to log in user: ${err}`);
+                winston.error('Failed to log in user: ', err);
                 res.json(ErrorCodes.loginFailed);
             });
     }
