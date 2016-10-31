@@ -26,7 +26,25 @@ $ npm run start:local
 
 4. Inspect the service document at [localhost:4000](http://localhost:4000)
 
-### DB migrations
+### DB
+
+#### Connecting
+
+1: Download [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
+
+2: Log into heroku
+
+```bash
+heroku login
+```
+
+3: Connect to the database using psql
+
+```bash
+heroku pg:psql DEV_DB_URL --app fript-api
+```
+
+#### Migrations
 
 1: To create a new DB migration
 
