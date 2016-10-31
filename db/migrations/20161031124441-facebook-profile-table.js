@@ -17,7 +17,7 @@ exports.setup = function(options, seedLink) {
 exports.up = function(db, cb) {
     db.createTable('facebook_profile', {
         id: { type: 'string', primaryKey: true },
-        email: { type: 'string', unique: true },
+        email: { type: 'string', notNull: true, unique: true },
         name: { type: 'string', notNull: true },
         picture_url: { type: 'string', notNull: true },
         created: { type: 'date', notNull: true, defaultValue: 'now()' },
