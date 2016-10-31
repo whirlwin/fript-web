@@ -14,11 +14,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "1.15.2",
+    "body-parser": "^1.15.2",
     "db-migrate": "0.10.0-beta.16",
     "db-migrate-pg": "^0.1.10",
     "dotenv": "2.0.0",
     "express": "4.13.4",
+    "fb": "^1.1.1",
     "hal": "0.1.0",
     "optional-js": "1.1.2",
     "pg-promise": "5.3.3",

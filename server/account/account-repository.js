@@ -6,7 +6,7 @@ class AccountRepository {
         this.db = DbProvider.getDb();
     }
 
-    hasAccount() {
+    getAccount() {
         return this.db.query("SELECT * FROM account");
     }
 }

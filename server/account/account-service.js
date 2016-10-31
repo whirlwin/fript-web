@@ -1,15 +1,21 @@
 const AccountRepository = require('./account-repository');
+const FacebookLoginService = require('./facebook-login-service');
 
 let instance;
 
 class AccountService {
 
     constructor() {
-        this.loginRepository = new AccountRepository();
+        this.accountRepository = new AccountRepository();
+        this.facebookLoginService = new FacebookLoginService();
     }
 
-    hasAccount() {
-        return this.loginRepository.hasAccount();
+    logIn(facebookToken) {
+        this.facebookLoginService.logIn(facebookToken);
+    }
+
+    getAccount() {
+        return this.accountRepository.getAccount();
     }
 
     static getInstance() {
