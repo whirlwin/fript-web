@@ -6,7 +6,8 @@
   "scripts": {
     "db-migrate": "ENV=dev db-migrate --migrations-dir=./db/migrations",
     "dev": "ENV=dev nodemon ./bin/fript-api",
-    "heroku:dev": "ENV=dev node ./bin/fript-api"
+    "heroku": "ENV=dev node ./bin/fript-api",
+    "psql": "heroku pg:psql DEV_DB_URL --app fript-api"
   },
   "engines": {
     "node": "6.2.1"
@@ -15,15 +16,16 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
-    "db-migrate": "0.10.0-beta.16",
-    "db-migrate-pg": "^0.1.10",
+    "db-migrate": "0.10.0-beta.20",
+    "db-migrate-pg": "^0.1.11",
     "dotenv": "2.0.0",
     "express": "4.13.4",
     "fb": "^1.1.1",
     "hal": "0.1.0",
+    "lodash": "^4.16.5",
     "optional-js": "1.1.2",
     "pg-promise": "5.3.3",
-    "try-js": "1.4.0",
+    "try-js": "^1.5.0",
     "winston": "2.2.0"
   },
   "devDependencies": {

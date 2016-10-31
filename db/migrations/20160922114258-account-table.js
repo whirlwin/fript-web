@@ -19,8 +19,8 @@ exports.up = function(db, cb) {
         id: { type: 'int', primaryKey: true },
         facebook_id: { type: 'int', unique: true },
         email: { type: 'string', unique: true },
-        created: { type: 'date', notNull: true },
-        updated: { type: 'date', notNull: true }
+        created: { type: 'date', notNull: true, defaultValue: 'now()' },
+        updated: { type: 'date', notNull: true, defaultValue: 'now()' }
     }, cb);
 };
 
