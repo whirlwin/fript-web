@@ -6,8 +6,10 @@ class AccountRepository {
         this.db = DbProvider.getDb();
     }
 
-    getAccount() {
-        return this.db.query("SELECT * FROM account");
+    getAccountByFacebookToken() {
+        const sql = `SELECT * FROM account a
+            INNER JOIN facebook_token ft ON ft.account_id = a.id`;
+        return this.db.query(sql);
     }
 }
 

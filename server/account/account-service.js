@@ -11,11 +11,11 @@ class AccountService {
     }
 
     logIn(facebookToken) {
-        this.facebookLoginService.logIn(facebookToken);
+        return this.facebookLoginService.logIn(facebookToken);
     }
 
-    getAccount() {
-        return this.accountRepository.getAccount();
+    createAccount() {
+
     }
 
     static getInstance() {
