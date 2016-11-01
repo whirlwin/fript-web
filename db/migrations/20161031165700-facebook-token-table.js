@@ -17,7 +17,7 @@ exports.setup = function(options, seedLink) {
 exports.up = function(db, cb) {
     db.createTable('facebook_token', {
         token: { type: 'string', primaryKey: true },
-        account_id: { type: 'int', notNull: true },
+        user_id: { type: 'string', notNull: true },
         created: { type: 'date', notNull: true, defaultValue: 'now()' },
         updated: { type: 'date', notNull: true, defaultValue: 'now()' }
     }, cb);

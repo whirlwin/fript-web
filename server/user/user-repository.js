@@ -12,8 +12,8 @@ class UserReposiory {
         const sql = `SELECT * FROM users WHERE id = $(id)`;
         const params = { id };
         return this.db.query(sql, params)
-            .then(profiles => _.head(profiles))
-            .then(maybeProfile => Optional.ofNullable(maybeProfile));
+            .then(users => _.head(users))
+            .then(maybeUser => Optional.ofNullable(maybeUser));
     }
 
     createUser(details) {
