@@ -15,7 +15,7 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db, cb) {
-    db.createTable('facebook_profile', {
+    db.createTable('users', {
         id: { type: 'string', primaryKey: true },
         email: { type: 'string', notNull: true, unique: true },
         name: { type: 'string', notNull: true },
@@ -26,5 +26,5 @@ exports.up = function(db, cb) {
 };
 
 exports.down = function(db, cb) {
-    db.dropTable('facebook_profile', cb);
+    db.dropTable('users', cb);
 };

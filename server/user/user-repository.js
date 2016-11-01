@@ -2,22 +2,22 @@ const _ = require('lodash');
 const DbProvider = require('../db-provider');
 const Optional = require('optional-js');
 
-class FacebookLoginReposiory {
+class UserReposiory {
 
     constructor() {
         this.db = DbProvider.getDb();
     }
 
-    getFacebookProfileById(id) {
-        const sql = `SELECT * FROM facebook_profile WHERE id = $(id)`;
+    getUserById(id) {
+        const sql = `SELECT * FROM users WHERE id = $(id)`;
         const params = { id };
         return this.db.query(sql, params)
             .then(profiles => _.head(profiles))
             .then(maybeProfile => Optional.ofNullable(maybeProfile));
     }
 
-    createFacebookProfile(details) {
-        const sql = `INSERT INTO facebook_profile(id, email, name, picture_url)
+    createUser(details) {
+        const sql = `INSERT INTO users(id, email, name, picture_url)
                 VALUES($(id), $(email), $(name), $(picture_url))`;
         const params = {
             id: details.id,
@@ -29,4 +29,4 @@ class FacebookLoginReposiory {
     }
 }
 
-module.exports = FacebookLoginReposiory;
+module.exports = UserReposiory;

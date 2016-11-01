@@ -1,7 +1,6 @@
-const ActiveUserController = require('./active-user-controller');
 const express = require('express');
 const GymController = require('./gym/gym-controller');
-const AccountController = require('./account/account-controller');
+const UserController = require('./user/user-controller');
 const PathConstants = require('./path-constants');
 const ServiceDocController = require('./service-doc-controller');
 
@@ -11,17 +10,14 @@ class Router {
 
     constructor() {
         this.serviceDocController = new ServiceDocController();
-        this.activeUserController = new ActiveUserController();
         this.gymController = new GymController();
-        this.accountController = new AccountController();
+        this.userController = new UserController();
     }
 
     route(app) {
         router.get(PathConstants.root.href, this.serviceDocController.getServiceDoc);
-        router.get(PathConstants.getActiveUsers.href, this.activeUserController.getActiveUsers);
         router.get(PathConstants.getGymTypes.href, this.gymController.getGymTypes);
-        router.get(PathConstants.getAccount.href, this.accountController.getAccount);
-        router.get(PathConstants.logIn.href, this.accountController.logIn);
+        router.get(PathConstants.logIn.href, this.userController.logIn);
 
         app.use(router);
     }
