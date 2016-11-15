@@ -15,10 +15,23 @@ class UserService {
 
     logIn(facebookToken) {
         return this.facebookTokenRepository.getUserByFacebookToken(facebookToken)
-            .then(maybeUser => maybeUser.orElseGet(() => this.facebookApiFacade.getDetailsByFacebookToken(facebookToken)
+            .orElse(() => this.handleGetAndCreateUser(facebookToken));
+
+        /*
+            .map(maybeUser => maybeUser.orElseGet(() => this.facebookApiFacade.getDetailsByFacebookToken(facebookToken)
                 .then(details => this.userRepository.getUserById(details.id)
                     .then(profile => profile.orElseGet(() => this.createAndGetUser(details))))))
-            .then(user => this.storeLoginData({ facebookToken, user }));
+            .map(user => this.storeLoginData({ facebookToken, user }));
+            */
+    }
+
+    handleGetAndCreateUser(facebookToken) {
+        return this.facebookApiFacade.getDetailsByFacebookToken(facebookToken)
+            .flatMap(userDetails => this.userRepository.createUser(userDetails)
+                .flatMap(nothing => this.userRepository.getUserById(userDetails.id))
+                .orElseGet())
+
+            //.map(userDetails => )
     }
 
     createAndGetUser(details) {

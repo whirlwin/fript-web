@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const DbProvider = require('../db-provider');
 const Optional = require('optional-js');
+const Try = require('try-js');
 
 class UserReposiory {
 
@@ -11,9 +12,9 @@ class UserReposiory {
     getUserById(id) {
         const sql = `SELECT * FROM users WHERE id = $(id)`;
         const params = { id };
-        return this.db.query(sql, params)
+        return Try.of(() => this.db.query(sql, params)
             .then(users => _.head(users))
-            .then(maybeUser => Optional.ofNullable(maybeUser));
+            .then(maybeUser => Optional.ofNullable(maybeUser)));
     }
 
     createUser(details) {
@@ -25,7 +26,7 @@ class UserReposiory {
             name: details.name,
             picture_url: details.picture.data.url
         };
-        return this.db.query(sql, params);
+        return Try.of(() => this.db.query(sql, params));
     }
 }
 

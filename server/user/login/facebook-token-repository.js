@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const DbProvider = require('../../db-provider');
 const Optional = require('optional-js');
+const Try = require('try-js');
 
 class FacebookTokenRepository {
 
@@ -13,9 +14,9 @@ class FacebookTokenRepository {
                 INNER JOIN facebook_token ft ON ft.user_id = u.id
                 WHERE ft.token = $(token)`;
         const params = { token: facebookToken };
-        return this.db.query(sql, params)
-            .then(users => _.head(users))
-            .then(user => Optional.ofNullable(user));
+        return Try.of(() => this.db.query(sql, params))
+            .map(users => _.head(users))
+            .map(user => Optional.ofNullable(user));
     }
 }
 

@@ -1,4 +1,5 @@
 const FB = require('fb');
+const Try = require('try-js');
 
 class FacebookApiFacade {
 
@@ -10,7 +11,7 @@ class FacebookApiFacade {
     }
 
     getDetailsByFacebookToken(facebookToken) {
-        return new Promise((resolve, reject) => {
+        return Try.of(() => new Promise((resolve, reject) => {
             FB.api('/me', { fields: [ 'id', 'email', 'name', 'picture' ], access_token: facebookToken }, (res) => {
                 if (res.error) {
                     reject(res.error);
@@ -18,7 +19,7 @@ class FacebookApiFacade {
                     resolve(res);
                 }
             });
-        });
+        }));
     }
 }
 
