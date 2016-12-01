@@ -26,7 +26,7 @@
     "lodash": "4.16.5",
     "optional-js": "1.1.2",
     "pg-promise": "5.3.3",
-    "try-js": "1.7.0",
+    "try-js": "1.8.0",
     "winston": "2.2.0"
   },
   "devDependencies": {
