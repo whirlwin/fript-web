@@ -12,21 +12,24 @@ class UserReposiory {
     getUserById(id) {
         const sql = `SELECT * FROM users WHERE id = $(id)`;
         const params = { id };
-        return Try.of(() => this.db.query(sql, params)
-            .then(users => _.head(users))
-            .then(maybeUser => Optional.ofNullable(maybeUser)));
+        return Try.of(() => this.db.query(sql, params))
+            .map(users => _.head(users))
+            .map(maybeUser => Optional.ofNullable(maybeUser));
     }
 
-    createUser(details) {
+    createUser(user) {
         const sql = `INSERT INTO users(id, email, name, picture_url)
-                VALUES($(id), $(email), $(name), $(picture_url))`;
+                VALUES($(id), $(email), $(name), $(picture_url))
+                ON CONFLICT (id)
+                DO UPDATE SET (name) = ($(name))`;
         const params = {
-            id: details.id,
-            email: details.email,
-            name: details.name,
-            picture_url: details.picture.data.url
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            picture_url: user.picture_url
         };
-        return Try.of(() => this.db.query(sql, params));
+        return Try.of(() => this.db.query(sql, params))
+            .map(nothing => user);
     }
 }
 

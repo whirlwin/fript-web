@@ -16,17 +16,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "1.15.2",
     "db-migrate": "0.10.0-beta.20",
-    "db-migrate-pg": "^0.1.11",
+    "db-migrate-pg": "0.1.11",
     "dotenv": "2.0.0",
     "express": "4.13.4",
-    "fb": "^1.1.1",
+    "fb": "1.1.1",
     "hal": "0.1.0",
-    "lodash": "^4.16.5",
+    "lodash": "4.16.5",
     "optional-js": "1.1.2",
     "pg-promise": "5.3.3",
-    "try-js": "^1.6.0",
+    "try-js": "1.7.0",
     "winston": "2.2.0"
   },
   "devDependencies": {
