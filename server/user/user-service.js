@@ -2,7 +2,6 @@ const FacebookApiFacade = require('./login/facebook-api-facade');
 const FacebookTokenRepository = require('./login/facebook-token-repository');
 const UserMapper = require('./user-mapper');
 const UserRepository = require('./user-repository');
-const winston = require('winston');
 
 let instance;
 

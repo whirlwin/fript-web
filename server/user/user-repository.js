@@ -20,8 +20,7 @@ class UserReposiory {
     createUser(user) {
         const sql = `INSERT INTO users(id, email, name, picture_url)
                 VALUES($(id), $(email), $(name), $(picture_url))
-                ON CONFLICT (id)
-                DO UPDATE SET (name) = ($(name))`;
+                ON CONFLICT (id) DO NOTHING`;
         const params = {
             id: user.id,
             email: user.email,

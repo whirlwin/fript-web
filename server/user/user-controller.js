@@ -7,11 +7,13 @@ const winston = require('winston');
 class UserController {
 
     logIn(req, res) {
-        return Optional.ofNullable(req.query)
+        Optional.ofNullable(req.query)
             .flatMap(query => Optional.ofNullable(query.facebookToken))
             .map(facebookToken => UserService.getInstance().logIn(facebookToken))
             .orElseGet(() => Try.failure(`Query param facebookToken not present at ${req.path}`))
-            .onSuccess(profile => res.json(profile))
+            .filter(maybeUser => maybeUser.isPresent())
+            .map(maybeUser => maybeUser.get())
+            .onSuccess(user => res.json(user))
             .onFailure(err => {
                 winston.error('Failed to log in user: ', err);
                 res.json(ErrorCodes.loginFailed);
