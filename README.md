@@ -30,7 +30,7 @@ $ npm run start:local
 
 #### Connecting
 
-1: Download [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
+1: Download [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) and [PostgreSQL](https://www.postgresql.org/)
 
 2: Log into heroku
 
@@ -41,7 +41,7 @@ heroku login
 3: Connect to the database using psql
 
 ```bash
-heroku pg:psql DEV_DB_URL --app fript-api
+npm run psql
 ```
 
 #### Migrations
