@@ -9,7 +9,7 @@ class GymController {
 
     getGymTypes(req, res) {
         GymService.getInstance().getGymTypesByCountryCode(req.query.countryCode)
-            .peekFailure(err => winston.error(err))
+            .onFailure(err => winston.error(err))
             .resolve((gymTypes) => res.send(gymTypes), (err) => res.status(500).send(err));
     }
 }
