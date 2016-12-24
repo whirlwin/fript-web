@@ -67,3 +67,4 @@ npm run create-insert-migration <tableName>
 ```bash
 npm run migrate-up
 ```
+
