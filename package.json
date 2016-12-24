@@ -4,15 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "config:prod": "./scripts/config.sh production",
+    "config:st": "./scripts/config.sh staging",
     "create-table-migration": "./scripts/create-table-migration.sh",
     "create-insert-migration": "./scripts/create-insert-migration.sh",
-    "dev": "ENV=dev nodemon ./bin/fript-api",
-    "heroku-run": "ENV=dev node ./bin/fript-api",
-    "heroku-logs": "heroku logs --app fript-api",
-    "migrate-up": "db-migrate up",
-    "psql:st": "heroku pg:psql DEV_DB_URL --app fript-api-staging",
-    "psql:prod": "heroku pg:psql DEV_DB_URL --app fript-api-production",
-    "start": "npm run dev"
+    "logs:prod": "./scripts/logs.sh production",
+    "logs:st": "./scripts/logs.sh staging",
+    "run:prod": "./scripts/run.sh production",
+    "run:st": "./scripts/run.sh production",
+    "migrate-up": "./scripts/migrate-up.sh",
+    "nodemon:local": "./scripts/nodemon.sh",
+    "psql:prod": "./scripts/psql.sh production",
+    "psql:st": "./scripts/psql.sh staging",
+    "start": "./scripts/start.sh"
   },
   "engines": {
     "node": "7.2.1"
