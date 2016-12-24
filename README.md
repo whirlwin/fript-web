@@ -21,7 +21,7 @@ $ npm install
 3: Start the app locallly
 
 ```bash
-$ npm run start:local
+$ npm start
 ```
 
 4. Inspect the service document at [localhost:4000](http://localhost:4000)
@@ -46,10 +46,18 @@ npm run psql
 
 #### Migrations
 
-1: To create a new DB migration
+1: Create a new DB migration
+
+1.1: Create a new table migration
 
 ```bash
-npm run db-migrate create <name>
+npm run create-table-migration <tableName>
+```
+
+1.2: Populate the table if desirable
+
+```bash
+npm run create-insert-migration <tableName>
 ```
 
 2. Edit the migrations file in `./db/migrations`
@@ -57,5 +65,5 @@ npm run db-migrate create <name>
 3. Run the migrations against the server
 
 ```bash
-npm run db-migrate up
+npm run migrate-up
 ```
