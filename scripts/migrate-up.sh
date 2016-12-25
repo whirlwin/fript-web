@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-export ENV=$1
+if [ "$ENV" == "staging" ]; then
+    ENV="dev"
+elif [ "$ENV" == "production" ]; then
+    ENV="prod"
+fi
+
+export ENV
 
 db-migrate \
     --migrations-dir=./db/migrations \

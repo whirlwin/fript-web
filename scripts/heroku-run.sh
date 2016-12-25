@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export ENV=$1
-
-./migrate-up.sh
-./run.sh
+./scripts/migrate-up.sh
+#./scripts/run.sh
 
