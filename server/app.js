@@ -18,7 +18,7 @@ class App {
 
     start() {
         this.app.listen(this.httpPort, () =>
-            winston.info(`App started on port ${this.httpPort}`));
+            winston.info(`app started on port: ${this.httpPort}`));
     }
 }
 

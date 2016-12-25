@@ -2,7 +2,7 @@ const DbConfig = require('./db-config');
 const ErrorEventConfig = require('./error-event-config');
 const ExpressConfig = require('./express-config');
 const HttpConfig = require('./http-config');
-const SecurityConfig = require("./security-config");
+const DotenvConfig = require("./dotenv-config");
 
 class AppConfig {
 
@@ -11,11 +11,11 @@ class AppConfig {
         this.errorEventConfig = new ErrorEventConfig();
         this.expressConfig = new ExpressConfig();
         this.httpConfig = new HttpConfig();
-        this.securityConfig = new SecurityConfig();
+        this.dotenvConfig = new DotenvConfig();
     }
 
     configure() {
-        this.securityConfig.configure();
+        this.dotenvConfig.configure();
         const app = this.expressConfig.configure();
         const httpPort = this.httpConfig.getHttpPort();
         this.errorEventConfig = this.errorEventConfig.configure();

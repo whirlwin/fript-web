@@ -1,4 +1,4 @@
-INSERT INTO gym_type (name) VALUES ('SATS/ELIXIA');
-INSERT INTO gym_type (name) VALUES ('Fresh Fitness');
-INSERT INTO gym_type (name) VALUES ('Evo Fitness');
-INSERT INTO gym_type (name) VALUES ('Fitness Express');
+INSERT INTO gym_type (id, name, status) VALUES (1, 'SATS/ELIXIA', 'active');
+INSERT INTO gym_type (id, name, status) VALUES (2, 'Fresh Fitness', 'active');
+INSERT INTO gym_type (id, name, status) VALUES (3, 'Evo Fitness', 'active');
+INSERT INTO gym_type (id, name, status) VALUES (4, 'Fitness Express', 'active');

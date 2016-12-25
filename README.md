@@ -18,6 +18,8 @@ $ npm install
 - DB_PASSWORD
 ```
 
+*Alternatively, create a file `.env.production` if needed*
+
 3: Start the app locallly
 
 ```bash

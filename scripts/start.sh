@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-export ENV=$1
-
-nodemon ./bin/fript-api
+# TODO: Determine logic for ENV, hardcoded to "staging" for now
+./nodemon.sh staging

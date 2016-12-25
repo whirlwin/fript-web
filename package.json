@@ -12,8 +12,9 @@
     "logs:st": "./scripts/logs.sh staging",
     "run:prod": "./scripts/run.sh production",
     "run:st": "./scripts/run.sh production",
-    "migrate-up": "./scripts/migrate-up.sh",
-    "nodemon:local": "./scripts/nodemon.sh",
+    "migrate-up:prod": "./scripts/migrate-up.sh prodction",
+    "migrate-up:st": "./scripts/migrate-up.sh staging",
+    "nodemon": "./scripts/nodemon.sh",
     "psql:prod": "./scripts/psql.sh production",
     "psql:st": "./scripts/psql.sh staging",
     "start": "./scripts/start.sh"
@@ -34,7 +35,7 @@
     "lodash": "4.16.5",
     "optional-js": "1.1.2",
     "pg-promise": "5.3.3",
-    "try-js": "1.8.0",
+    "try-js": "1.9.0",
     "winston": "2.2.0"
   },
   "devDependencies": {

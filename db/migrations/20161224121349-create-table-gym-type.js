@@ -19,8 +19,8 @@ exports.up = function(db, cb) {
         id: { type: 'string', primaryKey: true },
         name: { type: 'string', notNull: true },
         status: { type: 'string', notNull: true },
-        created: { type: 'string', notNull: true, defaultValue: 'now()' },
-        updated: { type: 'string', notNull: true, defaultValue: 'now()' }
+        created: { type: 'date', notNull: true, defaultValue: 'now()' },
+        updated: { type: 'date', notNull: true, defaultValue: 'now()' }
     }, cb);
 };
 
