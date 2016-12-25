@@ -70,3 +70,4 @@ npm run create-insert-migration <tableName>
 npm run migrate-up
 ```
 
+
