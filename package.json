@@ -5,17 +5,17 @@
   "main": "index.js",
   "scripts": {
     "config:prod": "./scripts/config.sh production",
-    "config:st": "./scripts/config.sh development",
+    "config:st": "./scripts/config.sh staging",
     "create-table-migration": "./scripts/create-table-migration.sh",
     "create-insert-migration": "./scripts/create-insert-migration.sh",
     "heroku-run": "./scripts/heroku-run.sh",
     "logs:prod": "./scripts/logs.sh production",
-    "logs:st": "./scripts/logs.sh development",
+    "logs:st": "./scripts/logs.sh staging",
     "migrate-up:prod": "ENV=production ./scripts/migrate-up.sh",
-    "migrate-up:st": "ENV=development ./scripts/migrate-up.sh development",
+    "migrate-up:st": "ENV=staging ./scripts/migrate-up.sh staging",
     "nodemon": "./scripts/nodemon.sh",
     "psql:prod": "./scripts/psql.sh production",
-    "psql:st": "./scripts/psql.sh development",
+    "psql:st": "./scripts/psql.sh staging",
     "start": "./scripts/start.sh"
   },
   "engines": {

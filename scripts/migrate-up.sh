@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$ENV" == "development" ]; then
+if [ "$ENV" == "staging" ]; then
     ENV="dev"
 elif [ "$ENV" == "production" ]; then
     ENV="prod"
