@@ -9,7 +9,7 @@ class DotenvConfig {
             Try.of(() => dotenv.config({ path: `${__dirname}/../.env.production`, silent: true }))
                 .onSuccess(nothing => this.logCurrentEnv())
                 .onFailure(err => winston.error(err));
-        } else if (process.env.ENV === "staging") {
+        } else if (process.env.ENV === "development") {
             Try.of(() => dotenv.config({ path: `${__dirname}/../.env` }))
                 .onSuccess(nothing => this.logCurrentEnv())
                 .onFailure(err => winston.error(err));
