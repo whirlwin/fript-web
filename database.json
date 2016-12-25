@@ -1,5 +1,5 @@
 {
-  "dev": {
+  "default": {
     "driver": "pg",
     "ssl": true,
     "database": { "ENV": "DB_NAME" },
