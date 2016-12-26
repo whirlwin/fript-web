@@ -40,10 +40,14 @@ $ npm start
 heroku login
 ```
 
-3: Connect to the database using psql
+3: Connect to a database using psql
 
 ```bash
-npm run psql
+# staging db:
+npm run psql:st
+
+# production db:
+npm run psql:prod
 ```
 
 #### Migrations

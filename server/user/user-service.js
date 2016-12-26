@@ -1,5 +1,6 @@
 const FacebookApiFacade = require('./login/facebook-api-facade');
 const FacebookTokenRepository = require('./login/facebook-token-repository');
+const Try = require('try-js');
 const UserMapper = require('./user-mapper');
 const UserRepository = require('./user-repository');
 
@@ -12,6 +13,11 @@ class UserService {
         this.facebookTokenRepository = new FacebookTokenRepository();
         this.userMapper = new UserMapper();
         this.userRepository = new UserRepository();
+    }
+
+    getUserByAuthHeader(authHeader) {
+        return Try.of(() => authHeader.replace('Bearer ', ''))
+            .flatMap(facebookToken => this.logIn(facebookToken));
     }
 
     logIn(facebookToken) {
