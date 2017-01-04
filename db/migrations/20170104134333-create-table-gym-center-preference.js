@@ -9,26 +9,24 @@ var seed;
   * This enables us to not have to rely on NODE_PATH.
   */
 exports.setup = function(options, seedLink) {
-    dbm = options.dbmigrate;
-    type = dbm.dataType;
-    seed = seedLink;
+  dbm = options.dbmigrate;
+  type = dbm.dataType;
+  seed = seedLink;
 };
 
 exports.up = function(db, cb) {
-    db.createTable('gym_type', {
+    db.createTable('gym_center_preference', {
         id: { type: 'int', primaryKey: true, autoIncrement: true },
-        name: { type: 'string', notNull: true },
-        country: { type: 'string', notNull: true },
-        status: { type: 'string', notNull: true },
+        gym_center_id: { type: 'int', notNull: true },
         created: { type: 'date', notNull: true, defaultValue: 'now()' },
         updated: { type: 'date', notNull: true, defaultValue: 'now()' }
     }, cb);
 };
 
 exports.down = function(db, cb) {
-    db.dropTable('gym_type', cb)
+    db.dropTable('gym_center_preference', cb);
 };
 
 exports._meta = {
-    "version": 1
+  "version": 1
 };
