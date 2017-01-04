@@ -15,17 +15,17 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db, cb) {
-    db.createTable('gym_type_preference', {
-        id: { type: 'int', primaryKey: true, autoIncrement: true },
+    db.createTable('gym_center', {
+        id: { type: 'int', primaryKey: true },
         gym_type_id: { type: 'string', notNull: true },
-        user_id: { type: 'string', notNull: true },
-        created: { type: 'date', defaultValue: 'now()' },
-        updated: { type: 'date', defaultValue: 'now()' }
+        location: { type: 'string', notNull: true },
+        created: { type: 'date', notNull: true, defaultValue: 'now()' },
+        updated: { type: 'date', notNull: true, defaultValue: 'now()' }
     }, cb);
 };
 
-exports.down = function(db) {
-    return null;
+exports.down = function(db, cb) {
+    db.dropTable('gym_center', cb);
 };
 
 exports._meta = {
