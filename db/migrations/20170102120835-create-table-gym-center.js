@@ -16,7 +16,7 @@ exports.setup = function(options, seedLink) {
 
 exports.up = function(db, cb) {
     db.createTable('gym_center', {
-        id: { type: 'int', primaryKey: true },
+        id: { type: 'int', primaryKey: true, autoIncrement: true },
         gym_type_id: { type: 'string', notNull: true },
         location: { type: 'string', notNull: true },
         created: { type: 'date', notNull: true, defaultValue: 'now()' },
