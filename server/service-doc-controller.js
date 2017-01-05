@@ -1,5 +1,5 @@
 const hal = require('hal');
-const PathConstants = require('./path-constants');
+const PathConstants = require('./paths');
 
 class ServiceDocController {
 

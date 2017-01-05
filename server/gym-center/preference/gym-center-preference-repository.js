@@ -2,22 +2,26 @@ const _ = require('lodash');
 const DbProvider = require('../../db-provider');
 const Try = require('try-js');
 
-class GymTypePreferenceRepository {
+class GymCenterPreferenceRepository {
 
     constructor() {
         this.db = DbProvider.getDb();
     }
 
-    getGymTypePreferenceByUserId(userId) {
+    getGymCenterPreferences(userId) {
         const sql = `SELECT *
-                FROM gym_type_preference gtp
-                INNER JOIN gym_type gt ON gt.id = gtp.gym_type_id
+                FROM gym_center_preference gcp
                 WHERE user_id = $(user_id)`;
         const params = { user_id: userId };
         this.db.query(sql, params);
         return Try.of(() => this.db.query(sql, params));
     }
 
+    createGymTypePreference(gymTypePreference) {
+        const sql = `INSERT INTO gym_center_preference ()
+                VALUES ($(), $())`;
+        const params = {}
+    }
 }
 
-module.exports = GymTypePreferenceRepository;
+module.exports = GymCenterPreferenceRepository;
