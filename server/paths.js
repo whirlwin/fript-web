@@ -4,11 +4,11 @@ module.exports = {
     root: { method: Methods.get, href: '/' },
     logIn: { method: Methods.get, href: '/user/login' },
 
-    getGymTypePreferenceOnboarding: { method: Methods.get, href: '/onboarding/gym-type-preference' },
-    getGymCenterPreferenceOnboarding: { method: Methods.get, href: '/onboarding/gym-center-preference' },
+    getGymTypeOnboarding: { method: Methods.get, href: '/onboarding/gym-type' },
+    getGymCenterOnboarding: { method: Methods.get, href: '/onboarding/gym-center' },
 
     createGymCenterPreference: { method: Methods.post, href: '/gym-center/preference' },
-    createGymTypePreference: { method: href: '/gym-type/preference' },
+    createGymTypePreference: { method: Methods.post, href: '/gym-type/preference' },
 
     getGymTypePreferences: { href: '/gym-type/preference' }
 };

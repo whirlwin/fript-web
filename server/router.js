@@ -25,10 +25,10 @@ class Router {
         this.router.get(PathConstants.logIn.href,
             this.userController.logIn);
 
-        this.router.get(PathConstants.getGymTypePreferenceOnboarding.href,
-            this.onboardingController.getGymTypePreferenceOnboarding);
-        this.router.get(PathConstants.getGymCenterPreferenceOnboarding.href,
-            this.onboardingController.getGymCenterPreferenceOnboarding);
+        this.router.get(PathConstants.getGymTypeOnboarding.href,
+            this.onboardingController.getGymTypeOnboarding);
+        this.router.get(PathConstants.getGymCenterOnboarding.href,
+            this.onboardingController.getGymCenterOnboarding);
 
         this.router.get(PathConstants.getGymTypePreferences.href,
             this.gymTypePreferenceController.getGymTypePreferences);

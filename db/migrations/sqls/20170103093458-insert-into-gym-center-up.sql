@@ -1,1 +1,1 @@
-INSERT INTO gym_center () VALUES ();
+INSERT INTO gym_center(id, gym_type_id, lat, lng) VALUES(1, 1, 59.9285823, 10.7110738);
