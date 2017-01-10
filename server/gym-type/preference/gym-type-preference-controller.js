@@ -18,7 +18,15 @@ class GymTypePreferenceController {
     }
 
     createGymTypePreference(req, res) {
-        const gymTypePreference = req.body;
+        const authHeader = req.headers.authorization;
+        const gymTypeId = req.body.gymTypeId;
+        UserService.getInstance().getUserByAuthHeader(authHeader)
+            .filter(maybeUser => maybeUser.isPresent())
+            .map(maybeUser => maybeUser.get())
+            .flatMap(user => GymTypePreferenceService.getInstance().createGymTypePreference(gymTypeId, user))
+            .onSuccess(nothing => res.json())
+            .onFailure(err => winston.error(err))
+            .onFailure(err => res.status(500).json(ErrorCodes.createGymTypePreference))
     }
 }
 

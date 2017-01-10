@@ -22,16 +22,19 @@ class Router {
     route(app) {
         this.router.get(PathConstants.root.href,
             this.serviceDocController.getServiceDoc);
+
         this.router.get(PathConstants.logIn.href,
             this.userController.logIn);
 
         this.router.get(PathConstants.getGymTypeOnboarding.href,
             this.onboardingController.getGymTypeOnboarding);
+
         this.router.get(PathConstants.getGymCenterOnboarding.href,
             this.onboardingController.getGymCenterOnboarding);
 
         this.router.get(PathConstants.getGymTypePreferences.href,
             this.gymTypePreferenceController.getGymTypePreferences);
+
         this.router.post(PathConstants.createGymTypePreference.href,
             this.gymTypePreferenceController.createGymTypePreference);
 

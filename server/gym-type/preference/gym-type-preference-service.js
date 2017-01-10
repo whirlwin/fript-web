@@ -9,7 +9,13 @@ class GymTypePreferenceService {
     }
 
     getGymTypePreferences(user) {
-        return this.gymTypePreferenceRepository.getGymTypePreferenceByUserId(user.id);
+        const userId = user.id;
+        return this.gymTypePreferenceRepository.getGymTypePreferenceByUserId(userId);
+    }
+
+    createGymTypePreference(gymTypeId, user) {
+        const userId = user.id;
+        return this.gymTypePreferenceRepository.createGymTypePreference(gymTypeId, userId)
     }
 
     static getInstance() {

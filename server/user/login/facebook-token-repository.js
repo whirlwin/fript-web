@@ -15,7 +15,8 @@ class FacebookTokenRepository {
                 INNER JOIN facebook_token ft ON ft.user_id = u.id
                 WHERE ft.token = $(token)`;
         const params = { token: facebookToken };
-        return Try.of(() => this.db.query(sql, params))
+        const result = this.db.query(sql, params);
+        return Try.of(() => result)
             .map(users => _.head(users))
             .map(user => Optional.ofNullable(user));
     }
@@ -27,7 +28,8 @@ class FacebookTokenRepository {
             token: facebookToken,
             user_id: user.id
         };
-        return Try.of(() => this.db.query(sql, params))
+        const result = this.db.query(sql, params);
+        return Try.of(() => result)
             .map(nothing => user);
     }
 }

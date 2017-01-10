@@ -18,6 +18,17 @@ class GymTypePreferenceRepository {
         return Try.of(() => result);
     }
 
+    createGymTypePreference(gymTypeId, userId) {
+        const sql = `INSERT INTO gym_type_preference(gym_type_id, user_id)
+                VALUES($(gym_type_id), $(user_id))
+                ON CONFLICT(id) DO NOTHING`;
+        const params = {
+            gym_type_id: gymTypeId,
+            user_id: userId
+        };
+        const result = this.db.query(sql, params);
+        return Try.of(() => result);
+    }
 }
 
 module.exports = GymTypePreferenceRepository;
