@@ -12,10 +12,6 @@ class GymTypePreferenceService {
         return this.gymTypePreferenceRepository.getGymTypePreferenceByUserId(user.id);
     }
 
-    getGymCenterPreferences(user) {
-
-    }
-
     static getInstance() {
         if (instance == null) {
             instance = new GymTypePreferenceService();

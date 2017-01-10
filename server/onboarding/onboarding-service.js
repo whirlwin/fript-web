@@ -18,6 +18,8 @@ class OnboardingService {
         return this.gymCenterOnboardingService.getGymCenterOnboarding(user);
     }
 
+
+
     static getInstance() {
         if (instance == null) {
             instance = new OnboardingService();

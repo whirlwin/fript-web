@@ -1,8 +1,6 @@
 const GymTypeService = require('../gym-type/gym-type-service');
 const GymTypePreferenceService = require('../gym-type/preference/gym-type-preference-service');
 
-let instance;
-
 class GymTypeOnboardingService {
 
     constructor() {
@@ -11,14 +9,20 @@ class GymTypeOnboardingService {
     }
 
     getGymTypeOnboarding(user) {
-        this.gymTypeService.getGymTypes()
-            .onSuccess(value => console.log(value));
+        return this.gymTypeService.getGymTypes()
+            .flatMap(types => this.gymTypePreferenceService.getGymTypePreferences(user)
+                .map(prefs => this.combineTypeAndPrefs(types, prefs)));
     }
 
-    static getInstance() {
-        if (instance == null) {
-            instance = new GymTypeOnboardingService();
-        }
+    combineTypeAndPrefs(types, prefs) {
+        return types.map(type => {
+            type.hasPreference = this.hasPreference(type, prefs);
+            return type;
+        });
+    }
+
+    hasPreference(gymType, preferences) {
+        return preferences.some(pref => gymType.id === pref.gym_type_id);
     }
 }
 

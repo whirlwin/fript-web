@@ -1,12 +1,16 @@
 const CountryCodeConstants = require('./country-code-constants');
-const Try = require('try-js');
+const GymTypeRepository = require('./gym-type-repository');
 
 let instance = null;
 
 class GymTypeService {
 
-    getGymTypes() {
+    constructor() {
+        this.gymTypeRepository = new GymTypeRepository();
+    }
 
+    getGymTypes() {
+        return this.gymTypeRepository.getGymTypes();
     }
 
     static getInstance() {
