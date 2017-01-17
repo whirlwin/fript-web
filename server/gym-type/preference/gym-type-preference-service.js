@@ -1,4 +1,5 @@
 const GymTypePreferenceRepository = require('./gym-type-preference-repository');
+const GymTypePreferenceValidator = require('./gym-type-preference-validator');
 
 let instance;
 
@@ -6,6 +7,7 @@ class GymTypePreferenceService {
 
     constructor() {
         this.gymTypePreferenceRepository = new GymTypePreferenceRepository();
+        this.gymTypePreferenceValidator = new GymTypePreferenceValidator();
     }
 
     getGymTypePreferences(user) {
@@ -13,9 +15,9 @@ class GymTypePreferenceService {
         return this.gymTypePreferenceRepository.getGymTypePreferenceByUserId(userId);
     }
 
-    createGymTypePreference(gymTypeId, user) {
+    createGymTypePreference(createGymTypePreference, user) {
         const userId = user.id;
-        return this.gymTypePreferenceRepository.createGymTypePreference(gymTypeId, userId)
+        return this.gymTypePreferenceRepository.createGymTypePreference(createGymTypePreference, userId)
     }
 
     static getInstance() {

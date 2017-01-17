@@ -1,4 +1,5 @@
 const UserService = require('../user/user-service');
+const OnboardingAssembler = require('./onboarding-assembler');
 const OnboardingService = require('./onboarding-service');
 const winston = require('winston');
 const ErrorCodes = require('../error-codes');
@@ -11,12 +12,14 @@ class OnboardingController {
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => OnboardingService.getInstance().getGymTypeOnboarding(user))
-            .onSuccess(gymTypePreferences =>  res.json(gymTypePreferences))
+            .map(gymTypeOnboarding => OnboardingAssembler.getInstance().assembleGymTypeOnboarding(gymTypeOnboarding))
+            .onSuccess(gymTypePreferences =>  res.send(gymTypePreferences))
             .onFailure(err => console.log(err))
             .onFailure(err => winston.error(err))
             .onFailure(err => res.status(500).json(ErrorCodes.getGymTypePreference));
     }
 
+    // TODO: Finish
     getGymCenterOnboarding(req, res) {
         const authHeader = req.headers.authorization;
         UserService.getInstance().getUserByAuthHeader(authHeader)

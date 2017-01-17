@@ -2,7 +2,7 @@ const express = require('express');
 const GymCenterPreferenceController = require('./gym-center/preference/gym-center-preference-controller');
 const GymTypePreferenceController = require('./gym-type/preference/gym-type-preference-controller');
 const OnboardingController = require('./onboarding/onboarding-controller');
-const PathConstants = require('./paths');
+const Paths = require('./paths');
 const ServiceDocController = require('./service-doc-controller');
 const UserController = require('./user/user-controller');
 
@@ -20,25 +20,25 @@ class Router {
     }
 
     route(app) {
-        this.router.get(PathConstants.root.href,
+        this.router.get(Paths.root.href,
             this.serviceDocController.getServiceDoc);
 
-        this.router.get(PathConstants.logIn.href,
+        this.router.get(Paths.logIn.href,
             this.userController.logIn);
 
-        this.router.get(PathConstants.getGymTypeOnboarding.href,
+        this.router.get(Paths.getGymTypeOnboarding.href,
             this.onboardingController.getGymTypeOnboarding);
 
-        this.router.get(PathConstants.getGymCenterOnboarding.href,
+        this.router.get(Paths.getGymCenterOnboarding.href,
             this.onboardingController.getGymCenterOnboarding);
 
-        this.router.get(PathConstants.getGymTypePreferences.href,
+        this.router.get(Paths.getGymTypePreferences.href,
             this.gymTypePreferenceController.getGymTypePreferences);
 
-        this.router.post(PathConstants.createGymTypePreference.href,
+        this.router.post(Paths.createGymTypePreference.href,
             this.gymTypePreferenceController.createGymTypePreference);
 
-        this.router.get(PathConstants.createGymCenterPreference.href,
+        this.router.get(Paths.createGymCenterPreference.href,
             this.gymCenterPreferenceController.createGymCenterPreference);
 
         app.use(this.router);
