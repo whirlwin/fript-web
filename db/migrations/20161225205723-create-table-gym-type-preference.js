@@ -19,6 +19,7 @@ exports.up = function(db, cb) {
         id: { type: 'int', primaryKey: true, autoIncrement: true },
         gym_type_id: { type: 'int', notNull: true },
         user_id: { type: 'string', notNull: true },
+        status: { type: 'string', notNull: true, },
         created: { type: 'date', defaultValue: 'now()' },
         updated: { type: 'date', defaultValue: 'now()' }
     }, cb);
