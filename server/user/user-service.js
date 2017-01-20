@@ -1,5 +1,6 @@
 const FacebookApiFacade = require('./login/facebook-api-facade');
 const FacebookTokenRepository = require('./login/facebook-token-repository');
+const Optional = require('optional-js');
 const Try = require('try-js');
 const UserMapper = require('./user-mapper');
 const UserRepository = require('./user-repository');
@@ -16,7 +17,10 @@ class UserService {
     }
 
     getUserByAuthHeader(authHeader) {
-        return Try.of(() => authHeader.replace('Bearer ', ''))
+        return Optional.ofNullable(authHeader)
+            .map(header => authHeader.replace('Bearer ', ''))
+            .map(facebookToken => Try.success(facebookToken))
+            .orElseGet(() => Try.failure('Failed to get auth header'))
             .flatMap(facebookToken => this.logIn(facebookToken));
     }
 
