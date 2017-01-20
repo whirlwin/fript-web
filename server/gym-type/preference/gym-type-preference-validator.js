@@ -4,7 +4,15 @@ class GymTypePreferenceValidator {
 
     validateCreateGymTypePreference(createGymTypePreference) {
         return Try.of(() => createGymTypePreference)
-            .filter(preference => preference.status === 'active' || preference.status === 'inactive');
+            .flatMap(preference => this.validateStatus(preference));
+    }
+
+    validateStatus(preference) {
+        if (preference.status === 'active' || preference.status === 'inactive') {
+            return Try.failure('Invalid preference status');
+        } else {
+            return Try.success(preference);
+        }
     }
 }
 
