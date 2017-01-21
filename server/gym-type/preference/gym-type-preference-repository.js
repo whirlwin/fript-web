@@ -18,16 +18,18 @@ class GymTypePreferenceRepository {
         return Try.of(() => result);
     }
 
-    createGymTypePreference(gymTypeId, userId) {
-        const sql = `INSERT INTO gym_type_preference(gym_type_id, user_id)
-                VALUES($(gym_type_id), $(user_id))
+    createGymTypePreference(preference, userId) {
+        const sql = `INSERT INTO gym_type_preference(gym_type_id, user_id, status)
+                VALUES($(gym_type_id), $(user_id), $(status))
                 ON CONFLICT(id) DO NOTHING`;
         const params = {
-            gym_type_id: gymTypeId,
-            user_id: userId
+            gym_type_id: preference.gymTypeId,
+            user_id: userId,
+            status: preference.status
         };
         const result = this.db.query(sql, params);
-        return Try.of(() => result);
+        return Try.of(() => result)
+            .onFailure(e => console.log(e));
     }
 }
 

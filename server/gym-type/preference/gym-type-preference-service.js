@@ -18,8 +18,7 @@ class GymTypePreferenceService {
     createGymTypePreference(createGymTypePreference, user) {
         const userId = user.id;
         return this.gymTypePreferenceValidator.validateCreateGymTypePreference(createGymTypePreference)
-            .map(preference => preference.gymTypeId)
-            .flatMap(gymTypeId => this.gymTypePreferenceRepository.createGymTypePreference(gymTypeId, userId));
+            .flatMap(preference => this.gymTypePreferenceRepository.createGymTypePreference(preference, userId));
     }
 
     static getInstance() {

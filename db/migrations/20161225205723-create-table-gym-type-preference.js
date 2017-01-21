@@ -15,6 +15,8 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db, cb) {
+    cb();
+    return;
     db.createTable('gym_type_preference', {
         id: { type: 'int', primaryKey: true, autoIncrement: true },
         gym_type_id: { type: 'int', notNull: true },
