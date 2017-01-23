@@ -7,7 +7,7 @@ class ServiceDocController {
         const root = new hal.Resource();
 
         for (const rel in PathConstants) {
-            root.link(rel, PathConstants[rel].href);
+            root.link(rel, { href: PathConstants[rel].href });
         }
 
         // Cache service document for 5 minutes

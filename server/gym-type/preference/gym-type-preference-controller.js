@@ -5,31 +5,46 @@ const winston = require('winston');
 
 class GymTypePreferenceController {
 
-    getGymTypePreferences(req, res) {
+    getPreferences(req, res) {
         const authHeader = req.headers.authorization;
         UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
-            .flatMap(user => GymTypePreferenceService.getInstance().getGymTypePreferences(user))
+            .flatMap(user => GymTypePreferenceService.getInstance().getPreferences(user))
             .onSuccess(gymTypePreferences =>  res.json(gymTypePreferences))
             .onFailure(err => console.log(err))
             .onFailure(err => winston.error(err))
             .onFailure(err => res.status(500).json(ErrorCodes.getGymTypePreference));
     }
 
-    createGymTypePreference(req, res) {
+    createPreference(req, res) {
         const authHeader = req.headers.authorization;
-        const createGymTypePreference = {
+        const preference = {
             gymTypeId: req.body.gymTypeId,
             status: req.body.status
         };
         UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
-            .flatMap(user => GymTypePreferenceService.getInstance().createGymTypePreference(createGymTypePreference, user))
+            .flatMap(user => GymTypePreferenceService.getInstance().createPreference(preference, user))
             .onSuccess(nothing => res.json())
             .onFailure(err => winston.error(err))
             .onFailure(err => res.status(500).json(ErrorCodes.createGymTypePreference))
+    }
+
+    updatePreference(req, res) {
+        const authHeader = req.headers.authorization;
+        const preference = {
+            gymTypeId: req.body.gymTypeId,
+            status: req.body.status
+        };
+        UserService.getInstance().getUserByAuthHeader(authHeader)
+            .filter(maybeUser => maybeUser.isPresent())
+            .map(maybeUser => maybeUser.get())
+            .flatMap(user => GymTypePreferenceService.getInstance().updatePreference(preference, user))
+            .onSuccess(nothing => res.json())
+            .onFailure(err => winston.error(err))
+            .onFailure(err => res.status(500).json(ErrorCodes.updateGymTypePreference))
     }
 }
 

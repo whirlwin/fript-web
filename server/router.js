@@ -33,13 +33,16 @@ class Router {
             this.onboardingController.getGymCenterOnboarding);
 
         this.router.get(Paths.getGymTypePreferences.href,
-            this.gymTypePreferenceController.getGymTypePreferences);
+            this.gymTypePreferenceController.getPreferences);
 
         this.router.post(Paths.createGymTypePreference.href,
-            this.gymTypePreferenceController.createGymTypePreference);
+            this.gymTypePreferenceController.createPreference);
 
         this.router.get(Paths.createGymCenterPreference.href,
             this.gymCenterPreferenceController.createGymCenterPreference);
+
+        this.router.put(Paths.updateGymTypePreference.href,
+            this.gymTypePreferenceController.updatePreference);
 
         app.use(this.router);
     }

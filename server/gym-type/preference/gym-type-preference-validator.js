@@ -2,10 +2,16 @@ const Try = require('try-js');
 
 class GymTypePreferenceValidator {
 
-    validateCreateGymTypePreference(createGymTypePreference) {
-        return Try.of(() => createGymTypePreference)
-            .flatMap(preference => this.validateStatus(preference))
-            .flatMap(preference => this.validateGymTypeId(preference));
+    validateCreatePreference(preference) {
+        return Try.of(() => preference)
+            .flatMap(pref => this.validateStatus(pref))
+            .flatMap(pref => this.validateGymTypeId(pref));
+    }
+
+    validateUpdatePreference(preference) {
+        return Try.of(() => preference)
+            .flatMap(pref => this.validateStatus(pref))
+            .flatMap(pref => this.validateGymTypeId(pref))
     }
 
     validateStatus(preference) {

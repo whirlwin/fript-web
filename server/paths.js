@@ -9,6 +9,7 @@ module.exports = {
 
     createGymCenterPreference: { method: Methods.post, href: '/gym-center/preference' },
     createGymTypePreference: { method: Methods.post, href: '/gym-type/preference' },
+    updateGymTypePreference: { methods: Methods.put, href: '/gym-type/preference' },
 
     getGymTypePreferences: { href: '/gym-type/preference' }
 };
