@@ -20,7 +20,10 @@ class GymCenterPreferenceRepository {
     createPreference(preference, userId) {
         const sql = `INSERT INTO gym_center_preference ()
                 VALUES ($(), $())`;
-        const params = {}
+        const params = {};
+        this.db.query(sql, params);
+        return Try.of(() => this.db.query(sql, params));
+
     }
 
     updatePreference(preference, userId) {
