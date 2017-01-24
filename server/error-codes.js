@@ -14,5 +14,17 @@ module.exports = {
     updateGymTypePreference: {
         id: 4,
         displayMsg: 'Could not update gym type preference - try again later'
+    },
+    getGymCenterPreference: {
+        id: 5,
+        displayMsg: 'Could not get gym center preference - try again later'
+    },
+    createGymCenterPreference: {
+        id: 6,
+        displayMsg: 'Could not create gym center preference - try again later'
+    },
+    updateGymCenterPreference: {
+        id: 7,
+        displayMsg: 'Could not update gym center preference - try again later'
     }
 };

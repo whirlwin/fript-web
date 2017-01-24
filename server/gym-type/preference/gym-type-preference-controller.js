@@ -12,7 +12,6 @@ class GymTypePreferenceController {
             .map(maybeUser => maybeUser.get())
             .flatMap(user => GymTypePreferenceService.getInstance().getPreferences(user))
             .onSuccess(gymTypePreferences =>  res.json(gymTypePreferences))
-            .onFailure(err => console.log(err))
             .onFailure(err => winston.error(err))
             .onFailure(err => res.status(500).json(ErrorCodes.getGymTypePreference));
     }

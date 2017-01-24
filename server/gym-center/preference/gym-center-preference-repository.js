@@ -8,7 +8,7 @@ class GymCenterPreferenceRepository {
         this.db = DbProvider.getDb();
     }
 
-    getGymCenterPreferences(userId) {
+    getPreferences(userId) {
         const sql = `SELECT *
                 FROM gym_center_preference gcp
                 WHERE user_id = $(user_id)`;
@@ -17,10 +17,23 @@ class GymCenterPreferenceRepository {
         return Try.of(() => this.db.query(sql, params));
     }
 
-    createGymTypePreference(gymTypePreference) {
+    createPreference(preference, userId) {
         const sql = `INSERT INTO gym_center_preference ()
                 VALUES ($(), $())`;
         const params = {}
+    }
+
+    updatePreference(preference, userId) {
+        const sql = `UPDATE gym_center_preference
+                SET status = $(status),
+                    updated = now()
+                WHERE user_id = $(user_id)`;
+        const params = {
+            user_id: userId,
+            status: preference.status
+        };
+        this.db.query(sql, params);
+        return Try.of(() => this.db.query(sql, params));
     }
 }
 

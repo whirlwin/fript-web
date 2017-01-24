@@ -8,6 +8,8 @@ module.exports = {
     getGymCenterOnboarding: { method: Methods.get, href: '/onboarding/gym-center' },
 
     createGymCenterPreference: { method: Methods.post, href: '/gym-center/preference' },
+    updateGymCenterPreference: { method: Methods.put, href: '/gym-center/preference' },
+
     createGymTypePreference: { method: Methods.post, href: '/gym-type/preference' },
     updateGymTypePreference: { methods: Methods.put, href: '/gym-type/preference' },
 

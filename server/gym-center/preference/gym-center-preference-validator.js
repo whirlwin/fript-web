@@ -1,34 +1,34 @@
 const Try = require('try-js');
 
-class GymTypePreferenceValidator {
+class GymCenterPreferenceValidator {
 
     validateCreatePreference(preference) {
         return Try.of(() => preference)
             .flatMap(pref => this._validateStatus(pref))
-            .flatMap(pref => this._validateGymTypeId(pref));
+            .flatMap(pref => this._validateGymCenterId(pref));
     }
 
     validateUpdatePreference(preference) {
         return Try.of(() => preference)
             .flatMap(pref => this._validateStatus(pref))
-            .flatMap(pref => this._validateGymTypeId(pref))
+            .flatMap(pref => this._validateGymCenterId(pref));
     }
 
     _validateStatus(preference) {
         if (preference.status === 'active' || preference.status === 'inactive') {
             return Try.success(preference);
         } else {
-            return Try.failure(`Invalid gym type preference status: ${preference.status}`);
+            return Try.failure(`Invalid gym center preference: ${preference.status}`);
         }
     }
 
-    _validateGymTypeId(preference) {
-        if (typeof preference.gymTypeId !== 'undefined') {
+    _validateGymCenterId(preference) {
+        if (typeof preference.gymCenterId !== 'undefined') {
             return Try.success(preference);
         } else {
-            return Try.failure('gymTypeId is not defined');
+            return Try.failure(`Invalid gym center id: ${preference.gymCenterId}`);
         }
     }
 }
 
-module.exports = GymTypePreferenceValidator;
+module.exports = GymCenterPreferenceValidator;
