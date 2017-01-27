@@ -10,14 +10,21 @@ class GymCenterPreferenceService {
         this.gymCenterPreferenceValidator = new GymCenterPreferenceValidator();
     }
 
-    createPreference(preference) {
-        return this.gymCenterPreferenceValidator.validateCreatePreference(preference)
-            .flatMap(pref => this.gymCenterPreferenceRepository.createPreference(preference));
+    getPreferences(user) {
+        const userId = user.id;
+        return this.gymCenterPreferenceRepository.getPreferences(userId);
     }
 
-    updatePreference(preference) {
+    createPreference(preference, user) {
+        const userId = user.id;
+        return this.gymCenterPreferenceValidator.validateCreatePreference(preference)
+            .flatMap(pref => this.gymCenterPreferenceRepository.createPreference(preference, userId));
+    }
+
+    updatePreference(preference, user) {
+        const userId = user.id;
         return this.gymCenterPreferenceValidator.validateUpdatePreference(preference)
-            .flatMap(pref => this.gymCenterPreferenceRepository.updatePreference(preference));
+            .flatMap(pref => this.gymCenterPreferenceRepository.updatePreference(preference, userId));
     }
 
     static getInstance() {

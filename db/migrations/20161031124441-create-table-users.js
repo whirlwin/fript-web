@@ -20,6 +20,7 @@ exports.up = function(db, cb) {
         email: { type: 'string', notNull: true, unique: true },
         name: { type: 'string', notNull: true },
         picture_url: { type: 'string', notNull: true },
+        is_pt: { type: 'string', notNull: true },
         created: { type: 'date', notNull: true, defaultValue: 'now()' },
         updated: { type: 'date', notNull: true, defaultValue: 'now()' }
     }, cb);

@@ -18,15 +18,18 @@ class GymCenterPreferenceController {
 
     updatePreference(req, res) {
         const authHeader = req.headers.authorization;
+        const preference = {
+            gymCenterId: req.body.gymCenterId,
+            status: req.body.status
+        };
         UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
-            .flatMap(user => GymCenterPreferenceService.getInstance().updatePreference())
+            .flatMap(user => GymCenterPreferenceService.getInstance().updatePreference(preference, user))
             .onSuccess(nothing => res.json())
             .onFailure(err => winston.error(err))
             .onFailure(err => res.status(500).json(ErrorCodes.updateGymCenterPreference))
     }
-
 }
 
 module.exports = GymCenterPreferenceController;

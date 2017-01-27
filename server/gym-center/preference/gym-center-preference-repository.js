@@ -18,11 +18,15 @@ class GymCenterPreferenceRepository {
     }
 
     createPreference(preference, userId) {
-        const sql = `INSERT INTO gym_center_preference ()
-                VALUES ($(), $())`;
-        const params = {};
-        this.db.query(sql, params);
-        return Try.of(() => this.db.query(sql, params));
+        const sql = `INSERT INTO gym_center_preference (gym_center_id, user_id, status)
+                VALUES ($(gym_center_id), $(user_id), $(status))`;
+        const params = {
+            gym_center_id: preference.gymCenterId,
+            user_id: userId,
+            status: 'active'
+        };
+        const result = this.db.query(sql, params);
+        return Try.of(() => result);
 
     }
 
@@ -35,8 +39,8 @@ class GymCenterPreferenceRepository {
             user_id: userId,
             status: preference.status
         };
-        this.db.query(sql, params);
-        return Try.of(() => this.db.query(sql, params));
+        const result = this.db.query(sql, params);
+        return Try.of(() => result);
     }
 }
 
