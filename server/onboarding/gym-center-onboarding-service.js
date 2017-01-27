@@ -10,7 +10,7 @@ class GymCenterOnboardingService {
 
     getGymCenterOnboarding(user) {
         this.gymCenterService.getGymCenters()
-            .flatMap(centers => this.gymCenterPreferenceService.)
+            .flatMap(centers => this.gymCenterPreferenceService.getPreferences(user))
     }
 }
 
