@@ -1,5 +1,6 @@
 const GymTypeOnboardingService = require('./gym-type-onboarding-service');
 const GymCenterOnboardingService = require('./gym-center-onboarding-service');
+const UserOnboardingService = require('./user-onboarding-service');
 
 let instance;
 
@@ -8,6 +9,7 @@ class OnboardingService {
     constructor() {
         this.gymTypeOnboardingService = new GymTypeOnboardingService();
         this.gymCenterOnboardingService = new GymCenterOnboardingService();
+        this.userOnboardingService = new UserOnboardingService();
     }
 
     getGymTypeOnboarding(user) {
@@ -18,7 +20,9 @@ class OnboardingService {
         return this.gymCenterOnboardingService.getGymCenterOnboarding(user);
     }
 
-
+    getUserOnboarding(user) {
+        return this.userOnboardingService.getUserOnboarding(user);
+    }
 
     static getInstance() {
         if (instance == null) {

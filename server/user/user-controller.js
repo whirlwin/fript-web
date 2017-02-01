@@ -13,6 +13,13 @@ class UserController {
             .onFailure(err => winston.error('Failed to log in user: ', err))
             .onFailure(err => res.status(500).json(ErrorCodes.login));
     }
+
+    updateUser(req, res) {
+        const authHeader = req.headers.authorization;
+        UserService.getInstance().getUserByAuthHeader(authHeader)
+            .filter(maybeUser => maybeUser.isPresent())
+            .map(maybeUser => maybeUser.get())
+    }
 }
 
 module.exports = UserController;

@@ -10,8 +10,7 @@ class GymCenterPreferenceService {
         this.gymCenterPreferenceValidator = new GymCenterPreferenceValidator();
     }
 
-    getPreferences(user) {
-        const userId = user.id;
+    getPreferences(userId) {
         return this.gymCenterPreferenceRepository.getPreferences(userId);
     }
 

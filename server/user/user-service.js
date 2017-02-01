@@ -4,6 +4,7 @@ const Optional = require('optional-js');
 const Try = require('try-js');
 const UserMapper = require('./user-mapper');
 const UserRepository = require('./user-repository');
+const UserValidator = require('./user-validator');
 
 let instance;
 
@@ -14,6 +15,7 @@ class UserService {
         this.facebookTokenRepository = new FacebookTokenRepository();
         this.userMapper = new UserMapper();
         this.userRepository = new UserRepository();
+        this.userValidator = new UserValidator();
     }
 
     getUserByAuthHeader(authHeader) {
@@ -36,6 +38,11 @@ class UserService {
             .flatMap(user => this.userRepository.createUser(user))
             .flatMap(user => this.facebookTokenRepository.storeFacebookToken(facebookToken, user))
             .flatMap(user => this.userRepository.getUserById(user.id));
+    }
+
+    updateUser(user, userId) {
+        return this.userValidator.validateUpdateUser(user)
+            .flatMap(user => this.userRepository.updateUser())
     }
 
     static getInstance() {

@@ -28,6 +28,14 @@ class OnboardingController {
             .flatMap(user => OnboardingService.getInstance().getGymCenterOnboarding(user))
             .filter(maybeUser => maybeUser.is)
     }
+
+    getUserOnboarding(req, res) {
+        const authHeader = req.headers.authorization;
+        UserService.getInstance().getUserByAuthHeader(authHeader)
+            .filter(maybeUser => maybeUser.isPresent())
+            .map(maybeUser => maybeUser.get())
+            .flatMap(user => OnboardingService.getInstance().getGymCenterOnboarding(user))
+    }
 }
 
 module.exports = OnboardingController;

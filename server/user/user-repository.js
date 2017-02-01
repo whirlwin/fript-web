@@ -30,6 +30,11 @@ class UserReposiory {
         return Try.of(() => this.db.query(sql, params))
             .map(nothing => user);
     }
+
+    updateUser(user) {
+        const sql = `UPDATE users
+            WHERE user_id = $(user_id)`;
+    }
 }
 
 module.exports = UserReposiory;
