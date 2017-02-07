@@ -12,8 +12,6 @@ class GymCenterOnboardingService {
         this.gymCenterService.getGymCenters()
             .flatMap(centers => this.gymCenterPreferenceService.getPreferences(user))
     }
-
-    getUserTypeOnboarding()
 }
 
 module.exports = GymCenterOnboardingService;

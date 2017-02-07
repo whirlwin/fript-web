@@ -13,7 +13,7 @@ class OnboardingController {
             .map(maybeUser => maybeUser.get())
             .flatMap(user => OnboardingService.getInstance().getGymTypeOnboarding(user))
             .map(gymTypeOnboarding => OnboardingAssembler.getInstance().assembleGymTypeOnboarding(gymTypeOnboarding))
-            .onSuccess(gymTypePreferences =>  res.send(gymTypePreferences))
+            .onSuccess(onboarding =>  res.send(onboarding))
             .onFailure(err => console.log(err))
             .onFailure(err => winston.error(err))
             .onFailure(err => res.status(500).json(ErrorCodes.getGymTypePreference));
@@ -26,7 +26,9 @@ class OnboardingController {
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => OnboardingService.getInstance().getGymCenterOnboarding(user))
-            .filter(maybeUser => maybeUser.is)
+            .onSuccess(onboarding => res.send(onboarding))
+            .onFailure(err => winston.error(err))
+            .onFailure(err => res.status(500).json(ErrorCodes.getGymCenterPreference))
     }
 
     getUserOnboarding(req, res) {
@@ -34,7 +36,10 @@ class OnboardingController {
         UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
-            .flatMap(user => OnboardingService.getInstance().getGymCenterOnboarding(user))
+            .flatMap(user => OnboardingService.getInstance().getUserOnboarding(user))
+            .onSuccess(onboarding =>  res.send(onboarding))
+            .onFailure(err => winston.error(err))
+            .onFailure(err => res.status(500).json(ErrorCodes.getU))
     }
 }
 

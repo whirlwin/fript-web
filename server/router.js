@@ -32,6 +32,9 @@ class Router {
         this.router.get(Paths.getGymCenterOnboarding.href,
             this.onboardingController.getGymCenterOnboarding);
 
+        this.router.get(Paths.getUserOnboarding.href,
+            this.onboardingController.getUserOnboarding);
+
         this.router.put(Paths.updateGymCenterPreference.href,
             this.gymCenterPreferenceController.updatePreference);
 

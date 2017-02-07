@@ -6,6 +6,7 @@ module.exports = {
 
     getGymTypeOnboarding: { method: Methods.get, href: '/onboarding/gym-type' },
     getGymCenterOnboarding: { method: Methods.get, href: '/onboarding/gym-center' },
+    getUserOnboarding: { method: Methods.get, href: '/onboarding/user' },
 
     createGymCenterPreference: { method: Methods.post, href: '/gym-center/preference' },
     updateGymCenterPreference: { method: Methods.put, href: '/gym-center/preference' },

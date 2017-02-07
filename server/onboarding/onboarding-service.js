@@ -21,6 +21,7 @@ class OnboardingService {
     }
 
     getUserOnboarding(user) {
+        console.log('foobar');
         return this.userOnboardingService.getUserOnboarding(user);
     }
 

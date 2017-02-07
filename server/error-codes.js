@@ -26,5 +26,9 @@ module.exports = {
     updateGymCenterPreference: {
         id: 7,
         displayMsg: 'Could not update gym center preference - try again later'
+    },
+    getUserOnboarding: {
+        id: 8,
+        displayMsg: 'Could not '
     }
 };
