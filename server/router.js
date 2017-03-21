@@ -2,6 +2,7 @@ const express = require('express');
 const GymCenterPreferenceController = require('./gym-center/preference/gym-center-preference-controller');
 const GymTypePreferenceController = require('./gym-type/preference/gym-type-preference-controller');
 const OnboardingController = require('./onboarding/onboarding-controller');
+const MatchController = require('./match/match-controller');
 const Paths = require('./paths');
 const ServiceDocController = require('./service-doc-controller');
 const UserController = require('./user/user-controller');
@@ -17,6 +18,7 @@ class Router {
         this.onboardingController = new OnboardingController();
         this.serviceDocController = new ServiceDocController();
         this.userController = new UserController();
+        this.matchController = new MatchController();
     }
 
     route(app) {
@@ -49,6 +51,9 @@ class Router {
 
         this.router.put(Paths.updateGymTypePreference.href,
             this.gymTypePreferenceController.updatePreference);
+
+        this.router.get(Paths.getMatches.href,
+            this.matchController.getMatches);
 
         app.use(this.router);
     }
