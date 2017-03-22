@@ -1,0 +1,5 @@
+fript-api:
+  build: .
+
+fript-web:
+  build: ../fript-web

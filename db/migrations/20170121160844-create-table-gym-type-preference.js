@@ -19,6 +19,8 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
+  // TODO: Remove?
+  return;
   var filePath = path.join(__dirname, 'sqls', '20170121160844-create-table-gym-type-preference-up.sql');
   return new Promise( function( resolve, reject ) {
     fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
@@ -34,6 +36,8 @@ exports.up = function(db) {
 };
 
 exports.down = function(db) {
+  // TODO: Remove?
+  return;
   var filePath = path.join(__dirname, 'sqls', '20170121160844-create-table-gym-type-preference-down.sql');
   return new Promise( function( resolve, reject ) {
     fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
