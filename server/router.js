@@ -1,12 +1,12 @@
 const express = require('express');
-const GymCenterPreferenceController = require('./gym-center/preference/gym-center-preference-controller');
+const Paths = require('./paths');
+const GymCenterPreferenceController = require('./gym-center/preference/GymCenterPreferenceController');
 const GymTypePreferenceController = require('./gym-type/preference/gym-type-preference-controller');
 const OnboardingController = require('./onboarding/onboarding-controller');
 const MatchController = require('./match/match-controller');
-const Paths = require('./paths');
+const PendingMatchController = require('./match/pending-match/pending-match-controller');
 const ServiceDocController = require('./service-doc-controller');
 const UserController = require('./user/user-controller');
-
 
 class Router {
 
@@ -54,6 +54,9 @@ class Router {
 
         this.router.get(Paths.getMatches.href,
             this.matchController.getMatches);
+
+        this.router.get(Paths.getPendingMatches.href,
+            this.pendi)
 
         app.use(this.router);
     }

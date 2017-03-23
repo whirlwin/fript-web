@@ -19,7 +19,7 @@ exports.up = function(db, cb) {
         id: { type: 'int', primaryKey: true, autoIncrement: true },
         user_id: { type: 'string', notNull: true },
         match_user_id: { type: 'string', notNull: true },
-        status: { type: 'string', notNull: true },
+        status: { type: 'string', notNull: true, defaultValue: 'active' },
         created: { type: 'date', notNull: true, defaultValue: 'now()' },
         updated: { type: 'date', notNull: true, defaultValue: 'now()' }
     }, cb);
