@@ -1,6 +1,8 @@
 const AcceptedMatchRepository = require('./AcceptedMatchRepository');
 const PendingMatchService = require('../pending/PendingMatchService');
 
+let instance;
+
 class AcceptedMatchService {
 
     constructor() {
@@ -10,9 +12,16 @@ class AcceptedMatchService {
 
     acceptMatch(user, pendingMatchId) {
         this.pendingMatchService.getPendingMatch(pendingMatchId).then(pendingMatch => {
-            this.acceptedMatchRepository.createAcceptedMatch();
+            this.acceptedMatchRepository.createAcceptedMatch({ userId: user.id, matchUserId: pendingMatch.user_id});
             this.pendingMatchService.deletePendingMatch();
         });
+    }
+
+    static getInstance() {
+        if (instance == null) {
+            instance = new AcceptedMatchService();
+        }
+        return instance;
     }
 }
 

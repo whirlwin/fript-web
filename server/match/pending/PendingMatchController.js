@@ -13,11 +13,6 @@ class PendingMatchController {
             .onSuccess(pendingMatches => res.send(pendingMatches))
             .onFailure(err => winston.error(err))
             .onFailure(err => res.status(500).json(ErrorCodes.getGymCenterPreference));
-
-        const userId = req.query.userId;
-        PendingMatchService.getInstance().getPendingMatches(userId).then(pendingMatches => {
-            res.json(pendingMatches);
-        });
     }
 }
 
