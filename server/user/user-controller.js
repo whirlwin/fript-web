@@ -1,5 +1,5 @@
 const UserService = require('./user-service');
-const ErrorCodes = require('../error-codes');
+const ErrorCodes = require('../ErrorCodes');
 const winston = require('winston');
 
 class UserController {

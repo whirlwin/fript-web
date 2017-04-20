@@ -1,5 +1,5 @@
-const GymTypeOnboardingService = require('./gym-type-onboarding-service');
-const GymCenterOnboardingService = require('./gym-center-onboarding-service');
+const GymTypeOnboardingService = require('./GymTypeOnboardingService');
+const GymCenterOnboardingService = require('./GymCenterOnboardingService');
 const UserOnboardingService = require('./user-onboarding-service');
 
 let instance;

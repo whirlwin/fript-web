@@ -1,8 +1,8 @@
-const DbConfig = require('./db-config');
-const ErrorEventConfig = require('./error-event-config');
-const ExpressConfig = require('./express-config');
-const HttpConfig = require('./http-config');
-const DotenvConfig = require("./dotenv-config");
+const DbConfig = require('./DbConfig');
+const ErrorEventConfig = require('./ErrorEventConfig');
+const ExpressConfig = require('./ExpressConfig');
+const HttpConfig = require('./HttpConfig');
+const DotenvConfig = require("./DotenvConfig");
 
 class AppConfig {
 

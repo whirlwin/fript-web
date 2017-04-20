@@ -1,5 +1,5 @@
-const GymTypeService = require('../gym-type/gym-type-service');
-const GymTypePreferenceService = require('../gym-type/preference/gym-type-preference-service');
+const GymTypeService = require('../gym-type/GymTypeService');
+const GymTypePreferenceService = require('../gym-type/preference/GymTypePreferenceService');
 
 class GymTypeOnboardingService {
 

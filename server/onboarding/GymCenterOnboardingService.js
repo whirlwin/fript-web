@@ -1,5 +1,5 @@
-const GymCenterService = require('../gym-center/gym-center-service');
-const GymCenterPreferenceService = require('../gym-center/preference/gym-center-preference-service');
+const GymCenterService = require('../gym-center/GymCenterService');
+const GymCenterPreferenceService = require('../gym-center/preference/GymCenterPreferenceService');
 
 class GymCenterOnboardingService {
 

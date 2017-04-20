@@ -1,5 +1,5 @@
-const GymTypePreferenceRepository = require('./gym-type-preference-repository');
-const GymTypePreferenceValidator = require('./gym-type-preference-validator');
+const GymTypePreferenceRepository = require('./GymTypePreferenceRepository');
+const GymTypePreferenceValidator = require('./GymTypePreferenceValidator');
 
 let instance;
 

@@ -1,4 +1,4 @@
-const GymCenterRepository = require('./gym-center-repository');
+const GymCenterRepository = require('./GymCenterRepository');
 
 class GymCenterService {
 

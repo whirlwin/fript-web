@@ -1,5 +1,5 @@
-const CountryCodeConstants = require('./country-code-constants');
-const GymTypeRepository = require('./gym-type-repository');
+const CountryCodeConstants = require('./CountryCodeConstants');
+const GymTypeRepository = require('./GymTypeRepository');
 
 let instance = null;
 

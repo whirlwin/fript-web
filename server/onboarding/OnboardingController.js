@@ -1,8 +1,8 @@
 const UserService = require('../user/user-service');
-const OnboardingAssembler = require('./onboarding-assembler');
+const OnboardingAssembler = require('./OnboardingAssembler');
 const OnboardingService = require('./onboarding-service');
 const winston = require('winston');
-const ErrorCodes = require('../error-codes');
+const ErrorCodes = require('../ErrorCodes');
 
 class OnboardingController {
 

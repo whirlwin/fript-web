@@ -6,19 +6,15 @@ class DotenvConfig {
 
     configure() {
         if (process.env.ENV === "production") {
-            Try.of(() => dotenv.config({ path: `${__dirname}/../.env.production`, silent: true }))
-                .onSuccess(nothing => this.logCurrentEnv())
-                .onFailure(err => winston.error(err));
+            dotenv.config({ path: `${__dirname}/../.env.production`, silent: true });
         } else if (process.env.ENV === "staging") {
-            Try.of(() => dotenv.config({ path: `${__dirname}/../.env` }))
-                .onSuccess(nothing => this.logCurrentEnv())
-                .onFailure(err => winston.error(err));
+            dotenv.config({path: `${__dirname}/../.env`});
+        } else if (process.env.ENV === "dev") {
+            dotenv.config();
         } else {
             throw new Error(`Illegal value for ENV: ${process.env.ENV}`);
         }
-    }
-
-    logCurrentEnv() {
+        
         winston.info(`current env: ${process.env.ENV}`);
     }
 }
