@@ -1,4 +1,4 @@
-const DbProvider = require('../db-provider');
+const DbProvider = require('../DBProvider');
 const Try = require('try-js');
 
 class GymCenterRepository {

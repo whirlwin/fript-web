@@ -1,5 +1,5 @@
 const AppConfig = require('./../config/AppConfig');
-const Router = require('./router');
+const Router = require('./Router');
 const winston = require('winston');
 
 class App {

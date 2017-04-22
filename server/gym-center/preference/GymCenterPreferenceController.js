@@ -1,6 +1,6 @@
 const ErrorCodes = require('../../ErrorCodes');
 const GymCenterPreferenceService = require('./GymCenterPreferenceService');
-const UserService = require('../../user/user-service');
+const UserService = require('../../user/UserService');
 const winston = require('winston');
 
 class GymCenterPreferenceController {

@@ -1,10 +1,10 @@
-const FacebookApiFacade = require('./login/facebook-api-facade');
-const FacebookTokenRepository = require('./login/facebook-token-repository');
+const FacebookApiFacade = require('./login/FacebookApiFacade');
+const FacebookTokenRepository = require('./login/FacebookTokenRepository');
 const Optional = require('optional-js');
 const Try = require('try-js');
-const UserMapper = require('./user-mapper');
-const UserRepository = require('./user-repository');
-const UserValidator = require('./user-validator');
+const UserMapper = require('./UserMapper');
+const UserRepository = require('./UserRepository');
+const UserValidator = require('./UserValidator');
 
 let instance;
 

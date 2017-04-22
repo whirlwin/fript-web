@@ -1,6 +1,7 @@
 const winston = require('winston');
 const ErrorCodes = require('../../ErrorCodes');
 const PendingMatchService = require('./PendingMatchService');
+const UserService = require('./../../user/UserService');
 
 class PendingMatchController {
 
@@ -12,7 +13,7 @@ class PendingMatchController {
             .flatMap(user => PendingMatchService.getInstance().getPendingMatches(user.id))
             .onSuccess(pendingMatches => res.send(pendingMatches))
             .onFailure(err => winston.error(err))
-            .onFailure(err => res.status(500).json(ErrorCodes.getGymCenterPreference));
+            .onFailure(err => res.status(500).json(ErrorCodes.getPendingMatches));
     }
 }
 

@@ -14,7 +14,7 @@ class DotenvConfig {
         } else {
             throw new Error(`Illegal value for ENV: ${process.env.ENV}`);
         }
-        
+
         winston.info(`current env: ${process.env.ENV}`);
     }
 }

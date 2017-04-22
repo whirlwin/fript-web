@@ -1,4 +1,4 @@
-const DbProvider = require('../server/db-provider');
+const DbProvider = require('../server/DBProvider');
 const pgp = require('pg-promise');
 
 class DbConfig {

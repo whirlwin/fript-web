@@ -17,5 +17,5 @@ module.exports = {
     getGymTypePreferences: { method: Methods.get, href: '/gym-type/preference' },
 
     getMatches: { method: Methods.get, href: '/match' },
-    getPendingMatches: { method: Methods.get, href: '/pending-matches' }
+    getPendingMatches: { method: Methods.get, href: '/pending-match' }
 };

@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const DbProvider = require('../db-provider');
+const DbProvider = require('../DBProvider');
 const Optional = require('optional-js');
 const Try = require('try-js');
 

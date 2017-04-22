@@ -4,8 +4,8 @@ const GymCenterPreferenceController = require('./gym-center/preference/GymCenter
 const GymTypePreferenceController = require('./gym-type/preference/GymTypePreferenceController');
 const OnboardingController = require('./onboarding/OnboardingController');
 const PendingMatchController = require('./match/pending/PendingMatchController');
-const ServiceDocController = require('./service-doc-controller');
-const UserController = require('./user/user-controller');
+const ServiceDocController = require('./ServiceDocController');
+const UserController = require('./user/UserController');
 
 class Router {
 
@@ -17,6 +17,7 @@ class Router {
         this.onboardingController = new OnboardingController();
         this.serviceDocController = new ServiceDocController();
         this.userController = new UserController();
+        this.pendingMatchController = new PendingMatchController();
     }
 
     route(app) {
@@ -50,8 +51,8 @@ class Router {
         this.router.put(Paths.updateGymTypePreference.href,
             this.gymTypePreferenceController.updatePreference);
 
-        //this.router.get(Paths.getPendingMatches.href,
-            //this.pendingM)
+        this.router.get(Paths.getPendingMatches.href,
+            this.pendingMatchController.getPendingMatches);
 
         app.use(this.router);
     }

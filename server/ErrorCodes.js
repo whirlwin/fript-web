@@ -30,5 +30,9 @@ module.exports = {
     getUserOnboarding: {
         id: 8,
         displayMsg: 'Could not '
+    },
+    getPendingMatches: {
+        id: 9,
+        displayMsg: 'Could not get pending matches - try again later'
     }
 };
