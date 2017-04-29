@@ -1,7 +1,7 @@
 const winston = require('winston');
 const ErrorCodes = require('../../ErrorCodes');
 const PendingMatchService = require('./PendingMatchService');
-const UserService = require('./../../user/UserService');
+const UserService = require('../../user/UserService');
 
 class PendingMatchController {
 
