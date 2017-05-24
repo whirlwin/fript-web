@@ -6,7 +6,7 @@ class UserController {
 
     logIn(req, res) {
         const facebookToken = req.query.facebookToken;
-        UserService.getInstance().logIn(facebookToken)
+        UserService.getInstance().tryLogIn(facebookToken)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .onSuccess(user => res.json(user))

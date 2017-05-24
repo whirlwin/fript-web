@@ -1,4 +1,5 @@
 module.exports = {
     createLoginEntry: { enabled: true },
-    mockGetFacebookUser: { enabled: true }
+    mockFacebookApi: { enabled: true },
+    mockDb: { enabled: true }
 };

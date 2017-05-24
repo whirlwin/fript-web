@@ -25,30 +25,42 @@ class UserService {
             .map(header => authHeader.replace('Bearer ', ''))
             .map(facebookToken => Try.success(facebookToken))
             .orElseGet(() => Try.failure('Failed to get auth header'))
-            .flatMap(facebookToken => this.logIn(facebookToken));
+            .flatMap(facebookToken => this.tryLogIn(facebookToken));
     }
 
-    logIn(facebookToken) {
+    /*
+    getUserByAuthHeader(authHeader) {
+        const facebookToken = authHeaderWithBearer.replace('Bearer ', '');
+        this.tryLogIn()
+    }
+    */
+
+    tryLogIn(facebookToken) {
         return this.facebookTokenRepository.getUserByFacebookToken(facebookToken)
             .filter(maybeUser => maybeUser.isPresent())
-            .orElse(() => this.handleGetAndCreateUser(facebookToken));
+            .orElse(() => this.tryHandleGetAndCreateUser(facebookToken));
     }
 
-    handleGetAndCreateUser(facebookToken) {
-        return this.facebookApiFacade.getDetailsByFacebookTokenAsTry(facebookToken)
+    /*
+    logIn(facebookToken) {
+    }
+    */
+
+    tryHandleGetAndCreateUser(facebookToken) {
+        return this.facebookApiFacade.tryGetDetailsByFacebookToken(facebookToken)
             .map(facebookUser => this.userMapper.mapToUser(facebookUser))
             .flatMap(user => this.userRepository.tryCreateUser(user))
             .flatMap(user => this.facebookTokenRepository.storeFacebookToken(facebookToken, user))
             .flatMap(user => this.userRepository.getUserById(user.id));
     }
 
-    createUser(facebookToken) {
+    tryCreateUser(facebookToken) {
         return this.facebookApiFacade.getDetails(facebookToken)
             .then(details => this.userMapper.mapToUser(details))
             .then(user => this.userRepository.createUser(user))
     }
 
-    updateUser(user, userId) {
+    tryUpdateUser(user, userId) {
         return this.userValidator.validateUpdateUser(user)
             .flatMap(user => this.userRepository.updateUser())
     }

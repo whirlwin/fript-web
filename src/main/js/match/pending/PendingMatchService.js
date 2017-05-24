@@ -1,4 +1,5 @@
 const PendingMatchRepository = require('./PendingMatchRepository');
+const Try = require('try-js');
 
 let instance;
 
