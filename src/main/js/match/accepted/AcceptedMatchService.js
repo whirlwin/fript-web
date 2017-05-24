@@ -10,11 +10,10 @@ class AcceptedMatchService {
         this.pendingMatchService = new PendingMatchService();
     }
 
-    acceptMatch(user, pendingMatchId) {
-        this.pendingMatchService.getPendingMatch(pendingMatchId).then(pendingMatch => {
-            this.acceptedMatchRepository.createAcceptedMatch({ userId: user.id, matchUserId: pendingMatch.user_id});
-            this.pendingMatchService.deletePendingMatch();
-        });
+    acceptMatch(userId, pendingMatchId) {
+        return this.pendingMatchService.getPendingMatch(pendingMatchId)
+            .flatMap(pendingMatch => this.acceptedMatchRepository.createAcceptedMatch({ userId: userId, matchUserId: pendingMatch.user_id}))
+            .flatMap(ignored => this.pendingMatchService.deletePendingMatch(pendingMatchId));
     }
 
     static getInstance() {

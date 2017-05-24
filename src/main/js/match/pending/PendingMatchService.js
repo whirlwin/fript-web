@@ -1,5 +1,4 @@
 const PendingMatchRepository = require('./PendingMatchRepository');
-const Try = require('try-js');
 
 let instance;
 
@@ -14,7 +13,7 @@ class PendingMatchService {
     }
 
     getPendingMatch(pendingMatchId) {
-        return this.pendingMatchRepository.get
+        return this.pendingMatchRepository.getPendingMatch(pendingMatchId);
     }
 
     deletePendingMatch(pendingMatchId) {

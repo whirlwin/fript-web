@@ -7,7 +7,7 @@ class GymTypePreferenceController {
 
     getPreferences(req, res) {
         const authHeader = req.headers.authorization;
-        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
+        UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => GymTypePreferenceService.getInstance().getPreferences(user))
@@ -22,7 +22,7 @@ class GymTypePreferenceController {
             gymTypeId: req.body.gymTypeId,
             status: req.body.status
         };
-        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
+        UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => GymTypePreferenceService.getInstance().createPreference(preference, user))
@@ -37,7 +37,7 @@ class GymTypePreferenceController {
             gymTypeId: req.body.gymTypeId,
             status: req.body.status
         };
-        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
+        UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => GymTypePreferenceService.getInstance().updatePreference(preference, user))

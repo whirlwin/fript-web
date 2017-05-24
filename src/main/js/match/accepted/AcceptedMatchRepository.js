@@ -1,4 +1,6 @@
 const DbProvider = require('../../DBProvider');
+const featureToggles = require('../../settings/feature-toggles');
+const Try = require('try-js');
 
 class AcceptedMatchRepository {
 
@@ -7,13 +9,17 @@ class AcceptedMatchRepository {
     }
 
     createAcceptedMatch({ userId, matchUserId }) {
+        if (featureToggles.mockDb.enabled) {
+            return Try.success();
+        }
+
         const sql = `INSERT INTO accepted_match(user_id, match_user_id)
                 VALUES($(user_id), $(match_user_id))`;
         const params = {
             user_id: userId,
             match_user_id: matchUserId
         };
-        this.db.query(sql, params);
+        return Try.of(() => this.db.query(sql, params));
     }
 }
 

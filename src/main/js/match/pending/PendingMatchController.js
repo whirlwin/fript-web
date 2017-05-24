@@ -13,7 +13,7 @@ class PendingMatchController {
         */
 
         const authHeader = req.headers.authorization;
-        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
+        UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => PendingMatchService.getInstance().getPendingMatches(user.id))

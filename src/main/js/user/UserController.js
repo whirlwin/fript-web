@@ -6,7 +6,7 @@ class UserController {
 
     logIn(req, res) {
         const facebookToken = req.query.facebookToken;
-        UserService.getInstance().tryLogIn(facebookToken)
+        UserService.getInstance().logIn(facebookToken)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .onSuccess(user => res.json(user))
@@ -16,7 +16,7 @@ class UserController {
 
     updateUser(req, res) {
         const authHeader = req.headers.authorization;
-        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
+        UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
     }

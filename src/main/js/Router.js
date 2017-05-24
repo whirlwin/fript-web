@@ -1,5 +1,6 @@
 const express = require('express');
 const Paths = require('./paths');
+const AcceptedMatchController = require('./match/accepted/AceptedMatchController');
 const GymCenterPreferenceController = require('./gym-center/preference/GymCenterPreferenceController');
 const GymTypePreferenceController = require('./gym-type/preference/GymTypePreferenceController');
 const OnboardingController = require('./onboarding/OnboardingController');
@@ -12,6 +13,7 @@ class Router {
     constructor() {
         this.router = express.Router();
 
+        this.acceptedMatchController = new AcceptedMatchController();
         this.gymCenterPreferenceController = new GymCenterPreferenceController();
         this.gymTypePreferenceController = new GymTypePreferenceController();
         this.onboardingController = new OnboardingController();
@@ -53,6 +55,9 @@ class Router {
 
         this.router.get(Paths.getPendingMatches.href,
             this.pendingMatchController.getPendingMatches);
+
+        this.router.post(Paths.acceptMatch.href,
+            this.acceptedMatchController.acceptMatch);
 
         app.use(this.router);
     }

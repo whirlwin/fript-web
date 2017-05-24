@@ -7,7 +7,7 @@ class GymCenterPreferenceController {
 
     createPreference(req, res) {
         const authHeader = req.headers.authorization;
-        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
+        UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => GymCenterPreferenceService.getInstance().createPreference())
@@ -22,7 +22,7 @@ class GymCenterPreferenceController {
             gymCenterId: req.body.gymCenterId,
             status: req.body.status
         };
-        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
+        UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => GymCenterPreferenceService.getInstance().updatePreference(preference, user))

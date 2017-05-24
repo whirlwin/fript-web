@@ -8,7 +8,7 @@ class OnboardingController {
 
     getGymTypeOnboarding(req, res) {
         const authHeader = req.headers.authorization;
-        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
+        UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => OnboardingService.getInstance().getGymTypeOnboarding(user))
@@ -22,7 +22,7 @@ class OnboardingController {
     // TODO: Finish
     getGymCenterOnboarding(req, res) {
         const authHeader = req.headers.authorization;
-        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
+        UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => OnboardingService.getInstance().getGymCenterOnboarding(user))
@@ -33,7 +33,7 @@ class OnboardingController {
 
     getUserOnboarding(req, res) {
         const authHeader = req.headers.authorization;
-        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
+        UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => OnboardingService.getInstance().getUserOnboarding(user))
