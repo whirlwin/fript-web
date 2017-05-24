@@ -1,4 +1,5 @@
 const FB = require('fb');
+const featureToggles = require('../../settings/feature-toggles');
 const Try = require('try-js');
 
 class FacebookApiFacade {
@@ -10,7 +11,8 @@ class FacebookApiFacade {
         });
     }
 
-    getDetailsByFacebookToken(facebookToken) {
+    // TODO: Deprecate try function
+    getDetailsByFacebookTokenAsTry(facebookToken) {
         return Try.of(() => new Promise((resolve, reject) => {
             FB.api('/me', { fields: [ 'id', 'email', 'name', 'picture' ], access_token: facebookToken }, (res) => {
                 if (res.error) {
@@ -20,6 +22,27 @@ class FacebookApiFacade {
                 }
             });
         }));
+    }
+
+    getDetails(facebookToken) {
+        if (featureToggles.mockGetFacebookUser.enabled) {
+            return Promise.resolve(        {
+                id: facebookUser.id,
+                email: facebookUser.email,
+                name: facebookUser.name,
+                picture_url: facebookUser.picture.data.url
+            });
+        } else {
+            return new Promise((resolve, reject) => {
+                FB.api('/me', { fields: [ 'id', 'email', 'name', 'picture' ], access_token: facebookToken }, (res) => {
+                    if (res.error) {
+                        reject(res.error);
+                    } else {
+                        resolve(res);
+                    }
+                });
+            });
+        }
     }
 }
 

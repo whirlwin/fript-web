@@ -18,7 +18,9 @@ class UserService {
         this.userValidator = new UserValidator();
     }
 
-    getUserByAuthHeader(authHeader) {
+
+    // TODO: Get user by auth header
+    tryGetUserByAuthHeader(authHeader) {
         return Optional.ofNullable(authHeader)
             .map(header => authHeader.replace('Bearer ', ''))
             .map(facebookToken => Try.success(facebookToken))
@@ -33,11 +35,17 @@ class UserService {
     }
 
     handleGetAndCreateUser(facebookToken) {
-        return this.facebookApiFacade.getDetailsByFacebookToken(facebookToken)
-            .map(facebookUser => this.userMapper.mapFacebookUserToUser(facebookUser))
-            .flatMap(user => this.userRepository.createUser(user))
+        return this.facebookApiFacade.getDetailsByFacebookTokenAsTry(facebookToken)
+            .map(facebookUser => this.userMapper.mapToUser(facebookUser))
+            .flatMap(user => this.userRepository.tryCreateUser(user))
             .flatMap(user => this.facebookTokenRepository.storeFacebookToken(facebookToken, user))
             .flatMap(user => this.userRepository.getUserById(user.id));
+    }
+
+    createUser(facebookToken) {
+        return this.facebookApiFacade.getDetails(facebookToken)
+            .then(details => this.userMapper.mapToUser(details))
+            .then(user => this.userRepository.createUser(user))
     }
 
     updateUser(user, userId) {

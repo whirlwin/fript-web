@@ -17,7 +17,8 @@ class UserReposiory {
             .map(maybeUser => Optional.ofNullable(maybeUser));
     }
 
-    createUser(user) {
+    // TODO: Try create user
+    tryCreateUser(user) {
         const sql = `INSERT INTO users(id, email, name, picture_url)
                 VALUES($(id), $(email), $(name), $(picture_url))
                 ON CONFLICT (id) DO NOTHING`;
@@ -29,6 +30,19 @@ class UserReposiory {
         };
         return Try.of(() => this.db.query(sql, params))
             .map(nothing => user);
+    }
+
+    createUser(user) {
+        const sql = `INSERT INTO users(id, email, name, picture_url)
+                VALUES($(id), $(email), $(name), $(picture_url))
+                ON CONFLICT (id) DO NOTHING`;
+        const params = {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            picture_url: user.picture_url
+        };
+        return this.db.query(sql, params);
     }
 
     updateUser(user) {

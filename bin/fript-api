@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const App = require('../src/main/js/app');
+const App = require('../src/main/js/App');
 
 const app = new App();
 app.configure();

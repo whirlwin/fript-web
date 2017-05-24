@@ -1,5 +1,6 @@
 fript-api:
   build: .
+  net: host
 
 fript-web:
   build: ../fript-web

@@ -16,7 +16,7 @@ class UserController {
 
     updateUser(req, res) {
         const authHeader = req.headers.authorization;
-        UserService.getInstance().getUserByAuthHeader(authHeader)
+        UserService.getInstance().tryGetUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
     }
