@@ -56,10 +56,18 @@ class Router {
         this.router.get(Paths.getPendingMatches.href,
             this.pendingMatchController.getPendingMatches);
 
+        this.router.get(Paths.getAcceptMatches.href,
+            this.acceptedMatchController.getAcceptedMatches);
+
         this.router.post(Paths.acceptMatch.href,
             this.acceptedMatchController.acceptMatch);
 
         app.use(this.router);
+    }
+
+    // TODO make more dynamic
+    routeWith(path, controllerFn) {
+        this.router[path.method].call(null, "/foo", controllerFn);
     }
 }
 

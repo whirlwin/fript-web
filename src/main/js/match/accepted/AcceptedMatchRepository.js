@@ -8,6 +8,22 @@ class AcceptedMatchRepository {
         this.db = DbProvider.getDb();
     }
 
+    getAcceptedMatches({ userId }) {
+        if (featureToggles.mockDb.enabled) {
+            return Try.success([
+                {
+                    "user_id": "123",
+                    "type": "pt"
+                }
+            ]);
+        }
+        const sql = `SELECT * FROM accepted_match
+                WHERE user_id = $(user_id)`;
+        const params = { user_id: userId };
+        return Try.of(() => this.db.query(sql, params));
+
+    }
+
     createAcceptedMatch({ userId, matchUserId }) {
         if (featureToggles.mockDb.enabled) {
             return Try.success();

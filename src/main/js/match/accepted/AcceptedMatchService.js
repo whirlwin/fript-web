@@ -10,6 +10,10 @@ class AcceptedMatchService {
         this.pendingMatchService = new PendingMatchService();
     }
 
+    getAcceptedMatches(userId) {
+        return this.acceptedMatchRepository.getAcceptedMatches(userId)
+    }
+
     acceptMatch(userId, pendingMatchId) {
         return this.pendingMatchService.getPendingMatch(pendingMatchId)
             .flatMap(pendingMatch => this.acceptedMatchRepository.createAcceptedMatch({ userId: userId, matchUserId: pendingMatch.user_id}))

@@ -4,6 +4,17 @@ const winston = require('winston');
 
 class AcceptedMatchController {
 
+    getAcceptedMatches(req, res) {
+        const authHeader = req.headers.authorization;
+        UserService.getInstance().getUserByAuthHeader(authHeader)
+            .filter(maybeUser => maybeUser.isPresent())
+            .map(maybeUser => maybeUser.get())
+            .flatMap(user => AcceptedMatchService.getInstance().getAcceptedMatches(user.id))
+            .onSuccess(pendingMatches => res.send(pendingMatches))
+            .onFailure(err =>  winston.error(err.err))
+            .onFailure(err => res.status(500).json(ErrorCodes.getGymCenterPreference));
+    }
+
     acceptMatch(req, res) {
         const authHeader = req.headers.authorization;
         const pendingMatchId = req.body.pendingMatchId;

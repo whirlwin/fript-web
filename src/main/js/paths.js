@@ -19,5 +19,6 @@ module.exports = {
     getMatches: { method: Methods.get, href: '/match' },
     getPendingMatches: { method: Methods.get, href: '/pending-match' },
 
+    getAcceptMatches: { method: Methods.get, href: '/accepted-match' },
     acceptMatch: { method: Methods.post, href: '/accepted-match' }
 };
