@@ -1,6 +1,9 @@
-fript-api:
-  build: .
-  net: host
-
-fript-web:
-  build: ../fript-web
+version: '3'
+services:
+  fript-api:
+    build: .
+    name: fript-api
+    net: host
+  
+  #fript-web:
+  #  build: ../fript-web

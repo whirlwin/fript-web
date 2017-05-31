@@ -1,8 +1,6 @@
-FROM alpine
+FROM node
 
-RUN ls
+RUN yarn
 
-RUN ls
-
-CMD tail -F /etc/hosts
+CMD ["tail", "-f", "/etc/hosts"]
 
