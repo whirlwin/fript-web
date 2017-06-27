@@ -1,6 +1,6 @@
 const UserService = require('../user/UserService');
 const OnboardingAssembler = require('./OnboardingAssembler');
-const OnboardingService = require('./onboarding-service');
+const OnboardingService = require('./OnboardingService');
 const winston = require('winston');
 const ErrorCodes = require('../ErrorCodes');
 

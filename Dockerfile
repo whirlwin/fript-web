@@ -1,6 +1,15 @@
+# TODO add custom user instead of root
+
 FROM node
 
-RUN yarn
+ENV HOME=/opt/fript-api
 
-CMD ["tail", "-f", "/etc/hosts"]
+RUN mkdir -p ${HOME}
 
+COPY package.json ${HOME}
+
+WORKDIR ${HOME}
+
+RUN npm install
+
+CMD ["./node_modules/.bin/nodemon", "bin/api"]
