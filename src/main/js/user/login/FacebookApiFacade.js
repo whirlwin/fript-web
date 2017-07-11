@@ -6,8 +6,8 @@ class FacebookApiFacade {
 
     constructor() {
         FB.options({
-            appId: process.env.FB_APP_ID,
-            appSecret: process.env.FB_APP_SECRET
+            appId: process.env.FACEBOOK_APP_ID,
+            appSecret: process.env.FACEBOOK_APP_SECRET
         });
     }
 

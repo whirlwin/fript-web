@@ -3,14 +3,17 @@ version: '3'
 services:
 
   fript-api:
+    container_name: fript-api
     build: .
-    container_name: api
     ports:
       - "4000:4000"
     volumes:
-      - .:/opt/fript-api
-      - /opt/fript-api/node_modules
-    #net: host
-  
-  #fript-web:
-  #  build: ../fript-web
+      - ./:/opt/fript-api
+
+  fript-web:
+    build: ../fript-web
+    container_name: fript-web
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/opt/fript-web

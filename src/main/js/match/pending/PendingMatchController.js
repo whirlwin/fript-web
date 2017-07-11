@@ -18,7 +18,7 @@ class PendingMatchController {
             .map(maybeUser => maybeUser.get())
             .flatMap(user => PendingMatchService.getInstance().getPendingMatches(user.id))
             .onSuccess(pendingMatches => res.send(pendingMatches))
-            .onFailure(err =>  winston.error(err.err))
+            .onFailure(err =>  winston.error(err))
             .onFailure(err => res.status(500).json(ErrorCodes.getPendingMatches));
     }
 }

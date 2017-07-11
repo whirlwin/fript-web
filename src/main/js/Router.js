@@ -1,3 +1,4 @@
+// TODO: Split to separate routers
 const express = require('express');
 const Paths = require('./paths');
 const AcceptedMatchController = require('./match/accepted/AceptedMatchController');
@@ -7,6 +8,8 @@ const OnboardingController = require('./onboarding/OnboardingController');
 const PendingMatchController = require('./match/pending/PendingMatchController');
 const ServiceDocController = require('./ServiceDocController');
 const UserController = require('./user/UserController');
+
+const RequestLogger = require('./RequestLogger');
 
 class Router {
 
@@ -23,6 +26,8 @@ class Router {
     }
 
     route(app) {
+        app.use(RequestLogger);
+
         this.router.get(Paths.root.href,
             this.serviceDocController.getServiceDoc);
 
