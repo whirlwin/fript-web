@@ -1,6 +1,7 @@
 const FB = require('fb');
 const featureToggles = require('../../settings/feature-toggles');
 const Try = require('try-js');
+const winston = require('winston');
 
 class FacebookApiFacade {
 
@@ -12,6 +13,10 @@ class FacebookApiFacade {
     }
 
     tryGetDetailsByFacebookToken(facebookToken) {
+        if (featureToggles.debugLogging.enabled) {
+            winston.info("Trying to get user from Facebook by Facebook token: " + facebookToken)
+        }
+
         if (featureToggles.mockFacebookApi.enabled) {
             return Try.of(() => Promise.resolve({
                 id: "123456789",
@@ -44,7 +49,7 @@ class FacebookApiFacade {
         */
     }
 
-    getDetails(facebookToken) {
+    getFacebookUser(facebookToken) {
         if (featureToggles.mockFacebookApi.enabled) {
             return Promise.resolve(        {
                 id: facebookUser.id,

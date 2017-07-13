@@ -3,6 +3,7 @@ const DbProvider = require('../../DBProvider');
 const featureToggles = require('../../settings/feature-toggles');
 const Optional = require('optional-js');
 const Try = require('try-js');
+const winston = require('winston');
 
 class FacebookTokenRepository {
 
@@ -11,6 +12,10 @@ class FacebookTokenRepository {
     }
 
     getUserByFacebookToken(facebookToken) {
+        if (featureToggles.debugLogging.enabled) {
+            winston.info(`Trying to get user from fript-db by Facebook token: ` + facebookToken)
+        }
+
         if (featureToggles.mockDb.enabled) {
             return Try.of(() => Promise.resolve(Optional.of({
                 id: "123456789",
@@ -31,7 +36,7 @@ class FacebookTokenRepository {
             .map(user => Optional.ofNullable(user));
     }
 
-    storeFacebookToken(facebookToken, user) {
+    tryStoreFacebookToken(facebookToken, user) {
         const sql = `INSERT INTO facebook_token(token, user_id)
                 VALUES($(token), $(user_id))`;
         const params = {
@@ -41,6 +46,16 @@ class FacebookTokenRepository {
         const result = this.db.query(sql, params);
         return Try.of(() => result)
             .map(nothing => user);
+    }
+
+    storeFacebookToken(facebookToken, user) {
+        const sql = `INSERT INTO facebook_token(token, user_id)
+                VALUES($(token), $(user_id))`;
+        const params = {
+            token: facebookToken,
+            user_id: user.id
+        };
+        return this.db.query(sql, params);
     }
 }
 

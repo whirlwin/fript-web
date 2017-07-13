@@ -2,6 +2,7 @@ const Methods = require('./http-methods');
 
 module.exports = {
     root: { method: Methods.get, href: '/' },
+    createUser: { methid: Methods.post, href: '/user' },
     logIn: { method: Methods.get, href: '/user/login' },
 
     getGymTypeOnboarding: { method: Methods.get, href: '/onboarding/gym-type' },

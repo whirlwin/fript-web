@@ -8,6 +8,7 @@ const UserValidator = require('./UserValidator');
 
 let instance;
 
+// TODO: Fix problem with promise (try-js) or use other implementation UserService
 class UserService {
 
     constructor() {
@@ -36,18 +37,27 @@ class UserService {
         return this.facebookApiFacade.tryGetDetailsByFacebookToken(facebookToken)
             .map(facebookUser => this.userMapper.mapToUser(facebookUser))
             .flatMap(user => this.userRepository.tryCreateUser(user))
-            .flatMap(user => this.facebookTokenRepository.storeFacebookToken(facebookToken, user))
+            .flatMap(user => this.facebookTokenRepository.tryStoreFacebookToken(facebookToken, user))
             .flatMap(user => this.userRepository.getUserById(user.id));
     }
 
     createUser(facebookToken) {
-        return this.facebookApiFacade.getDetails(facebookToken)
+        return this.facebookApiFacade.getFacebookUser(facebookToken)
+            .then(facebookUser => this.userMapper.mapToUser(facebookUser))
+            .then(user => this.userRepository.createUser(user))
+            .then(user => this.facebookTokenRepository.tryStoreFacebookToken(facebookToken, user));
+    }
+
+    /*
+    createUser(facebookToken) {
+        return this.facebookApiFacade.getFacebookUser(facebookToken)
             .then(details => this.userMapper.mapToUser(details))
             .then(user => this.userRepository.createUser(user))
     }
+    */
 
     updateUser(user, userId) {
-        return this.userValidator.validateUpdateUser(user)
+        return this.userValidator.tryValidateUpdateUser(user)
             .flatMap(user => this.userRepository.updateUser())
     }
 

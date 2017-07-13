@@ -10,6 +10,7 @@ const ServiceDocController = require('./ServiceDocController');
 const UserController = require('./user/UserController');
 
 const RequestLogger = require('./RequestLogger');
+const UserRouter = require('./user/UserRouter');
 
 class Router {
 
@@ -25,14 +26,17 @@ class Router {
         this.pendingMatchController = new PendingMatchController();
     }
 
+    // TODO: Use .bind to avoid getInstance static methods in service - see fript-web for more details
     route(app) {
         app.use(RequestLogger);
+        app.use(UserRouter);
 
         this.router.get(Paths.root.href,
             this.serviceDocController.getServiceDoc);
 
-        this.router.get(Paths.logIn.href,
-            this.userController.logIn);
+        // TODO: Remove when login works
+        //this.router.get(Paths.logIn.href,
+        //    this.userController.logIn);
 
         this.router.get(Paths.getGymTypeOnboarding.href,
             this.onboardingController.getGymTypeOnboarding);
