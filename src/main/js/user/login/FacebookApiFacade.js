@@ -1,7 +1,9 @@
 const FB = require('fb');
 const featureToggles = require('../../settings/feature-toggles');
-const Try = require('try-js');
+const UserMapper = require('../UserMapper');
 const winston = require('winston');
+
+const FB_FIELDS = [ 'id', 'email', 'name', 'picture' ];
 
 class FacebookApiFacade {
 
@@ -10,43 +12,7 @@ class FacebookApiFacade {
             appId: process.env.FACEBOOK_APP_ID,
             appSecret: process.env.FACEBOOK_APP_SECRET
         });
-    }
-
-    tryGetDetailsByFacebookToken(facebookToken) {
-        if (featureToggles.debugLogging.enabled) {
-            winston.info("Trying to get user from Facebook by Facebook token: " + facebookToken)
-        }
-
-        if (featureToggles.mockFacebookApi.enabled) {
-            return Try.of(() => Promise.resolve({
-                id: "123456789",
-                email: "john.doe@example.org",
-                name: "John Doe",
-                picture: { data: { url: "http://example.org/picture.jpg" } }
-            }));
-        }
-
-        return Try.of(() => facebookToken)
-            .map(token => new Promise((resolve, reject) => {
-                FB.api('/me', { fields: [ 'id', 'email', 'name', 'picture' ], access_token: facebookToken }, (res) => {
-                    if (res.error) {
-                        reject(res.error);
-                    } else {
-                        resolve(res);
-                    }
-                });
-            }));
-        /*
-        return Try.of(() => new Promise((resolve, reject) => {
-            FB.api('/me', { fields: [ 'id', 'email', 'name', 'picture' ], access_token: facebookToken }, (res) => {
-                if (res.error) {
-                    reject(res.error);
-                } else {
-                    resolve(res);
-                }
-            });
-        }));
-        */
+        this.userMapper = new UserMapper();
     }
 
     getFacebookUser(facebookToken) {
@@ -59,11 +25,12 @@ class FacebookApiFacade {
             });
         } else {
             return new Promise((resolve, reject) => {
-                FB.api('/me', { fields: [ 'id', 'email', 'name', 'picture' ], access_token: facebookToken }, (res) => {
-                    if (res.error) {
-                        reject(res.error);
+                FB.api('/me', { fields: FB_FIELDS, access_token: facebookToken }, (facebookUser) => {
+                    if (facebookUser.error) {
+                        reject(facebookUser.error);
                     } else {
-                        resolve(res);
+                        const user = this.userMapper.mapToUser(facebookUser);
+                        resolve(user);
                     }
                 });
             });

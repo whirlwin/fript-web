@@ -1,7 +1,7 @@
 const hal = require('hal');
-const PathConstants = require('./paths');
+const PathConstants = require('../paths');
 
-class ServiceDocController {
+class NavigationController {
 
     getServiceDoc(req, res) {
         const root = new hal.Resource();
@@ -16,4 +16,4 @@ class ServiceDocController {
     }
 }
 
-module.exports = ServiceDocController;
+module.exports = NavigationController;

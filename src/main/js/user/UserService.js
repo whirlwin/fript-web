@@ -29,6 +29,13 @@ class UserService {
 
     logIn(facebookToken) {
         return this.facebookTokenRepository.getUserByFacebookToken(facebookToken)
+            .catch(err => this.facebookApiFacade.getFacebookUser(facebookToken))
+            .then(user => this.userRepository.createUser(user))
+            .then(user => this.facebookTokenRepository.storeFacebookToken(facebookToken, user));
+    }
+
+    tryLogIn(facebookToken) {
+        return this.facebookTokenRepository.getUserByFacebookToken(facebookToken)
             .filter(maybeUser => maybeUser.isPresent())
             .orElse(() => this.tryHandleGetAndCreateUser(facebookToken));
     }
@@ -59,13 +66,6 @@ class UserService {
     updateUser(user, userId) {
         return this.userValidator.tryValidateUpdateUser(user)
             .flatMap(user => this.userRepository.updateUser())
-    }
-
-    static getInstance() {
-        if (instance == null) {
-            instance = new UserService();
-        }
-        return instance;
     }
 }
 

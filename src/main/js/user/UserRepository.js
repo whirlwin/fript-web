@@ -42,7 +42,8 @@ class UserReposiory {
             name: user.name,
             picture_url: user.picture_url
         };
-        return this.db.query(sql, params);
+        return this.db.query(sql, params)
+            .then(result => user);
     }
 
     updateUser(user) {

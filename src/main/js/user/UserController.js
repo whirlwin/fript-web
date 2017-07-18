@@ -15,8 +15,19 @@ class UserController {
             .then(facebookToken => this.userService.createUser(facebookToken));
     }
 
-    // TODO: Deprecated - might not work - remove when safe
     logIn(req, res) {
+        this.userValidator.validateHasFacebookToken(req.query.facebookToken)
+            .then(facebookToken => this.userService.logIn(facebookToken))
+            .then(user => res.json(user))
+            .catch(err => {
+                winston.error("Failed to log in user ", err);
+                return res.status(500).json(ErrorCodes.login)
+            });
+
+    }
+
+    // TODO: Deprecated - might not work - remove when safe
+    tryLogIn(req, res) {
         this.userValidator.tryValidateHasFacebookToken(req.query.facebookToken)
             .flatMap(facebookToken => UserService.getInstance().logIn(facebookToken))
             .filter(maybeUser => maybeUser.isPresent())
