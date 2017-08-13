@@ -14,11 +14,26 @@ class UserService {
         this.userValidator = new UserValidator();
     }
 
-    logIn(facebookToken) {
+    logInWithFacebookToken(facebookToken) {
         return this.facebookTokenRepository.getUserByFacebookToken(facebookToken)
             .catch(err => this.facebookApiFacade.getFacebookUser(facebookToken))
             .then(user => this.userRepository.createUser(user))
             .then(user => this.facebookTokenRepository.storeFacebookToken(facebookToken, user));
+    }
+
+    logInWithAuthHeader(authHeader) {
+        const facebookToken = this._extractFacebookToken(authHeader);
+        return this.logInWithFacebookToken(facebookToken);
+    }
+
+    getUserByAuthHeader(authHeader) {
+        const facebookToken = this._extractFacebookToken(authHeader);
+        return this.facebookTokenRepository.getUserByFacebookToken(facebookToken);
+
+    }
+
+    _extractFacebookToken(authHeader) {
+        return authHeader.replace('Bearer ', '');
     }
 }
 

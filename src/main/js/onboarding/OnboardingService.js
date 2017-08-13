@@ -2,8 +2,6 @@ const GymTypeOnboardingService = require('./GymTypeOnboardingService');
 const GymCenterOnboardingService = require('./GymCenterOnboardingService');
 const UserOnboardingService = require('./UserOnboardingService');
 
-let instance;
-
 class OnboardingService {
 
     constructor() {
@@ -21,15 +19,7 @@ class OnboardingService {
     }
 
     getUserOnboarding(user) {
-        console.log('foobar');
         return this.userOnboardingService.getUserOnboarding(user);
-    }
-
-    static getInstance() {
-        if (instance == null) {
-            instance = new OnboardingService();
-        }
-        return instance;
     }
 }
 

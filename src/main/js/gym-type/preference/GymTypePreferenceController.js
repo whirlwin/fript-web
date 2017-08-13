@@ -1,4 +1,4 @@
-const ErrorCodes = require('../../ErrorCodes');
+const ErrorCodes = require('../../error/ErrorCodes');
 const GymTypePreferenceService = require('./GymTypePreferenceService');
 const UserService = require('../../user/UserService');
 const winston = require('winston');

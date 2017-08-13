@@ -2,11 +2,36 @@ const UserService = require('../user/UserService');
 const OnboardingAssembler = require('./OnboardingAssembler');
 const OnboardingService = require('./OnboardingService');
 const winston = require('winston');
-const ErrorCodes = require('../ErrorCodes');
+const ErrorCodes = require('../error/ErrorCodes');
 
 class OnboardingController {
 
+    constructor() {
+        this.userService = new UserService();
+        this.onboardingService = new OnboardingService();
+    }
+
+    getUserTypeOnboarding(req, res, next) {
+        const authHeader = req.headers.authorization;
+        this.userService.getUserByAuthHeader(authHeader)
+            .then(user => this.onboardingService.getUserOnboarding(user))
+            .then(userOnboarding =>  res.json(userOnboarding))
+            .catch(err => {
+                winston.error("Failed to get user onboarding ", err);
+                res.status(500).json(ErrorCodes.getUserOnboarding);
+            });
+    }
+
     getGymTypeOnboarding(req, res) {
+        const authHeader = req.headers.authorization;
+        this.userService.getUserByAuthHeader(authHeader);
+    }
+
+    getGymCenterOnboarding(req, res) {
+        const authHeader = req.headers.authorization;
+    }
+
+    getGymTypeOnboardingOld(req, res) {
         const authHeader = req.headers.authorization;
         UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
@@ -20,7 +45,7 @@ class OnboardingController {
     }
 
     // TODO: Finish
-    getGymCenterOnboarding(req, res) {
+    getGymCenterOnboardingOld(req, res) {
         const authHeader = req.headers.authorization;
         UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
@@ -31,7 +56,7 @@ class OnboardingController {
             .onFailure(err => res.status(500).json(ErrorCodes.getGymCenterPreference))
     }
 
-    getUserOnboarding(req, res) {
+    getUserOnboardingOld(req, res) {
         const authHeader = req.headers.authorization;
         UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
