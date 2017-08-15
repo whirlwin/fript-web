@@ -14,8 +14,7 @@ class GymTypePreferenceRepository {
                 INNER JOIN gym_type gt ON gt.id = gtp.gym_type_id
                 WHERE gtp.user_id = $(user_id)`;
         const params = { user_id: userId };
-        const result = this.db.query(sql, params);
-        return Try.of(() => result);
+        return this.db.query(sql, params);
     }
 
     createPreference(preference, userId) {

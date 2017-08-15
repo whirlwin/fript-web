@@ -7,12 +7,9 @@ class UserMiddleware {
     }
 
     getUserByAuthHeader(req, res, next) {
-        //next("error!");
-        //return;
         const authHeader = req.headers.authorization;
-        return this.userService.logInWithFacebookToken(authHeader)
+        return this.userService.logInWithAuthHeader(authHeader)
             .then(user => {
-                console.log("foobar")
                 req.user = user;
                 next();
             }).catch(err => next(err))

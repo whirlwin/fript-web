@@ -9,8 +9,7 @@ class GymTypeRepository {
 
     getGymTypes() {
         const sql = `SELECT * from gym_type`;
-        const result = this.db.query(sql);
-        return Try.of(() => result);
+        return this.db.query(sql);
     }
 }
 

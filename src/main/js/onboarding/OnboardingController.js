@@ -9,6 +9,7 @@ class OnboardingController {
     constructor() {
         this.userService = new UserService();
         this.onboardingService = new OnboardingService();
+        this.onboardingAssembler = new OnboardingAssembler();
     }
 
     getUserTypeOnboarding(req, res, next) {
@@ -24,7 +25,10 @@ class OnboardingController {
 
     getGymTypeOnboarding(req, res) {
         const authHeader = req.headers.authorization;
-        this.userService.getUserByAuthHeader(authHeader);
+        this.userService.getUserByAuthHeader(authHeader)
+            .then(user => this.onboardingService.getGymTypeOnboarding(user))
+            .then(gymTypeOnboarding => this.onboardingAssembler.assembleGymTypeOnboarding(gymTypeOnboarding))
+            .then(onboarding => res.send(onboarding))
     }
 
     getGymCenterOnboarding(req, res) {
@@ -36,7 +40,7 @@ class OnboardingController {
         UserService.getInstance().getUserByAuthHeader(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
-            .flatMap(user => OnboardingService.getInstance().getGymTypeOnboarding(user))
+            .flatMap(user => OnboardingService.getInstance().getGymTypeOnboardingOld(user))
             .map(gymTypeOnboarding => OnboardingAssembler.getInstance().assembleGymTypeOnboarding(gymTypeOnboarding))
             .onSuccess(onboarding =>  res.send(onboarding))
             .onFailure(err => console.log(err))

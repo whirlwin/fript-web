@@ -10,9 +10,8 @@ class GymTypePreferenceService {
         this.gymTypePreferenceValidator = new GymTypePreferenceValidator();
     }
 
-    getPreferences(user) {
-        const userId = user.id;
-        return this.gymTypePreferenceRepository.getPreferencesByUserId(userId);
+    getGymTypePreferences(user) {
+        return this.gymTypePreferenceRepository.getPreferencesByUserId(user.id);
     }
 
     createPreference(preference, user) {
@@ -26,13 +25,6 @@ class GymTypePreferenceService {
         return this.gymTypePreferenceValidator.validateUpdatePreference(preference)
             .flatMap(pref => this.gymTypePreferenceRepository.updatePreference(pref, userId));
 
-    }
-
-    static getInstance() {
-        if (instance == null) {
-            instance = new GymTypePreferenceService();
-        }
-        return instance;
     }
 }
 

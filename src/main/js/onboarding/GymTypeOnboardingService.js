@@ -10,8 +10,8 @@ class GymTypeOnboardingService {
 
     getGymTypeOnboarding(user) {
         return this.gymTypeService.getGymTypes()
-            .flatMap(types => this.gymTypePreferenceService.getGymTypePreferences(user)
-                .map(prefs => this.combineTypeAndPrefs(types, prefs)));
+            .then(types => this.gymTypePreferenceService.getGymTypePreferences(user)
+                .then(prefs => this.combineTypeAndPrefs(types, prefs)));
     }
 
     combineTypeAndPrefs(types, prefs) {
