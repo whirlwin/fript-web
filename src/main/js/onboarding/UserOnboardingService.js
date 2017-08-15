@@ -7,7 +7,8 @@ class UserOnboardingService  {
     }
 
     getUserOnboarding(user) {
-        return null;
+        user.
+        return ;
     }
 }
 

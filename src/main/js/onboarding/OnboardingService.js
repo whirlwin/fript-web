@@ -10,16 +10,16 @@ class OnboardingService {
         this.userOnboardingService = new UserOnboardingService();
     }
 
+    getUserOnboarding(user) {
+        return this.userOnboardingService.getUserOnboarding(user);
+    }
+
     getGymTypeOnboarding(user) {
         return this.gymTypeOnboardingService.getGymTypeOnboarding(user);
     }
 
     getGymCenterOnboarding(user) {
         return this.gymCenterOnboardingService.getGymCenterOnboarding(user);
-    }
-
-    getUserOnboarding(user) {
-        return this.userOnboardingService.getUserOnboarding(user);
     }
 }
 
