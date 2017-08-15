@@ -2,7 +2,7 @@ let API_KEYS;
 
 class ApiKeyService {
 
-    constructor() {
+    initializeApiKeys() {
         API_KEYS = process.env.API_KEYS.split(',');
     }
 

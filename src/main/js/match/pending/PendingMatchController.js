@@ -1,5 +1,5 @@
 const winston = require('winston');
-const ErrorCodes = require('../../error/ErrorCodes');
+const ErrorCodes = require('../../error/ErrorCodeEnum');
 const PendingMatchService = require('./PendingMatchService');
 const Try = require('try-js');
 const UserService = require('../../user/UserService');

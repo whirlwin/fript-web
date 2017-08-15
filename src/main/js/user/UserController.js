@@ -1,6 +1,6 @@
 const UserService = require('./UserService');
 const UserValidator = require('./UserValidator');
-const ErrorCodes = require('../error/ErrorCodes');
+const ErrorCodes = require('../error/ErrorCodeEnum');
 const winston = require('winston');
 
 class UserController {

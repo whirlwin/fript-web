@@ -2,7 +2,7 @@ const AppConfig = require('./config/AppConfig');
 const Router = require('./Router');
 const winston = require('winston');
 
-class App {
+class Api {
 
     constructor() {
         this.appConfig = new AppConfig();
@@ -18,9 +18,9 @@ class App {
 
     start() {
         this.app.listen(this.httpPort, () => {
-            winston.info(`app started on port: ${this.httpPort}`)
+            winston.info(`api started on port: ${this.httpPort}`)
         });
     }
 }
 
-module.exports = App;
+module.exports = Api;

@@ -29,10 +29,14 @@ module.exports = {
     },
     getUserOnboarding: {
         id: 8,
-        displayMsg: 'Could not '
+        displayMsg: 'Could not get user onboarding - try again later'
+    },
+    getGymTypeOnboarding: {
+        id: 9,
+        displayMsg: 'Could not get gym type onboarding - try again later'
     },
     getPendingMatches: {
-        id: 9,
+        id: 10,
         displayMsg: 'Could not get pending matches - try again later'
     }
 };

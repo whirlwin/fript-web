@@ -7,6 +7,7 @@ let ErrorHandlerMiddleware;
 
 class Router {
 
+    // TODO: Require at top when strange DB issues are resolved
     requireRouters() {
         ApiKeyMiddlware = require('./security/ApiKeyMiddleware');
         RequestLoggerMiddleware = require('./RequestLoggerMiddleware');
