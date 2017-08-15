@@ -1,5 +1,5 @@
 const express = require('express');
-const Paths = require('../paths');
+const Paths = require('../PathEnum');
 const OnboardingController = require('./OnboardingController');
 const UserMiddlware = require('../user/UserMiddleware');
 

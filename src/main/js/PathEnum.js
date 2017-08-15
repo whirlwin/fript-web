@@ -1,4 +1,4 @@
-const Methods = require('./http-methods');
+const Methods = require('./HttpMethodEnum');
 
 module.exports = {
     root: { method: Methods.get, href: '/' },

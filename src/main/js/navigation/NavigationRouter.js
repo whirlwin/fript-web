@@ -1,5 +1,5 @@
 const express = require('express');
-const Paths = require('../paths');
+const Paths = require('../PathEnum');
 const NavigationController = require('./NavigationController');
 
 const router = express.Router();

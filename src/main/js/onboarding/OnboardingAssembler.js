@@ -1,5 +1,5 @@
 const hal = require('hal');
-const Paths = require('../paths');
+const Paths = require('../PathEnum');
 
 class OnboardingAssembler {
 
