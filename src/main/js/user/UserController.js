@@ -16,7 +16,8 @@ class UserController {
     }
 
     logIn(req, res) {
-        this.userValidator.validateHasFacebookToken(req.query.facebookToken)
+        const facebookToken = req.body.facebookToken;
+        this.userValidator.validateHasFacebookToken(facebookToken)
             .then(facebookToken => this.userService.logInWithFacebookToken(facebookToken))
             .then(user => res.json(user))
             .catch(err => {

@@ -15,11 +15,11 @@ class OnboardingController {
     getUserTypeOnboarding(req, res, next) {
         const authHeader = req.headers.authorization;
         this.userService.getUserByAuthHeader(authHeader)
-            .then(user => this.onboardingService.getUserOnboarding(user))
-            .then(userOnboarding =>  res.json(userOnboarding))
+            .then(user => this.onboardingService.getUserTypeOnboarding(user))
+            .then(userTypeOnboarding =>  res.json(userTypeOnboarding))
             .catch(err => {
                 winston.error("Failed to get user onboarding", err);
-                res.status(500).json(ErrorCodes.getUserOnboarding);
+                res.status(500).json(ErrorCodes.getUserTypeOnboarding);
             });
     }
 

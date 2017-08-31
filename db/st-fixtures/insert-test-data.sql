@@ -2,6 +2,7 @@ INSERT INTO users(id, email, name, picture_url) VALUES(1, 'john.doe@example.org'
 INSERT INTO users(id, email, name, picture_url) VALUES(2, 'jane.doe@example.org', 'Jane Doe', '');
 INSERT INTO users(id, email, name, picture_url) VALUES(3, 'joe.doe@example.org', 'Joe Doe', '');
 INSERT INTO users(id, email, name, picture_url) VALUES(4, 'zoe.doe@example.org', 'Zoe Doe', '');
+INSERT INTO users(id, email, name, picture_url) VALUES(4, 'whirlwin90@gmail.org', 'Øyvind Ødegård', '');
 
 INSERT INTO facebook_token(token, user_id) VALUES('test', 1);
 

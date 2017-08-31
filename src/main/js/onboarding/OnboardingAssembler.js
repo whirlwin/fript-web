@@ -4,7 +4,7 @@ const Paths = require('../PathEnum');
 class OnboardingAssembler {
 
     assembleUserOnboarding(userOnboarding) {
-        let resource = new hal.Resource({}, Paths.getUserOnboarding.href);
+        let resource = new hal.Resource({}, Paths.getUserTypeOnboarding.href);
         resource.embed('gymTypeOnboarding', userOnboarding);
         return resource;
     }

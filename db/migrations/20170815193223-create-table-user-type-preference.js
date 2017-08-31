@@ -1,18 +1,17 @@
 exports.up = function(db, cb) {
-    db.createTable('gym_type_preference', {
+    db.createTable('user_type_preference', {
         id: { type: 'int', primaryKey: true, autoIncrement: true },
-        gym_type_id: { type: 'int', notNull: true },
         user_id: { type: 'string', notNull: true },
-        status: { type: 'string', notNull: true, },
+        user_type: { type: 'string', notNull: true },
         created: { type: 'date', defaultValue: 'now()' },
         updated: { type: 'date', defaultValue: 'now()' }
     }, cb);
 };
 
 exports.down = function(db, cb) {
-    db.dropTable('gym_type_preference', cb);
+    db.dropTable('user_type_preference', cb);
 };
 
 exports._meta = {
-    "version": 1
+  "version": 1
 };

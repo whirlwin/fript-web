@@ -1,6 +1,3 @@
 #!/usr/bin/env bash
 
-db-migrate \
-    --migrations-dir=./db/migrations \
-    create "insert-into-$1" \
-    --sql-file
+touch "./db/sqls/$(date +%Y%m%d%H%M%S)-create-table-$1.js"

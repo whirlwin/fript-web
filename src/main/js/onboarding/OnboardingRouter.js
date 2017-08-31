@@ -7,7 +7,7 @@ const router = express.Router();
 const onboardingController = new OnboardingController();
 const userMiddlware = new UserMiddlware();
 
-router.get(Paths.getUserOnboarding.href, userMiddlware.getUserByAuthHeader.bind(userMiddlware), onboardingController.getUserTypeOnboarding.bind(onboardingController));
+router.get(Paths.getUserTypeOnboarding.href, userMiddlware.getUserByAuthHeader.bind(userMiddlware), onboardingController.getUserTypeOnboarding.bind(onboardingController));
 router.get(Paths.getGymTypeOnboarding.href, onboardingController.getGymTypeOnboarding.bind(onboardingController));
 router.get(Paths.getGymCenterOnboarding.href, onboardingController.getGymCenterOnboarding.bind(onboardingController));
 

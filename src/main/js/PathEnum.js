@@ -3,11 +3,11 @@ const Methods = require('./HttpMethodEnum');
 module.exports = {
     root: { method: Methods.get, href: '/' },
     createUser: { methid: Methods.post, href: '/user' },
-    logIn: { method: Methods.get, href: '/user/login' },
+    logIn: { method: Methods.post, href: '/user/login' },
 
     getGymTypeOnboarding: { method: Methods.get, href: '/onboarding/gym-type' },
     getGymCenterOnboarding: { method: Methods.get, href: '/onboarding/gym-center' },
-    getUserOnboarding: { method: Methods.get, href: '/onboarding/user' },
+    getUserTypeOnboarding: { method: Methods.get, href: '/onboarding/user/type' },
 
     createGymCenterPreference: { method: Methods.post, href: '/gym-center/preference' },
     updateGymCenterPreference: { method: Methods.put, href: '/gym-center/preference' },

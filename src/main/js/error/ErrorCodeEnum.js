@@ -27,9 +27,9 @@ module.exports = {
         id: 7,
         displayMsg: 'Could not update gym center preference - try again later'
     },
-    getUserOnboarding: {
+    getUserTypeOnboarding: {
         id: 8,
-        displayMsg: 'Could not get user onboarding - try again later'
+        displayMsg: 'Could not get user type onboarding - try again later'
     },
     getGymTypeOnboarding: {
         id: 9,

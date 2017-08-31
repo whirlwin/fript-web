@@ -29,6 +29,7 @@ class FacebookApiFacade {
                     if (facebookUser.error) {
                         reject(facebookUser.error);
                     } else {
+                        console.log(facebookUser)
                         const user = this.userMapper.mapToUser(facebookUser);
                         resolve(user);
                     }

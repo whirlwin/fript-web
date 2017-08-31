@@ -8,3 +8,4 @@ DROP TABLE migrations;
 DROP TABLE pending_match;
 DROP TABLE rejected_match;
 DROP TABLE users;
+DROP TABLE user_type_preference;
