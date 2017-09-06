@@ -38,5 +38,9 @@ module.exports = {
     getPendingMatches: {
         id: 10,
         displayMsg: 'Could not get pending matches - try again later'
+    },
+    createFeedback: {
+        id: 11,
+        displayMsg: 'Could not create feedback - try again later'
     }
 };

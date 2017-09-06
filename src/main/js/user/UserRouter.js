@@ -1,5 +1,5 @@
 const express = require('express');
-const Paths = require('../PathEnum');
+const Paths = require('../routing/PathEnum');
 const UserController = require('./UserController');
 
 const router = express.Router();

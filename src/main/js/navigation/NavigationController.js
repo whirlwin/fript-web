@@ -1,5 +1,5 @@
 const hal = require('hal');
-const PathConstants = require('../PathEnum');
+const PathConstants = require('../routing/PathEnum');
 
 class NavigationController {
 

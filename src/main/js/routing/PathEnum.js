@@ -5,6 +5,8 @@ module.exports = {
     createUser: { methid: Methods.post, href: '/user' },
     logIn: { method: Methods.post, href: '/user/login' },
 
+    createFeedback: { method: Methods.post, href: '/feedback' },
+
     getGymTypeOnboarding: { method: Methods.get, href: '/onboarding/gym-type' },
     getGymCenterOnboarding: { method: Methods.get, href: '/onboarding/gym-center' },
     getUserTypeOnboarding: { method: Methods.get, href: '/onboarding/user/type' },

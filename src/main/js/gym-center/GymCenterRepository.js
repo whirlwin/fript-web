@@ -1,5 +1,4 @@
 const DbProvider = require('../DBProvider');
-const Try = require('try-js');
 
 class GymCenterRepository {
 
@@ -8,9 +7,8 @@ class GymCenterRepository {
     }
 
     getGymCenters() {
-        const sql = `SELECT * from gym_center`;
-        const result = this.db.query(sql);
-        return Try.of(() => result);
+        const sql = "SELECT * from gym_center";
+        return this.db.query(sql);
     }
 }
 

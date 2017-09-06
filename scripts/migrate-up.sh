@@ -8,8 +8,5 @@ fi
 
 export ENV
 
-db-migrate \
-    --migrations-dir=./db/migrations \
-    --vcseeder-dir=./db/migrations/seeds \
-    up
+db-migrate --migrations-dir=./db/migrations up
 

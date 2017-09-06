@@ -1,5 +1,5 @@
 const AppConfig = require('./config/AppConfig');
-const Router = require('./Router');
+const Router = require('./routing/ApiRouter');
 const winston = require('winston');
 
 class Api {
