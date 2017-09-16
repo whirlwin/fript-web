@@ -1,14 +1,13 @@
-const express = require('express');
-const Paths = require('../routing/PathEnum');
-const OnboardingController = require('./OnboardingController');
-const UserMiddlware = require('../user/UserMiddleware');
+const Path = require("./OnboardingPathEnum");
+const OnboardingController = require("./OnboardingController");
+const UserMiddlware = require("../user/UserMiddleware");
+const ExpressRouter = require("../routing/ExpressRouter");
 
-const router = express.Router();
+const router = new ExpressRouter();
 const onboardingController = new OnboardingController();
 const userMiddlware = new UserMiddlware();
 
-router.get(Paths.getUserTypeOnboarding.href, userMiddlware.getUserByAuthHeader.bind(userMiddlware), onboardingController.getUserTypeOnboarding.bind(onboardingController));
-router.get(Paths.getGymTypeOnboarding.href, onboardingController.getGymTypeOnboarding.bind(onboardingController));
-router.get(Paths.getGymCenterOnboarding.href, onboardingController.getGymCenterOnboarding.bind(onboardingController));
+router.route(Path.getGymTypeOnboarding, onboardingController.getGymTypeOnboarding.bind(onboardingController));
+router.route(Path.getGymCenterOnboarding, onboardingController.getGymCenterOnboarding.bind(onboardingController));
 
-module.exports = router;
+module.exports = router.getRouter();

@@ -12,17 +12,6 @@ class OnboardingController {
         this.onboardingAssembler = new OnboardingAssembler();
     }
 
-    getUserTypeOnboarding(req, res, next) {
-        const authHeader = req.headers.authorization;
-        this.userService.getUserByAuthHeader(authHeader)
-            .then(user => this.onboardingService.getUserTypeOnboarding(user))
-            .then(userTypeOnboarding =>  res.json(userTypeOnboarding))
-            .catch(err => {
-                winston.error("Failed to get user onboarding", err);
-                res.status(500).json(ErrorCodes.getUserTypeOnboarding);
-            });
-    }
-
     getGymTypeOnboarding(req, res) {
         const authHeader = req.headers.authorization;
         this.userService.getUserByAuthHeader(authHeader)

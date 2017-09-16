@@ -1,0 +1,24 @@
+extends ../../layout
+
+block content
+  div.section.no-pad-bot
+    div.container
+      h4.gray.center Choose user type
+      div
+        form
+          div.row
+          div.center I want to...
+          div.row
+            div.input-field.col.s4
+            div.input-field.col.s4
+              input#learner-type(type="checkbox")
+              label(for="learner-type") Find personal trainers
+          div.row
+            div.input-field.col.s4
+            div.input-field.col.s4
+              input#pt-type(type="checkbox")
+              label(for="pt-type") Become a personal trainer
+          div.row
+            div.input-field.col.s4.offset-s4
+              button.btn.waves-effect.waves-light(type="submit") Next
+                i.material-icons.right send

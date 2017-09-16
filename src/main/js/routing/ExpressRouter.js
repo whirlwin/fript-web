@@ -7,11 +7,12 @@ class ExpressRouter {
         this.router = express.Router();
     }
 
-    route(path, middleware, controllerFn) {
+    route(path, controllerFn, maybeMiddleware) {
+        const middleware = ExpressRouter._handleGetMiddleware(maybeMiddleware);
         if (path.method === HttpMethodsEnum.get) {
-            return this.router.post(path, middleware, controllerFn);
+            this.router.get(path.href, controllerFn, middleware);
         } else if (path.method === HttpMethodsEnum.post) {
-            return this.router.post(path, middleware, controllerFn);
+            this.router.post(path.href, middleware, controllerFn);
         } else {
             throw Error("Could not determine router method");
         }
@@ -19,6 +20,14 @@ class ExpressRouter {
 
     getRouter() {
         return this.router;
+    }
+
+    static _handleGetMiddleware(maybeMiddleware) {
+        if (maybeMiddleware) {
+            return maybeMiddleware;
+        } else {
+            return (next) => next();
+        }
     }
 }
 

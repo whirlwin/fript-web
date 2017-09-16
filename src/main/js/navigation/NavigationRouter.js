@@ -1,10 +1,10 @@
-const express = require('express');
-const Paths = require('../routing/PathEnum');
+const Path = require("./NavigationPathEnum");
 const NavigationController = require('./NavigationController');
+const ExpressRouter = require('../routing/ExpressRouter');
 
-const router = express.Router();
-const navigationController = new NavigationController();
+const controller = new NavigationController();
+const router = new ExpressRouter();
 
-router.get(Paths.root.href, navigationController.getServiceDoc.bind(navigationController));
+router.route(Path.api, controller.getServiceDoc.bind(controller));
 
-module.exports = router;
+module.exports = router.getRouter();

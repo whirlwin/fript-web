@@ -1,11 +1,13 @@
-const AppConfig = require('./config/AppConfig');
-const Router = require('./routing/ApiRouter');
-const winston = require('winston');
+const AppConfig = require("./config/AppConfig");
+const Router = require("./routing/MainRouter");
+const winston = require("winston");
+const FacebookAuthService = require("./user/login/FacebookAuthService");
 
-class Api {
+class App {
 
     constructor() {
         this.appConfig = new AppConfig();
+        this.facebookAuthService = new FacebookAuthService();
         this.router = new Router();
     }
 
@@ -13,6 +15,7 @@ class Api {
         const { app, httpPort } = this.appConfig.configure();
         this.app = app;
         this.httpPort = httpPort;
+        this.facebookAuthService.initialize(this.app);
         this.router.route(app);
     }
 
@@ -23,4 +26,4 @@ class Api {
     }
 }
 
-module.exports = Api;
+module.exports = App;

@@ -1,13 +1,15 @@
 const hal = require('hal');
-const PathConstants = require('../routing/PathEnum');
+const Paths = require('../routing/ApiPathCollection');
 
 class NavigationController {
 
     getServiceDoc(req, res) {
         const root = new hal.Resource();
 
-        for (const rel in PathConstants) {
-            root.link(rel, { href: PathConstants[rel].href });
+        for (const path in Paths) {
+            for (const route in path) {
+                root.link(route.href, { href: PathConstants[rel].href });
+            }
         }
 
         // Cache service document for 5 minutes

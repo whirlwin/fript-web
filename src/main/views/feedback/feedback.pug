@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  div.section.no-pad-bot
+    div.container
+      h4.gray.center How are we doing?
+      div.center
+        span Let us know what you love or don't like, or request a feature to Fript
+      form(method="POST", action="/feedback")
+        div.row.center
+          div.input-field.col.s4
+          div.input-field.col.s4
+            input#content.validate(name="content", type="text", placeholder="A few words...")
+        div.row.center
+          div.input-field
+            button.btn.waves-effect.waves-light(type="submit") Submit
+              i.material-icons.right send

@@ -1,7 +1,8 @@
-const UserService = require('./UserService');
-const UserValidator = require('./UserValidator');
-const ErrorCodes = require('../error/ErrorCodeEnum');
-const winston = require('winston');
+const UserService = require("./UserService");
+const UserValidator = require("./UserValidator");
+const FacebookAuthService = require("./login/FacebookAuthService");
+const ErrorCodes = require("../error/ErrorCodeEnum");
+const winston = require("winston");
 
 class UserController {
 
@@ -15,7 +16,7 @@ class UserController {
             .then(facebookToken => this.userService.createUser(facebookToken));
     }
 
-    logIn(req, res) {
+        /*
         const facebookToken = req.body.facebookToken;
         this.userValidator.validateHasFacebookToken(facebookToken)
             .then(facebookToken => this.userService.logInWithFacebookToken(facebookToken))
@@ -24,8 +25,7 @@ class UserController {
                 winston.error("Failed to log in user ", err);
                 return res.status(500).json(ErrorCodes.login)
             });
-
-    }
+            */
 }
 
 module.exports = UserController;

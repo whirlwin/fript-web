@@ -1,5 +1,5 @@
 const hal = require('hal');
-const Paths = require('../routing/PathEnum');
+const Paths = require('../routing/ApiPathCollection');
 
 class OnboardingAssembler {
 

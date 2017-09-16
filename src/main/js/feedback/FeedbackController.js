@@ -7,6 +7,10 @@ class FeedbackController {
         this.feedbackService = new FeedbackService();
     }
 
+    renderFeedbackView(req, res) {
+        res.render("feedback/feedback");
+    }
+
     createFeedback(req, res) {
         const content = req.body.content;
         console.log(req.user);

@@ -6,8 +6,8 @@ class UserTypePreferenceService {
         this.userTypePreferenceRepository = new UserTypePreferenceRepository();
     }
 
-    getUserTypePreference(userId) {
-        return this.userTypePreferenceRepository.getUserTypePreference(userId);
+    get(userId) {
+        return this.userTypePreferenceRepository.get(userId);
     }
 }
 
