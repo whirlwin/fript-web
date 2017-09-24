@@ -1,7 +1,7 @@
 const express = require('express');
 const winston = require('winston');
 
-const featureToggles = require('../settings/feature-toggles');
+const featureToggles = require('../settings/FeatureToggles');
 
 const router = express.Router();
 

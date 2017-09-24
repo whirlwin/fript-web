@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const DbProvider = require('../../DBProvider');
-const featureToggles = require('../../settings/feature-toggles');
+const featureToggles = require('../../settings/FeatureToggles');
 const winston = require('winston');
 
 class FacebookTokenRepository {
@@ -29,16 +29,6 @@ class FacebookTokenRepository {
                 INNER JOIN facebook_token ft ON ft.user_id = u.id
                 WHERE ft.token = $(token)`;
         const params = { token: facebookToken };
-        console.log("FOOBAR")
-        console.log("FOOBAR")
-        console.log("FOOBAR")
-        console.log("FOOBAR")
-        console.log("FOOBAR")
-        console.log("FOOBAR")
-        console.log("FOOBAR")
-        console.log("FOOBAR")
-        console.log(this.db)
-        console.log(DbProvider.getDb())
         return this.db.one(sql, params);
     }
 

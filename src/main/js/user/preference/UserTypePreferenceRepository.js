@@ -1,5 +1,5 @@
 const DbProvider = require("../../DBProvider");
-const featureToggles = require("../../settings/feature-toggles");
+const featureToggles = require("../../settings/FeatureToggles");
 
 class UserTypePreferenceRepository {
 

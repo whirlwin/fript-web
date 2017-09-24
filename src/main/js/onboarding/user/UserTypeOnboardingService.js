@@ -3,11 +3,11 @@ const UserTypePreferenceService = require('../../user/preference/UserTypePrefere
 class UserTypeOnboardingService {
 
     constructor() {
-        this.userTypePreferenceService = new UserTypePreferenceService();
+        this.gymCenterPreferenceService = new UserTypePreferenceService();
     }
 
     get(userId) {
-        return this.userTypePreferenceService.get(userId)
+        return this.gymCenterPreferenceService.get(userId)
     }
 
 }

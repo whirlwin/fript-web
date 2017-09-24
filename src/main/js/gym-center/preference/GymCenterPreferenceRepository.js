@@ -1,6 +1,4 @@
-const _ = require('lodash');
 const DbProvider = require('../../DBProvider');
-const Try = require('try-js');
 
 class GymCenterPreferenceRepository {
 
@@ -12,9 +10,11 @@ class GymCenterPreferenceRepository {
         const sql = `SELECT *
                 FROM gym_center_preference gcp
                 WHERE user_id = $(user_id)`;
+        //const sql = `SELECT *
+        //        FROM gym_center_preference gcp
+        //        INNER JOIN gym_center gc ON gcp user_id = $(user_id)`;
         const params = { user_id: userId };
-        this.db.query(sql, params);
-        return Try.of(() => this.db.query(sql, params));
+        return this.db.query(sql, params);
     }
 
     createPreference(preference, userId) {

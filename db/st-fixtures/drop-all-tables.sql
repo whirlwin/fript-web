@@ -1,5 +1,6 @@
 DROP TABLE accepted_match;
 DROP TABLE facebook_token;
+DROP TABLE feedback;
 DROP TABLE gym_center;
 DROP TABLE gym_center_preference;
 DROP TABLE gym_type;

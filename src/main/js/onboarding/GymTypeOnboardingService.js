@@ -4,13 +4,13 @@ const GymTypePreferenceService = require('../gym-type/preference/GymTypePreferen
 class GymTypeOnboardingService {
 
     constructor() {
-        this.gymTypeService = new GymTypeService();
-        this.gymTypePreferenceService = new GymTypePreferenceService();
+        this.gymCenterService = new GymTypeService();
+        this.gymCenterPreferenceService = new GymTypePreferenceService();
     }
 
     getGymTypeOnboarding(user) {
-        return this.gymTypeService.getGymTypes()
-            .then(types => this.gymTypePreferenceService.getGymTypePreferences(user)
+        return this.gymCenterService.getGymTypes()
+            .then(types => this.gymCenterPreferenceService.getGymTypePreferences(user)
                 .then(prefs => this.combineTypeAndPrefs(types, prefs)));
     }
 

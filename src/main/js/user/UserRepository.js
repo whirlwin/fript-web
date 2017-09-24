@@ -1,17 +1,12 @@
-const DbProvider = require('../DBProvider');
-const featureToggles = require('../settings/feature-toggles');
-const winston = require('winston');
-
-const OnboardingStatus = {
-    NOT_STARTED: 'not_started',
-    STARTED: 'started',
-    COMPLETED: 'completed'
-};
+const DbProvider = require("../DBProvider");
+const featureToggles = require("../settings/FeatureToggles");
+const winston = require("winston");
+const OnboardingStatusEnum = require("../onboarding/OnboardingStatusEnum");
 
 const UserType = {
-    UNSPECIFIED: 'unspecified',
-    PT: 'pt',
-    NON_PT: 'non_pt'
+    UNSPECIFIED: "unspecified",
+    PT: "pt",
+    NON_PT: "non_pt"
 };
 
 class UserReposiory {
@@ -22,7 +17,7 @@ class UserReposiory {
 
     createUser(user) {
         if (featureToggles.debugLogging.enabled) {
-            winston.info('Creating user');
+            winston.info("Creating user");
         }
 
         const sql = `INSERT INTO users(id, email, name, picture_url, type, onboarding_status)
@@ -34,9 +29,9 @@ class UserReposiory {
             name: user.name,
             picture_url: user.picture_url,
             type: UserType.UNSPECIFIED,
-            onboarding_status: OnboardingStatus.NOT_STARTED
+            onboarding_status: OnboardingStatusEnum.NOT_STARTED
         };
-        return this.db.query(sql, params)
+        return DbProvider.getDb().query(sql, params)
             .then(result => user);
     }
 }

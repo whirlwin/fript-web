@@ -7,7 +7,11 @@ block content
       div.row.center
         h5.header.col.s12.light Log in to find a personal trainer that fits you
       div.row.center
-        a.btn-large.blue.darken-3.waves-effect.waves-light(href='/login/facebook') Log in with Facebook
+        if user === undefined
+          a.btn-large.blue.darken-3.waves-effect.waves-light(href="/login/facebook") Log in with Facebook
+        else
+          a.btn-large.green(href="/matching") Find training matches
+            i.material-icons.right send
   div.container
     div.section
       div.row
@@ -31,8 +35,8 @@ block content
               i.material-icons.medium monetization_on
             h5.center Spend less
             p.light
-              | Don't pay the centers an extra fee for finding a trainer.
-              | Match with trainers who don't drain your bank account.
+              | Don"t pay the centers an extra fee for finding a trainer.
+              | Match with trainers who don"t drain your bank account.
               | Lorem ipsum dolor sit amet
               | Lorem ipsum dolor sit amet
               | Lorem ipsum dolor sit amet

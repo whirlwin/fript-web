@@ -1,8 +1,6 @@
 const GymTypePreferenceRepository = require('./GymTypePreferenceRepository');
 const GymTypePreferenceValidator = require('./GymTypePreferenceValidator');
 
-let instance;
-
 class GymTypePreferenceService {
 
     constructor() {
@@ -10,8 +8,8 @@ class GymTypePreferenceService {
         this.gymTypePreferenceValidator = new GymTypePreferenceValidator();
     }
 
-    getGymTypePreferences(user) {
-        return this.gymTypePreferenceRepository.getPreferencesByUserId(user.id);
+    getGymTypePreferences(userId) {
+        return this.gymTypePreferenceRepository.get(userId);
     }
 
     createPreference(preference, user) {

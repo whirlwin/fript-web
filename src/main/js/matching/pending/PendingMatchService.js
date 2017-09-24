@@ -1,6 +1,4 @@
-const PendingMatchRepository = require('./PendingMatchRepository');
-
-let instance;
+const PendingMatchRepository = require('../MatchingRepository');
 
 class PendingMatchService {
 
@@ -18,13 +16,6 @@ class PendingMatchService {
 
     deletePendingMatch(pendingMatchId) {
         return this.pendingMatchRepository.deletePendingMatch(pendingMatchId);
-    }
-
-    static getInstance() {
-        if (instance == null)  {
-            instance = new PendingMatchService();
-        }
-        return instance;
     }
 }
 

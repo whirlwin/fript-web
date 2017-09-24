@@ -1,9 +1,9 @@
 const ExpressRouter = require('../../routing/ExpressRouter');
-const Path = require('./UserTypeOnboardingPathEnum');
-const UserTypeOnboardingController = require('./UserTypeOnboardingController');
+const Path = require('./GymTypeOnboardingPathEnum');
+const GymTypeOnboardingController = require('./GymTypeOnboardingController');
 const UserMiddleware = require('../../user/UserMiddleware');
 
-const controller = new UserTypeOnboardingController();
+const controller = new GymTypeOnboardingController();
 const middleware = new UserMiddleware();
 const router = new ExpressRouter();
 

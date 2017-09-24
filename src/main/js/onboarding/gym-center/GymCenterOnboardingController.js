@@ -1,17 +1,17 @@
 const UserService = require("../../user/UserService");
-const UserTypeOnboardingService = require("./UserTypeOnboardingService");
+const GymCenterOnboardingService = require("./GymCenterOnboardingService");
 const winston = require("winston");
 
-class UserTypeOnboardingController {
+class GymTypeOnboardingController {
 
     constructor() {
         this.userService = new UserService();
-        this.gymCenterOnboardingService = new UserTypeOnboardingService();
+        this.gymCenterOnboardingService = new GymCenterOnboardingService();
     }
 
     render(req, res) {
         this.gymCenterOnboardingService.get(req.user.id)
-            .then(userTypeOnboarding => res.render("onboarding/user-onboarding"))
+            .then(gymCenters => res.render("onboarding/gym-center-onboarding", { gymCenters: gymCenters } ))
             .catch(err => {
                 winston.error("Failed to render user user type onboarding page", err);
                 res.status(500).json({});
@@ -30,9 +30,8 @@ class UserTypeOnboardingController {
     }
 
     create(req, res) {
-        // TODO: Create user type preference
-        res.redirect("/onboarding/gym-type");
+
     }
 }
 
-module.exports = UserTypeOnboardingController;
+module.exports = GymTypeOnboardingController;

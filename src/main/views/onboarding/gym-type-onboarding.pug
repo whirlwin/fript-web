@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  div.section.no-pad-bot
+    div.container
+      h4.gray.center Choose gym types
+      div
+        form(method="POST", action="/api/onboarding/gym-type")
+          div.row
+          div.center I want to train at
+          each gymType in gymTypes
+            div.row
+              div.input-field.col.s4.offset-s4
+                input(id=gymType.name, type="checkbox")
+                label(for=gymType.name) #{gymType.name}
+          div.row
+            div.input-field.col.s4.offset-s4
+              button.btn.waves-effect.waves-light(type="submit") Next
+                i.material-icons.right send

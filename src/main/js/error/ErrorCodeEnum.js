@@ -9,7 +9,7 @@ module.exports = {
     },
     createGymTypePreference: {
         id: 3,
-        displayMsg: 'Could not create gym type preferences - try again later'
+        displayMsg: 'Could not createFeedback gym type preferences - try again later'
     },
     updateGymTypePreference: {
         id: 4,
@@ -21,7 +21,7 @@ module.exports = {
     },
     createGymCenterPreference: {
         id: 6,
-        displayMsg: 'Could not create gym center preference - try again later'
+        displayMsg: 'Could not createFeedback gym center preference - try again later'
     },
     updateGymCenterPreference: {
         id: 7,
@@ -41,6 +41,6 @@ module.exports = {
     },
     createFeedback: {
         id: 11,
-        displayMsg: 'Could not create feedback - try again later'
+        displayMsg: 'Could not createFeedback feedback - try again later'
     }
 };

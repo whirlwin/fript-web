@@ -1,13 +1,11 @@
 const AppConfig = require("./config/AppConfig");
 const Router = require("./routing/MainRouter");
 const winston = require("winston");
-const FacebookAuthService = require("./user/login/FacebookAuthService");
 
 class App {
 
     constructor() {
         this.appConfig = new AppConfig();
-        this.facebookAuthService = new FacebookAuthService();
         this.router = new Router();
     }
 
@@ -15,8 +13,15 @@ class App {
         const { app, httpPort } = this.appConfig.configure();
         this.app = app;
         this.httpPort = httpPort;
-        this.facebookAuthService.initialize(this.app);
+        App._initializeFacebookAuthService(app);
         this.router.route(app);
+    }
+
+    // Needs to be required after app has been configured (with DB) because of DB dependency from sub-requires of
+    // FacebookAuthService
+    static _initializeFacebookAuthService(app) {
+        const FacebookAuthService = require("./user/login/FacebookAuthService");
+        new FacebookAuthService().initialize(app);
     }
 
     start() {

@@ -2,6 +2,7 @@ const RouteType = require("../routing/RouteTypeEnum");
 const Method = require("../routing/HttpMethodEnum");
 
 module.exports = {
-    render: { type: RouteType.web, method: Method.get, href: "/feedback" },
-    create: { type: RouteType.api, method: Method.post, href: "/feedback" }
+    renderFeedbackForm: { type: RouteType.web, method: Method.get, href: "/feedback" },
+    createFeedback: { type: RouteType.web, method: Method.post, href: "/feedback" },
+    renderFeedbackThanks: { type: RouteType.web, method: Method.get, href: "/feedback/thanks" },
 };

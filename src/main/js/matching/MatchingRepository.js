@@ -1,7 +1,6 @@
-const DbProvider = require('../../DBProvider');
-const featureToggles = require('../../settings/feature-toggles');
+const DbProvider = require('../DBProvider');
+const featureToggles = require('../settings/FeatureToggles');
 const Optional = require('optional-js');
-const Try = require('try-js');
 
 class PendingMatchRepository {
 
@@ -21,7 +20,7 @@ class PendingMatchRepository {
         const sql = `SELECT * FROM pending_match
                 WHERE user_id = $(user_id)`;
         const params = { user_id: userId };
-        return Try.of(() => this.db.query(sql, params));
+        return this.db.query(sql, params);
     }
 
     getPendingMatch(pendingMatchId) {

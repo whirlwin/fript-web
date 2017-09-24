@@ -1,8 +1,6 @@
 const UserService = require("./UserService");
 const UserValidator = require("./UserValidator");
-const FacebookAuthService = require("./login/FacebookAuthService");
-const ErrorCodes = require("../error/ErrorCodeEnum");
-const winston = require("winston");
+const OnboardingStatusEnum = require("../onboarding/OnboardingStatusEnum");
 
 class UserController {
 
@@ -14,6 +12,18 @@ class UserController {
     createUser(req, res) {
         this.userValidator.validateHasFacebookToken(req.query.facebookToken)
             .then(facebookToken => this.userService.createUser(facebookToken));
+    }
+
+    redirectAfterLogin(req, res) {
+        if (UserController._hasCompletedOnboarding(req.user)) {
+            res.redirect("/");
+        } else {
+            res.redirect("/onboarding/user");
+        }
+    }
+
+    static _hasCompletedOnboarding(user) {
+        return user.onboardingStatus === OnboardingStatusEnum.COMPLETED;
     }
 
         /*

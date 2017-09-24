@@ -1,11 +1,11 @@
-extends ../../layout
+extends ../layout
 
 block content
   div.section.no-pad-bot
     div.container
       h4.gray.center Choose user type
       div
-        form
+        form(method="POST", action="/api/onboarding/user")
           div.row
           div.center I want to...
           div.row

@@ -10,7 +10,7 @@ class ExpressRouter {
     route(path, controllerFn, maybeMiddleware) {
         const middleware = ExpressRouter._handleGetMiddleware(maybeMiddleware);
         if (path.method === HttpMethodsEnum.get) {
-            this.router.get(path.href, controllerFn, middleware);
+            this.router.get(path.href, middleware, controllerFn);
         } else if (path.method === HttpMethodsEnum.post) {
             this.router.post(path.href, middleware, controllerFn);
         } else {
@@ -26,7 +26,7 @@ class ExpressRouter {
         if (maybeMiddleware) {
             return maybeMiddleware;
         } else {
-            return (next) => next();
+            return (req, res, next) => next();
         }
     }
 }

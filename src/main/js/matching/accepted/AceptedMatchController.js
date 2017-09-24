@@ -6,7 +6,7 @@ class AcceptedMatchController {
 
     getAcceptedMatches(req, res) {
         const authHeader = req.headers.authorization;
-        UserService.getInstance().getUserByAuthHeader(authHeader)
+        UserService.getInstance().resolveUser(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => AcceptedMatchService.getInstance().getAcceptedMatches(user.id))
@@ -18,7 +18,7 @@ class AcceptedMatchController {
     acceptMatch(req, res) {
         const authHeader = req.headers.authorization;
         const pendingMatchId = req.body.pendingMatchId;
-        UserService.getInstance().getUserByAuthHeader(authHeader)
+        UserService.getInstance().resolveUser(authHeader)
             .filter(maybeUser => maybeUser.isPresent())
             .map(maybeUser => maybeUser.get())
             .flatMap(user => AcceptedMatchService.getInstance().acceptMatch(user.id, pendingMatchId))

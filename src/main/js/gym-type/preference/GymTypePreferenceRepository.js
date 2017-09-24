@@ -1,6 +1,5 @@
-const _ = require('lodash');
-const DbProvider = require('../../DBProvider');
-const Try = require('try-js');
+const DbProvider = require("../../DBProvider");
+const FeatureToggles = require("../../settings/FeatureToggles");
 
 class GymTypePreferenceRepository {
 
@@ -8,7 +7,18 @@ class GymTypePreferenceRepository {
         this.db = DbProvider.getDb();
     }
 
-    getPreferencesByUserId(userId) {
+    get(userId) {
+        if (FeatureToggles.mockDb.enabled) {
+            return Promise.resolve([{
+                id: 123,
+                gym_type_id: 456,
+                user_id: 789,
+                status: "active",
+                created: new Date(),
+                updated: new Date()
+            }]);
+        }
+
         const sql = `SELECT *
                 FROM gym_type_preference gtp
                 INNER JOIN gym_type gt ON gt.id = gtp.gym_type_id

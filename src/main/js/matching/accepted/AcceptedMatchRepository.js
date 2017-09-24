@@ -1,5 +1,5 @@
 const DbProvider = require('../../DBProvider');
-const featureToggles = require('../../settings/feature-toggles');
+const featureToggles = require('../../settings/FeatureToggles');
 const Try = require('try-js');
 
 class AcceptedMatchRepository {

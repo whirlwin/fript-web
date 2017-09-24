@@ -1,5 +1,5 @@
 const FB = require('fb');
-const featureToggles = require('../../settings/feature-toggles');
+const featureToggles = require('../../settings/FeatureToggles');
 const UserMapper = require('../UserMapper');
 const winston = require('winston');
 

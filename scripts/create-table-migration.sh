@@ -9,4 +9,4 @@ fi
 
 db-migrate \
     --migrations-dir=./db/migrations \
-    create "create-table-$1"
+    create "createFeedback-table-$1"

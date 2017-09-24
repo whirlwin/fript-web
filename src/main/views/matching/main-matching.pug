@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  div.section.no-pad-bot
+    div.container
+      h4.gray.center Choose matches
+      div
+        form(method="POST", action="/api/match")
+          div.row
+          div.center Match me
+          each pendingMatch in pendingMatches
+            div.row
+              div.input-field.col.s4.offset-s4
+                div #{pendingMatch}

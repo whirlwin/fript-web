@@ -6,7 +6,7 @@ class GymCenterService {
         this.gymCenterRepository = new GymCenterRepository();
     }
 
-    getGymCenters() {
+    get() {
         return this.gymCenterRepository.getGymCenters();
     }
 }
