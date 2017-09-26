@@ -14,7 +14,7 @@ class ExpressRouter {
         } else if (path.method === HttpMethodsEnum.post) {
             this.router.post(path.href, middleware, controllerFn);
         } else {
-            throw Error("Could not determine router method");
+            throw Error(`Could not determine router method: ${path.method}`);
         }
     }
 

@@ -22,20 +22,14 @@ class UserController {
         }
     }
 
+    renderProfilePage(req, res) {
+        const user = req.user;
+        res.render("user/profile", { user });
+    }
+
     static _hasCompletedOnboarding(user) {
         return user.onboardingStatus === OnboardingStatusEnum.COMPLETED;
     }
-
-        /*
-        const facebookToken = req.body.facebookToken;
-        this.userValidator.validateHasFacebookToken(facebookToken)
-            .then(facebookToken => this.userService.logInWithFacebookToken(facebookToken))
-            .then(user => res.json(user))
-            .catch(err => {
-                winston.error("Failed to log in user ", err);
-                return res.status(500).json(ErrorCodes.login)
-            });
-            */
 }
 
 module.exports = UserController;

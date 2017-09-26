@@ -2,6 +2,10 @@ const FeedbackService = require("./FeedbackService");
 const gracepull = require("gracepull");
 const winston = require("winston");
 
+const UserPathEnum = require("../user/UserPathEnum");
+const MatchingPathEnum = require("../matching/MatchingPathEnum");
+const IndexPathEnum = require("../index/IndexPathEnum");
+
 class FeedbackController {
 
     constructor() {
@@ -24,7 +28,11 @@ class FeedbackController {
     }
 
     renderFeedbackThanks(req, res) {
-        res.render("feedback/feedback-thanks");
+        res.render("feedback/feedback-thanks", {
+            UserPathEnum,
+            MatchingPathEnum,
+            IndexPathEnum,
+        });
     }
 }
 

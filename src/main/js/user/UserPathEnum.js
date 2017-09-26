@@ -6,5 +6,6 @@ module.exports = {
     logInWithFacebookCallback: { type: RouteType.web, method: Method.get, href: "/login/facebook/callback" },
     redirectAfterLogin: { type: RouteType.web, method: Method.get, href: "/login/success" },
     createUser: { type: RouteType.api, method: Method.post, href: "/user" },
+    renderProfilePage: { type: RouteType.web, method: Method.get, href: "/user/profile" }
 };
 
