@@ -14,7 +14,6 @@ class GymCenterOnboardingService {
     }
 
     _getAndCombineGymCenterPreferences(gymCenters, userId) {
-        console.log(gymCenters);
         return this.gymCenterPreferenceService.get(userId)
             .then(gymTypePreferences =>
                 gymCenters.map(gymType => {

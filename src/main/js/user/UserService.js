@@ -28,7 +28,6 @@ class UserService {
 
     getUserByAuthHeader(authHeader) {
         const facebookToken = this._extractFacebookToken(authHeader);
-        console.log("fb token: " + facebookToken)
         return this.facebookTokenRepository.getUserByFacebookToken(facebookToken);
 
     }

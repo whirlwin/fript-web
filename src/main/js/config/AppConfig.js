@@ -1,9 +1,10 @@
-const DbConfig = require('./DbConfig');
-const ErrorEventConfig = require('./ErrorEventConfig');
-const ExpressConfig = require('./ExpressConfig');
-const HttpConfig = require('./HttpConfig');
+const DbConfig = require("./DbConfig");
+const ErrorEventConfig = require("./ErrorEventConfig");
+const ExpressConfig = require("./ExpressConfig");
+const HttpConfig = require("./HttpConfig");
 const DotenvConfig = require("./DotenvConfig");
-const SecurityConfig = require('./SecurityConfig');
+const SecurityConfig = require("./SecurityConfig");
+const WinstonConfig = require("./WinstonConfig");
 
 class AppConfig {
 
@@ -14,6 +15,7 @@ class AppConfig {
         this.httpConfig = new HttpConfig();
         this.dotenvConfig = new DotenvConfig();
         this.securityConfig = new SecurityConfig();
+        this.winstonConfig = new WinstonConfig();
     }
 
     configure() {
@@ -23,6 +25,7 @@ class AppConfig {
         const httpPort = this.httpConfig.getHttpPort();
         this.errorEventConfig = this.errorEventConfig.configure();
         this.dbConfig.configure();
+        this.winstonConfig.configure();
         return { app, httpPort };
     }
 }

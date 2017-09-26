@@ -35,7 +35,7 @@ class FacebookAuthService {
     // Refresh token is undefined in Facebook OAuth 2.0
     handleLogin(userService, accessToken, undefinedRefreshToken, profile, done) {
         if (featureToggles.debugLogging.enabled) {
-            winston.info(`handleLogin callback invoked:
+            winston.debug(`handleLogin callback invoked:
                 AT: ${accessToken}
                 RT: ${undefinedRefreshToken}
                 Profile ID: ${profile.id}`
@@ -45,7 +45,7 @@ class FacebookAuthService {
         userService.logInWithFacebookToken(accessToken).then(profile => {
             done(null, profile);
         }).catch(err => {
-            winston.error("Failed to log in user with error: " + JSON.stringify(err));
+            winston.error("Failed to log in user with error: ", err);
             done(err);
         });
     }

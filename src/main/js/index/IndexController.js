@@ -1,8 +1,8 @@
 class IndexController {
 
     renderIndex(req, res) {
-        console.log("index...", req.user);
-        res.render("index/index", { user: req.user });
+        const user = req.user;
+        res.render("index/index", { user });
     }
 }
 

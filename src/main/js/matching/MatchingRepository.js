@@ -10,7 +10,7 @@ class PendingMatchRepository {
 
     getPendingMatches(userId) {
         if (featureToggles.mockDb.enabled) {
-            return Try.success([
+            return Promise.resolve([
                 {
                     "id": "123"
                 }
@@ -25,7 +25,7 @@ class PendingMatchRepository {
 
     getPendingMatch(pendingMatchId) {
         if (featureToggles.mockDb.enabled) {
-            return Try.success(Optional.ofNullable({
+            return Promise.resolve(Optional.ofNullable({
                 "id": "123"
             }));
         }

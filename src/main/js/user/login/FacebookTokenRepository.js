@@ -11,7 +11,7 @@ class FacebookTokenRepository {
 
     getUserByFacebookToken(facebookToken) {
         if (featureToggles.debugLogging.enabled) {
-            winston.info(`Trying to get user from fript-db by Facebook token: ` + facebookToken);
+            winston.debug(`Trying to get user from fript-db by Facebook token: ` + facebookToken);
         }
 
         if (featureToggles.mockDb.enabled) {
@@ -34,7 +34,7 @@ class FacebookTokenRepository {
 
     storeFacebookToken(facebookToken, user) {
         if (featureToggles.debugLogging.enabled) {
-            winston.info(`Trying to store facebook token: ${facebookToken} for user with id ${user.id}`);
+            winston.info(`trace: Trying to store facebook token: ${facebookToken} for user with id ${user.id}`);
         }
 
         const sql = `INSERT INTO facebook_token(token, user_id)

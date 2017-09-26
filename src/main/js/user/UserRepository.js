@@ -17,14 +17,14 @@ class UserReposiory {
 
     createUser(user) {
         if (featureToggles.debugLogging.enabled) {
-            winston.info("Creating user");
+            winston.debug("Creating user");
         }
 
-        const sql = `INSERT INTO users(id, email, name, picture_url, type, onboarding_status)
-                VALUES($(id), $(email), $(name), $(picture_url), $(type), $(onboarding_status))
-                ON CONFLICT (id) DO NOTHING`;
+        const sql = `INSERT INTO users(fb_id, email, name, picture_url, type, onboarding_status)
+                VALUES($(fb_id), $(email), $(name), $(picture_url), $(type), $(onboarding_status))
+                ON CONFLICT (email) DO NOTHING`;
         const params = {
-            id: user.id,
+            fb_id: user.id,
             email: user.email,
             name: user.name,
             picture_url: user.picture_url,

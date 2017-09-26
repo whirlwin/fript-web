@@ -14,7 +14,6 @@ class MatchingController {
         this.pendingMatchService.getPendingMatches(userId)
             .then(pendingMatches => res.render("matching/main-matching", { pendingMatches: pendingMatches }))
             .catch(err => {
-                console.log("err");
                 res.render("")
             })
 
