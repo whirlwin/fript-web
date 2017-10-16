@@ -2,10 +2,10 @@ class UserMapper {
 
     mapToUser(facebookUser) {
         return {
-            id: facebookUser.id,
+            fbId: facebookUser.id,
             email: facebookUser.email,
             name: facebookUser.name,
-            picture_url: facebookUser.picture.data.url
+            pictureUrl: facebookUser.picture.data.url
         };
     }
 }

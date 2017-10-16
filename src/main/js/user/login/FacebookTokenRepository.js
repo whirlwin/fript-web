@@ -34,7 +34,7 @@ class FacebookTokenRepository {
 
     storeFacebookToken(facebookToken, user) {
         if (featureToggles.debugLogging.enabled) {
-            winston.info(`trace: Trying to store facebook token: ${facebookToken} for user with id ${user.id}`);
+            winston.debug(`Trying to store facebook token: ${facebookToken} for user with id ${user.id}`);
         }
 
         const sql = `INSERT INTO facebook_token(token, user_id)
@@ -44,6 +44,7 @@ class FacebookTokenRepository {
             token: facebookToken,
             user_id: user.id
         };
+
         return this.db.query(sql, params)
             .then(result => user);
     }

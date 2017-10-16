@@ -6,11 +6,11 @@ class GymTypeOnboardingController {
 
     constructor() {
         this.userService = new UserService();
-        this.gymCenterOnboardingService = new GymCenterOnboardingService();
+        this.userTypeOnboardingService = new GymCenterOnboardingService();
     }
 
     render(req, res) {
-        this.gymCenterOnboardingService.get(req.user.id)
+        this.userTypeOnboardingService.get(req.user.id)
             .then(gymCenters => res.render("onboarding/gym-center-onboarding", { gymCenters: gymCenters } ))
             .catch(err => {
                 winston.error("Failed to render user user type onboarding page", err);
@@ -21,7 +21,7 @@ class GymTypeOnboardingController {
     get(req, res) {
         const authHeader = req.headers.authorization;
         this.userService.getUserByAuthHeader(authHeader)
-            .then(user => this.gymCenterOnboardingService.getByUserId(user.id))
+            .then(user => this.userTypeOnboardingService.getByUserId(user.id))
             .then(userTypeOnboarding =>  res.json(userTypeOnboarding))
             .catch(err => {
                 winston.error("Failed to get user onboarding", err);

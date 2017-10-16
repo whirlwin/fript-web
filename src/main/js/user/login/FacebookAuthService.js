@@ -44,6 +44,7 @@ class FacebookAuthService {
 
         userService.logInWithFacebookToken(accessToken).then(profile => {
             done(null, profile);
+
         }).catch(err => {
             winston.error("Failed to log in user with error: ", err);
             done(err);

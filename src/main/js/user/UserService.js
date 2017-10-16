@@ -16,8 +16,9 @@ class UserService {
 
     logInWithFacebookToken(facebookToken) {
         return this.facebookTokenRepository.getUserByFacebookToken(facebookToken)
-            .catch(err => this.facebookApiFacade.getFacebookUser(facebookToken))
+            .catch(err =>  this.facebookApiFacade.getFacebookUser(facebookToken))
             .then(user => this.userRepository.createUser(user))
+            .then(user => this.userRepository.getUserByFbId(user.fbId))
             .then(user => this.facebookTokenRepository.storeFacebookToken(facebookToken, user));
     }
 
@@ -30,6 +31,10 @@ class UserService {
         const facebookToken = this._extractFacebookToken(authHeader);
         return this.facebookTokenRepository.getUserByFacebookToken(facebookToken);
 
+    }
+
+    addPreferences(preferences, userId) {
+        return this.userRepository.addPreferences(preferences, userId);
     }
 
     _extractFacebookToken(authHeader) {

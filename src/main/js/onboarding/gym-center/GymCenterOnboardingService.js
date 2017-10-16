@@ -5,7 +5,7 @@ class GymCenterOnboardingService {
 
     constructor() {
         this.gymCenterService = new GymCenterService();
-        this.gymCenterPreferenceService = new GymCenterPreferenceService();
+        this.userTypePreferenceService = new GymCenterPreferenceService();
     }
 
     get(userId) {
@@ -14,7 +14,7 @@ class GymCenterOnboardingService {
     }
 
     _getAndCombineGymCenterPreferences(gymCenters, userId) {
-        return this.gymCenterPreferenceService.get(userId)
+        return this.userTypePreferenceService.get(userId)
             .then(gymTypePreferences =>
                 gymCenters.map(gymType => {
                     gymType.hasPreference = this._hasPreference(gymType, gymTypePreferences);

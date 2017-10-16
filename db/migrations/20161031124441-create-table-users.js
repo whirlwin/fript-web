@@ -7,6 +7,7 @@ exports.up = function(db, cb) {
         picture_url: { type: "string", notNull: true },
         type: { type: "string", notNull: true },
         onboarding_status: { type: "string", notNull: true },
+        preferences: { type: "text[]", notNull: true },
         created: { type: "date", notNull: true, defaultValue: "now()" },
         updated: { type: "date", notNull: true, defaultValue: "now()" }
     }, cb);

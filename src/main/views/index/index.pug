@@ -9,6 +9,8 @@ block content
       div.row.center
         if user === undefined
           a.btn-large.blue.darken-3.waves-effect.waves-light(href="/login/facebook") Log in with Facebook
+        else if user.onboarding_status !== "completed"
+          a.btn-large.blue.darken-3.waves-effect.waves-light(href="/onboarding/user") Complete onboarding
         else
           a.btn-large.green(href="/matching") Find training matches
             i.material-icons.right send

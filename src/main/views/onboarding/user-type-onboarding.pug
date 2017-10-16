@@ -5,18 +5,19 @@ block content
     div.container
       h4.gray.center Choose user type
       div
-        form(method="POST", action="/api/onboarding/user")
+        form(method="POST", action="/onboarding/user")
           div.row
           div.center I want to...
+            div= preferences
           div.row
             div.input-field.col.s4
             div.input-field.col.s4
-              input#learner-type(type="checkbox")
+              input#learner-type(type="checkbox", name="find-trainers")
               label(for="learner-type") Find personal trainers
           div.row
             div.input-field.col.s4
             div.input-field.col.s4
-              input#pt-type(type="checkbox")
+              input#pt-type(type="checkbox", name="become-trainer")
               label(for="pt-type") Become a personal trainer
           div.row
             div.input-field.col.s4.offset-s4

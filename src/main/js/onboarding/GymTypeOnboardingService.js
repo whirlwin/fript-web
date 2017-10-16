@@ -5,12 +5,12 @@ class GymTypeOnboardingService {
 
     constructor() {
         this.gymCenterService = new GymTypeService();
-        this.gymCenterPreferenceService = new GymTypePreferenceService();
+        this.userTypePreferenceService = new GymTypePreferenceService();
     }
 
     getGymTypeOnboarding(user) {
         return this.gymCenterService.getGymTypes()
-            .then(types => this.gymCenterPreferenceService.getGymTypePreferences(user)
+            .then(types => this.userTypePreferenceService.getGymTypePreferences(user)
                 .then(prefs => this.combineTypeAndPrefs(types, prefs)));
     }
 

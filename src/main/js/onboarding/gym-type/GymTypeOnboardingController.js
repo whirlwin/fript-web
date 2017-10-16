@@ -1,25 +1,29 @@
 const UserService = require("../../user/UserService");
 const GymTypeOnboardingService = require("./GymTypeOnboardingService");
+const GymTypePreferenceService = require("../../gym-type/preference/GymTypePreferenceService");
 const winston = require("winston");
 
 class GymTypeOnboardingController {
 
     constructor() {
         this.userService = new UserService();
-        this.gymCenterOnboardingService = new GymTypeOnboardingService();
+        this.userTypeOnboardingService = new GymTypeOnboardingService();
+        this.gymTypePreferenceService = new GymTypePreferenceService();
     }
 
     render(req, res) {
-        this.gymCenterOnboardingService.get(req.user.id)
+        this.userTypeOnboardingService.get(req.user.id)
             .then(gymTypes => res.render("onboarding/gym-type-onboarding", { gymTypes: gymTypes } ))
             .catch(err => {
-                winston.error("Failed to render user user type onboarding page", err);
+                winston.error("Failed to render gym type onboarding page", err);
                 res.status(500).json({});
             });
     }
 
-    create(req, res) {
-        // TODO: Implement createFeedback logic
+    createGymTypePreferences(req, res) {
+        const preference = { gymTypeId: req.body.gymTypeId };
+        this.gymTypePreferenceService.createPreference()
+        // TODO: Implement createGymTypePreference logic
         res.redirect("/matching/matching");
 
     }
