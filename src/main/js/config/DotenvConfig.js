@@ -4,7 +4,12 @@ const winston = require('winston');
 class DotenvConfig {
 
     configure() {
-        dotenv.config();
+        try {
+            dotenv.config();
+        } catch (error) {
+            winston.info("Failed to load .env");
+        }
+
         winston.info(`current env: ${process.env.ENV}`);
     }
 }
