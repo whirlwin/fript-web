@@ -1,4 +1,5 @@
 DROP TABLE accepted_match;
+DROP TABLE early_access;
 DROP TABLE facebook_token;
 DROP TABLE feedback;
 DROP TABLE gym_center;

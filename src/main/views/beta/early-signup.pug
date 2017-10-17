@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  div.section.no-pad-bot
+    div.container
+      h4.gray.center Sign up for beta
+      div
+        form(method="POST", action="/beta/early-signup/register")
+          div.row
+              div.input-field.col.s4.offset-s4
+                input#email(name="email", type="text")
+                label.active(for="email") Email
+          div.row
+            div.input-field.col.s4.offset-s4
+              button.btn.waves-effect.waves-light(type="submit") Next
+                i.material-icons.right send

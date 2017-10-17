@@ -2,4 +2,4 @@
 
 export ENV=$1
 
-nodemon ./bin/www
+nodemon ./bin/app

@@ -7,6 +7,7 @@ class Router {
         app.use(require("../navigation/NavigationRouter"));
         app.use(require("../user/UserRouter"));
         app.use(require("../index/IndexRouter"));
+        app.use(require("../beta/BetaRouter"));
         app.use(require("../feedback/FeedbackRouter"));
         app.use(require("../onboarding/OnboardingRouter"));
         app.use(require("../onboarding/user/UserTypeOnboardingRouter"));
