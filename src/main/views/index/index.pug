@@ -7,7 +7,7 @@ block content
       div.row.center
         h5.header.col.s12.light Log in to find a personal trainer that fits you
       div.row.center
-        if "should display early signup"
+        if FeatureToggles.earlyAccessSignUp.enabled
           a.btn-large.blue(href="/beta/early-signup") Sign up for beta
         else if user === undefined
           a.btn-large.blue.darken-3.waves-effect.waves-light(href="/login/facebook") Log in with Facebook
