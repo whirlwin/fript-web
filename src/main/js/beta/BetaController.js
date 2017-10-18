@@ -14,7 +14,11 @@ class BetaController {
     registerForEarlySignUp(req, res) {
         const email = req.body.email;
         this.betaService.registerForEarlyAccess(email)
-            .then(ignored => res.redirect(PathEnum.renderEarlySignUpThanks.href));
+            .then(ignored => res.redirect(PathEnum.renderEarlySignUpThanks.href))
+            .catch(err => {
+                winston.error("Failed to register for early signup", err);
+                res.render("common/error");
+            });
     }
 
     renderEarlySignUpThanks(req, res) {
