@@ -17,7 +17,7 @@ exports.setup = function(options, seedLink) {
 exports.up = function(db, cb) {
     db.createTable("early_access", {
         id: { type: "int", primaryKey: true, autoIncrement: true },
-        email: { type: "string", notNull: true },
+        email: { type: "string", unique: true, notNull: true },
         created: { type: "date", defaultValue: "now()" },
         updated: { type: "date", defaultValue: "now()" }
     }, cb);

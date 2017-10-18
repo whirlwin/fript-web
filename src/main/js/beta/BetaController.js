@@ -1,5 +1,6 @@
 const BetaService = require("./BetaService");
 const PathEnum = require("./BetaPathEnum");
+const winston = require("winston");
 
 class BetaController {
 

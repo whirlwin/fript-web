@@ -7,7 +7,9 @@ class BetaRepository {
     }
 
     createEarlyAccess(email) {
-        const sql = "INSERT INTO early_access(email) VALUES($(email))";
+        const sql = `INSERT INTO early_access(email)
+            VALUES($(email))
+            ON CONFLICT (email) DO NOTHING`;
         const params = {
             email: email
         };
