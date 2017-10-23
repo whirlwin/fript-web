@@ -1,5 +1,3 @@
-const Try = require('try-js');
-
 class GymTypePreferenceValidator {
 
     validateCreatePreference(preference) {
