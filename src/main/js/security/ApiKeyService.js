@@ -1,14 +1,18 @@
-let API_KEYS;
+const Optional = require("optional-js");
+
+let apiKeys;
 
 class ApiKeyService {
 
     initializeApiKeys() {
-        API_KEYS = process.env.API_KEYS.split(',');
+        apiKeys = Optional.ofNullable(process.env.API_KEYS)
+            .map(keys => keys.split(","))
+            .orElse([]);
     }
 
     // TODO: Improve method name
     validApiKey(req) {
-        return API_KEYS.includes(req.headers["x-api-key"])
+        return apiKeys.includes(req.headers["x-api-key"])
     }
 }
 

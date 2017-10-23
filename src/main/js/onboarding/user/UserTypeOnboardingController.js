@@ -30,10 +30,7 @@ class UserTypeOnboardingController {
 
     addPreferences(req, res, next) {
         const userId = req.user.id;
-        const preferences = {
-            findTrainers: req.body["findTrainers"],
-            becomeTrainer: req.body["becomeTrainer"]
-        };
+        const preferences = req.body["preferences"];
 
         this.userTypeOnboardingValidator.validateCreate(preferences)
             .then(preferences => this.userService.addPreferences(preferences, userId))

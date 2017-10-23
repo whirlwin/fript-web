@@ -44,7 +44,6 @@
     "passport-facebook": "^2.1.1",
     "pg-promise": "5.3.3",
     "pug": "^2.0.0-rc.4",
-    "try-js": "1.9.1",
     "winston": "2.2.0"
   },
   "devDependencies": {

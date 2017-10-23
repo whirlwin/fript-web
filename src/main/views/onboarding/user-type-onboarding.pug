@@ -11,12 +11,12 @@ block content
           div.row
             div.input-field.col.s4
             div.input-field.col.s4
-              input#learner-type(type="checkbox", name="find-trainers")
+              input#learner-type(type="checkbox", name="preferences[]", value="findTrainers")
               label(for="learner-type") Find personal trainers
           div.row
             div.input-field.col.s4
             div.input-field.col.s4
-              input#pt-type(type="checkbox", name="become-trainer")
+              input#pt-type(type="checkbox", name="preferences[]", value="becomeTrainer")
               label(for="pt-type") Become a personal trainer
           div.row
             div.input-field.col.s4.offset-s4

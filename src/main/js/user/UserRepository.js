@@ -55,7 +55,7 @@ class UserReposiory {
                 SET preferences = $(preferences)
                 WHERE id = $(user_id)`;
         const params = {
-            preferences: `{${Object.keys(preferences).join(",")}}`,
+            preferences: `{${preferences.join(",")}}`,
             user_id: userId
         };
         return DbProvider.getDb().query(sql, params);
