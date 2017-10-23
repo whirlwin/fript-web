@@ -5,5 +5,5 @@ module.exports = {
     mockFacebookApi: { enabled: false },
     mockDb: { enabled: false },
     mockLoggedInUser: { enabled: false },
-    earlyAccessSignUp: { enabled: false },
+    earlyAccessSignUp: { enabled: !!process.env.EARLY_ACCESS_SIGNUP || false },
 };
