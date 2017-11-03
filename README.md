@@ -1,4 +1,4 @@
-# fript-api
+# fript-web
 
 ## Local development
 
