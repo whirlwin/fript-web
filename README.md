@@ -10,13 +10,24 @@
 
 2. Create a `.env` file with the required environment variables
 
-   ```
-   - DB_NAME
-   - DB_HOST
-   - DB_PORT
-   - DB_USER
-   - DB_PASSWORD
-   ```
+```
+- API_KEYS
+- DB_NAME
+- DB_HOST
+- DB_PORT
+- DB_USER
+- DB_PASSWORD
+- FACEBOOK_APP_ID
+- FACEBOOK_APP_SECRET
+```
+
+You may also add either of these optional environment variables:
+
+```
+- EARLY_ACCESS_SIGNUP (default: false)
+- ENV (default: “staging” when running `start` script)
+- PORT (default: 4000)
+```
 
    *Alternatively, create a file `.env.production` if needed*
 
