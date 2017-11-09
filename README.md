@@ -20,27 +20,27 @@
 
    *Alternatively, create a file `.env.production` if needed*
 
-3. Start the app locallly
+3: Start the app locally
 
    ```bash
    $ npm start
    ```
 
-4. Inspect the service document at [localhost:4000](http://localhost:4000)
+4. Inspect the service document at [localhost:4000][1]
 
 ### DB
 
 #### Connecting
 
-1. Download [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) and [PostgreSQL](https://www.postgresql.org/)
+1: Download [Heroku CLI][2] and [PostgreSQL][3]
 
-2. Log into heroku
+2: Log in to Heroku
 
    ```bash
    heroku login
    ```
 
-3. Connect to a database using psql
+3: Connect to a database using `psql`
 
    ```bash
    # staging db:
@@ -70,6 +70,10 @@
 
 3. Run the migrations against the server
 
-   ```bash
-   npm run migrate-up
-   ```
+```bash
+npm run migrate-up
+```
+
+[1]: http://localhost:4000
+[2]: https://devcenter.heroku.com/articles/heroku-command-line
+[3]: https://www.postgresql.org
