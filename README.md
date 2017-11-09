@@ -20,7 +20,7 @@ $ npm install
 
 *Alternatively, create a file `.env.production` if needed*
 
-3: Start the app locallly
+3: Start the app locally
 
 ```bash
 $ npm start
@@ -34,13 +34,13 @@ $ npm start
 
 1: Download [Heroku CLI][2] and [PostgreSQL][3]
 
-2: Log into heroku
+2: Log in to Heroku
 
 ```bash
 heroku login
 ```
 
-3: Connect to a database using psql
+3: Connect to a database using `psql`
 
 ```bash
 # staging db:
