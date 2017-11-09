@@ -26,13 +26,13 @@ $ npm install
 $ npm start
 ```
 
-4. Inspect the service document at [localhost:4000](http://localhost:4000)
+4. Inspect the service document at [localhost:4000][1]
 
 ### DB
 
 #### Connecting
 
-1: Download [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) and [PostgreSQL](https://www.postgresql.org/)
+1: Download [Heroku CLI][2] and [PostgreSQL][3]
 
 2: Log into heroku
 
@@ -74,4 +74,6 @@ npm run create-insert-migration <tableName>
 npm run migrate-up
 ```
 
-
+[1]: http://localhost:4000
+[2]: https://devcenter.heroku.com/articles/heroku-command-line
+[3]: https://www.postgresql.org
