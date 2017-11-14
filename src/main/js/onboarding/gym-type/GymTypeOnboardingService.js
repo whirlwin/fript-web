@@ -10,7 +10,7 @@ class GymTypeOnboardingService {
 
     get(userId) {
         return this.gymCenterService.getGymTypes()
-            .then(gymTypes => this._getAndCombineGymTypePreferences(gymTypes, userId));
+            //.then(gymTypes => this._getAndCombineGymTypePreferences(gymTypes, userId));
     }
 
     _getAndCombineGymTypePreferences(gymTypes, userId) {

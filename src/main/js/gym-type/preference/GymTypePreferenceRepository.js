@@ -27,18 +27,26 @@ class GymTypePreferenceRepository {
         return this.db.query(sql, params);
     }
 
-    createPreference(preference, userId) {
-        const sql = `INSERT INTO gym_type_preference (gym_type_id, user_id, status)
-                VALUES($(gym_type_id), $(user_id), $(status))
+    createPreferences(gymTypeIds, userId) {
+        console.log(gymTypeIds);
+        const sql = `INSERT INTO gym_type_preference (gym_type_ids, user_id, status)
+                VALUES($(gym_type_ids), $(user_id), $(status))
                 ON CONFLICT (id)
                 DO NOTHING`;
         const params = {
-            gym_type_id: preference.gymTypeId,
+            gym_type_ids: gymTypeIds,
             user_id: userId,
-            status: preference.status
+            status: "active"
         };
-        const result = this.db.query(sql, params);
-        return Try.of(() => result);
+        return this.db.none(sql, params);
+
+
+        /*
+        return this.db.tx("create-preferences-tx", tx => {
+            return tx.batch(gymTypeIds
+                .map(gymTypeId => this._createPreference(preference, userId, tx)))
+        });
+        */
     }
 
     updatePreference(preference, userId) {
@@ -53,6 +61,19 @@ class GymTypePreferenceRepository {
         };
         const result = this.db.query(sql, params);
         return Try.of(() => result);
+    }
+
+    _createPreference(preference, userId, tx) {
+        const sql = `INSERT INTO gym_type_preference (gym_type_ids, user_id, status)
+                VALUES($(gym_type_id), $(user_id), $(status))
+                ON CONFLICT (id)
+                DO NOTHING`;
+        const params = {
+            gym_type_id: preference.gymTypeId,
+            user_id: userId,
+            status: "active"
+        };
+        return tx.none(sql, params);
     }
 }
 

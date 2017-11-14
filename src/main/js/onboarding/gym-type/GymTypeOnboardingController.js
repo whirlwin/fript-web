@@ -21,10 +21,13 @@ class GymTypeOnboardingController {
     }
 
     createGymTypePreferences(req, res) {
-        const preference = { gymTypeId: req.body.gymTypeId };
-        this.gymTypePreferenceService.createPreference()
-        // TODO: Implement createGymTypePreference logic
-        res.redirect("/matching/matching");
+        const gymTypeIds = req.body["gymTypeIds"].map(Number);
+        this.gymTypePreferenceService.createPreferences(gymTypeIds, req.user.id)
+            .then(preferences => res.redirect("/matching/matching"))
+            .catch(err => {
+                winston.error("Failed to create gym type preference for user " + req.user.id, err);
+                res.status(500).json({});
+            });
 
     }
 }

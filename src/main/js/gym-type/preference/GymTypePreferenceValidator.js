@@ -1,6 +1,7 @@
 class GymTypePreferenceValidator {
 
-    validateCreatePreference(preference) {
+    validateCreatePreferences(preferences) {
+        console.log(preferences);
         return Try.of(() => preference)
             .flatMap(pref => this._validateStatus(pref))
             .flatMap(pref => this._validateGymTypeId(pref));

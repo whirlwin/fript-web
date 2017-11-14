@@ -12,14 +12,11 @@ class GymTypePreferenceService {
         return this.gymTypePreferenceRepository.get(userId);
     }
 
-    createPreference(preference, user) {
-        const userId = user.id;
-        return this.gymTypePreferenceValidator.validateCreatePreference(preference)
-            .flatMap(pref => this.gymTypePreferenceRepository.createPreference(pref, userId));
+    createPreferences(gymTypeIds, userId) {
+        return this.gymTypePreferenceRepository.createPreferences(gymTypeIds, userId);
     }
 
-    updatePreference(preference, user) {
-        const userId = user.id;
+    updatePreference(preference, userId) {
         return this.gymTypePreferenceValidator.validateUpdatePreference(preference)
             .flatMap(pref => this.gymTypePreferenceRepository.updatePreference(pref, userId));
 
