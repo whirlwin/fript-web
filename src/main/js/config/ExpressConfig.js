@@ -13,26 +13,29 @@ class ExpressConfig {
         app.use(express.static('src/main/public'));
         app.use(bodyParser.json());
         app.use(cookieParser());
-        app.use(this.configureSession());
-        if (process.env.ENV === "dev") {
+        app.use(ExpressConfig._configureSession());
+        if (ExpressConfig._isNonProdEnv()) {
             app.set('json spaces', 2);
         }
         app.use(bodyParser.urlencoded({ extended: true }));
         return app;
     }
 
-    configureSession() {
+    static _configureSession() {
         return expressSession({
-            secret: this.getSessionSecret(),
+            secret: ExpressConfig._getSessionSecret(),
             resave: false,
             saveUninitialized: false
         });
     }
 
-    getSessionSecret() {
+    static _getSessionSecret() {
         return crypto.randomBytes(64).toString('hex');
     }
 
+    static _isNonProdEnv() {
+        return process.env.ENV === "staging" || process.env.ENV === "dev"
+    }
 }
 
 module.exports = ExpressConfig;
