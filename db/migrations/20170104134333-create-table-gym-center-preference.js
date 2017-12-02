@@ -1,7 +1,7 @@
 exports.up = function(db, cb) {
     db.createTable('gym_center_preference', {
         id: { type: 'int', primaryKey: true, autoIncrement: true },
-        user_id: { type: 'string', notNull: true },
+        user_id: { type: 'string', unique: true, notNull: true },
         gym_center_ids: { type: 'int[]', notNull: true },
         status: { type: 'string', notNull: true },
         created: { type: 'date', notNull: true, defaultValue: 'now()' },

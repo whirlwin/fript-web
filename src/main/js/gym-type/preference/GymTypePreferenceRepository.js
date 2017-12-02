@@ -28,11 +28,12 @@ class GymTypePreferenceRepository {
     }
 
     createPreferences(gymTypeIds, userId) {
-        console.log(gymTypeIds);
-        const sql = `INSERT INTO gym_type_preference (gym_type_ids, user_id, status)
+        const sql = `INSERT INTO gym_type_preference(gym_type_ids, user_id, status)
                 VALUES($(gym_type_ids), $(user_id), $(status))
-                ON CONFLICT (id)
-                DO NOTHING`;
+                ON CONFLICT (user_id)
+                DO UPDATE 
+                SET gym_type_ids = $(gym_type_ids)
+                WHERE gym_type_preference.user_id = $(user_id)`;
         const params = {
             gym_type_ids: gymTypeIds,
             user_id: userId,

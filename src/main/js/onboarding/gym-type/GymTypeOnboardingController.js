@@ -2,6 +2,7 @@ const UserService = require("../../user/UserService");
 const GymTypeOnboardingService = require("./GymTypeOnboardingService");
 const GymTypePreferenceService = require("../../gym-type/preference/GymTypePreferenceService");
 const winston = require("winston");
+const GymCenterOnboardingPathEnum = require("../gym-center/GymCenterOnboardingPathEnum");
 
 class GymTypeOnboardingController {
 
@@ -23,7 +24,7 @@ class GymTypeOnboardingController {
     createGymTypePreferences(req, res) {
         const gymTypeIds = req.body["gymTypeIds"].map(Number);
         this.gymTypePreferenceService.createPreferences(gymTypeIds, req.user.id)
-            .then(preferences => res.redirect("/matching/matching"))
+            .then(preferences => res.redirect("/onboarding/gym-center"))
             .catch(err => {
                 winston.error("Failed to create gym type preference for user " + req.user.id, err);
                 res.status(500).json({});
