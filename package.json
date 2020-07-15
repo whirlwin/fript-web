@@ -39,7 +39,7 @@
     "fb": "1.1.1",
     "gracepull": "^1.1.3",
     "hal": "0.1.0",
-    "lodash": "4.16.5",
+    "lodash": "4.17.19",
     "optional-js": "1.1.2",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
